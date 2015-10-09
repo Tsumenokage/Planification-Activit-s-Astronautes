@@ -104,6 +104,7 @@
             this.newPlanningToolStripMenuItem.Name = "newPlanningToolStripMenuItem";
             this.newPlanningToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newPlanningToolStripMenuItem.Text = "New Planning";
+            this.newPlanningToolStripMenuItem.Click += new System.EventHandler(this.newPlanningToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
