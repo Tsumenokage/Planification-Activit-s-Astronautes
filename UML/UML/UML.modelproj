@@ -18,6 +18,13 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
   <ItemGroup>
     <Folder Include="ModelDefinition\" />
+    <Content Include="Diagramme de classe.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Diagramme de classe.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Diagramme de classe.classdiagram</DependentUpon>
+    </Content>
     <Content Include="ModelDefinition\UML.uml">
       <SubType>Content</SubType>
     </Content>
