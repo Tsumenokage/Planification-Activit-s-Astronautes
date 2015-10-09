@@ -612,6 +612,14 @@
         isLeaf="false"
         isActiveClass="false" />
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7be92672-2581-433b-803c-b5208fc2a5f8"
+        name="Test"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
