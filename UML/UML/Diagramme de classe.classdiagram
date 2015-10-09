@@ -295,11 +295,6 @@
         <elementDefinition Id="814d7417-eb04-403e-8aae-b6ba6064756b" />
       </class>
     </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="017047cf-7221-49ff-a4ea-ee258e72f807" name="Test" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="7be92672-2581-433b-803c-b5208fc2a5f8" />
-      </class>
-    </logicalClassDesignerModelHasTypes>
   </packagedElements>
   <package Id="b762a293-53a3-49b4-83b8-609e957d6230" name="UML">
     <elementDefinition Id="a4140193-1a32-407f-b8a4-23a50fca5ca1" />
