@@ -24,6 +24,11 @@ namespace Astronauts_Activities
 
         private void newPlanningToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             XmlDocument file = new XmlDocument();
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -33,14 +38,14 @@ namespace Astronauts_Activities
 
             openFileDialog1.Multiselect = true;
 
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     file.Load(openFileDialog1.OpenFile());
                     XmlNode noeud = file.DocumentElement;
                     XmlNodeList listes = noeud.SelectNodes("Activity");
-                    MessageBox.Show(listes[0].InnerText);                    
+                    MessageBox.Show(listes[0].InnerText);
                 }
                 catch (Exception ex)
                 {
