@@ -10,6 +10,6 @@ namespace Astronauts_Activities
         private int NumberDay;
         private int NumberDayOfMonth;
         private enum Days { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday } ;
-        private int NumberYear;
+        private int NumberYear; 
     }
 }

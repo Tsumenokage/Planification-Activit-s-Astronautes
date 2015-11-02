@@ -73,10 +73,13 @@ namespace Astronauts_Activities
             }
         }
 
+<<<<<<< HEAD:Astronauts Activities/Astronauts Activities/Mission.cs
         private void infoSurLaMissionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Astronaut A in Astronauts)
                 MessageBox.Show(A.Name);
         }
+=======
+>>>>>>> origin/master:Astronauts Activities/Astronauts Activities/Form1.cs
     }
 }

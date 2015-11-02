@@ -50,7 +50,11 @@
     <Compile Include="Astronaut.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Day.cs" />
+<<<<<<< HEAD
     <Compile Include="Mission.cs">
+=======
+    <Compile Include="Form1.cs">
+>>>>>>> origin/master
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mission.Designer.cs">

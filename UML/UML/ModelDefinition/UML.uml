@@ -101,6 +101,46 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="2663546f-a7aa-4253-9d7f-53010123a82a"
+            name="Name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="910e5002-9174-4694-aef5-60d6285617f3"
+            name="Description"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -125,7 +165,7 @@
             Id="96f36d86-35bd-49ae-bf8d-c42638ddff7f"
             isDerived="false"
             sourceEndRoleName="Category"
-            targetEndRoleName="Activity"
+            targetEndRoleName="Activities"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -162,7 +202,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="0b060e4c-3949-4574-aa82-7c730b2d8bf5"
-                  name="Activity"
+                  name="Activities"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -187,6 +227,27 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="6ee64381-bd77-4d1f-9346-52be63dd38e6"
+            name="Name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -209,7 +270,7 @@
             Id="a7f905d3-0f3d-4b9e-9175-e5c33ab112cb"
             isDerived="false"
             sourceEndRoleName="Planning"
-            targetEndRoleName="Day"
+            targetEndRoleName="Calendar"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -233,7 +294,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="18c7d531-3731-4e86-b9ea-7e59ca28e369"
-                  name="Day"
+                  name="Calendar"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -271,7 +332,7 @@
           <association
             Id="074f872c-2c4d-4aac-9226-49c0b4662095"
             isDerived="false"
-            sourceEndRoleName="Day"
+            sourceEndRoleName="TaskBeginDay"
             targetEndRoleName="Task"
             isLeaf="false"
             isAbstract="false">
@@ -283,7 +344,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="fe690826-9f85-4c82-9449-6bee5123fc5c"
-                  name="Day"
+                  name="TaskBeginDay"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -303,11 +364,154 @@
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false" />
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0f8b1831-12db-40fc-b4a1-60aaf53155da"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="da68d2dc-e109-44d0-ad99-e1284ebc770e"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="817a0601-f995-4568-a18f-7f5d7eedc551"
+            isDerived="false"
+            sourceEndRoleName="TaskEndDay"
+            targetEndRoleName="Task"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="a5c7d5d7-efd1-4b78-857d-847aace822c3"
+              LastKnownName="Task"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="eb314687-9f56-4e2b-9717-33f4c7af9844"
+                  name="TaskEndDay"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c9bd20f8-e539-4484-ba1d-23a75e11adb9"
+                  name="Task"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d433c18a-8a8e-44ff-b373-b90c1b5e8a7a"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="92f83bd9-b2bf-4369-9dd5-163537cc40be"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="3def9d6c-d611-42fb-8c22-9a96ba0a5b8e"
+            name="Days"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0ec6497d-45d5-4e98-a5c8-aea9e95be672"
+                LastKnownName="Enum"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="9d5afd3d-eb62-459b-b0c7-f373a5de8fc5"
+            name="NumberDayOfMonth"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="db093730-a3e8-4df0-89e4-b3922bc6bd60"
+            name="NumberDay"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="7affc6ef-5a0f-4e4b-95d5-c2077365e82e"
+            name="NumberYear"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -316,7 +520,98 @@
         name="Task"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="1cea3ed3-9a3e-4aea-8983-31f523d126c0"
+            name="Description"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4242d636-3487-4e82-b282-b2206fc9b2e7"
+            name="Name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="f25e8958-8c3b-4f17-aa74-32fb1a7f5695"
+            name="AddAstronaut"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5c527bb4-2213-4017-9b3f-d20a736fc290"
+                  name="astronaut"
+                  direction="In">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="b20f2d57-db5b-475e-9f37-1b6699ada55a"
+                      LastKnownName="Astronaut"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="25e3667f-15c7-456c-b725-82f3c3fd2959"
+            name="RemoveAstronaut"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f1615ead-fc88-4819-bcd0-ab5653caaa05"
+                  name="Astronaut"
+                  direction="In">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="b20f2d57-db5b-475e-9f37-1b6699ada55a"
+                      LastKnownName="Astronaut"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
@@ -392,6 +687,45 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="cc644616-8970-4218-a0e4-03ff5885ad9e"
+            name="Name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="00c3c59c-2a26-4549-ac5f-8063891bcbb6"
+            name="Available"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -411,6 +745,27 @@
               LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="d98b23cb-ce32-440a-b9eb-016fd5abd68b"
+            name="Name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -424,7 +779,7 @@
           <association
             Id="3a5ebd11-af39-409d-821f-de752d653995"
             isDerived="false"
-            sourceEndRoleName="Place"
+            sourceEndRoleName="TaskPlace"
             targetEndRoleName="Task"
             isLeaf="false"
             isAbstract="false">
@@ -436,7 +791,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="47095e4e-0104-4b37-842a-e70cd754de04"
-                  name="Place"
+                  name="TaskPlace"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -486,7 +841,80 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="367387d9-09ff-4a2e-afea-d24c09ba72cb"
+            isDerived="false"
+            sourceEndRoleName="Place"
+            targetEndRoleName="Outside Activity"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="93010de6-a949-4e19-8be5-5338e1444250"
+              LastKnownName="Outside Activity"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="961e4410-e12f-4536-bdb3-359eb7ce8bcd"
+                  name="Place"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c6b01870-7421-4a61-a5be-ad32affb06b2"
+                  name="Outside Activity"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c015e936-a57a-458e-9d8c-6d467cb9cb97"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="509f7ad2-63bd-4b7c-bc16-4c9d9d575618"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="cbb75cba-cd31-47d3-a39c-de1b5712e4b4"
+            name="Name"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -619,6 +1047,113 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="0ec6497d-45d5-4e98-a5c8-aea9e95be672"
+        name="Enum" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7251c27f-7180-454c-9373-31babae80bcd"
+        name="Mission"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="268a76f8-1927-4fcd-9403-f47e21e06d9c"
+            isDerived="false"
+            sourceEndRoleName="Mission"
+            targetEndRoleName="Astronauts"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="b20f2d57-db5b-475e-9f37-1b6699ada55a"
+              LastKnownName="Astronaut"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c23a684d-98a2-482c-8515-4f4d2d4a5e79"
+                  name="Mission"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="40767bc3-6da7-4579-acf4-fbd83fd6fba0"
+                  name="Astronauts"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="aa704627-44a1-4f50-8db7-f2159a7f02a7"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="b4321b22-0a15-4a61-8c0b-88ccb26bbdad"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8430a160-6cf4-43c1-a6d4-33416909d5d7"
+            isDerived="false"
+            sourceEndRoleName="Mission"
+            targetEndRoleName="Map"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c0c258df-1de4-471c-8d73-19033854151f"
+              LastKnownName="Map"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4206b9cb-3a4c-450f-b8b9-cf3baeea27e2"
+                  name="Mission"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ff88857a-4bfb-4cc4-a288-a4f37ce38ead"
+                  name="Map"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
