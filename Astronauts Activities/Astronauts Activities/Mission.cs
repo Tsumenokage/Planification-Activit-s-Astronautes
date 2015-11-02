@@ -10,11 +10,16 @@ using System.Xml;
 
 namespace Astronauts_Activities
 {
-    public partial class Form1 : Form
+    public partial class Mission : Form
     {
-        public Form1()
+        private List<Astronaut> Astronauts;
+        private String Map;
+        private List<Activity> Living;
+
+        public Mission()
         {
             InitializeComponent();
+            Astronauts = new List<Astronaut>();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,14 +49,34 @@ namespace Astronauts_Activities
                 {
                     file.Load(openFileDialog1.OpenFile());
                     XmlNode noeud = file.DocumentElement;
-                    XmlNodeList listes = noeud.SelectNodes("Activity");
-                    MessageBox.Show(listes[0].InnerText);
+                    XmlNodeList nomMission = noeud.SelectNodes("Name");
+                    this.Text = nomMission[0].InnerText;
+
+                    XmlNode AstronautXml = noeud.SelectSingleNode("Astronauts");
+                    XmlNodeList AstronautsXml = AstronautXml.SelectNodes("Astronaut");
+
+                    foreach (XmlNode nodeAstro in AstronautsXml)
+                    {
+                        Astronaut A = new Astronaut(nodeAstro.InnerText);
+                        Astronauts.Add(A);
+                    }
+
+                    XmlNode ActivitiesXml = noeud.SelectSingleNode("Activities");
+                    XmlNode LivingActiviies = ActivitiesXml.SelectSingleNode("Living");
+                    
+                    
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
+        }
+
+        private void infoSurLaMissionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Astronaut A in Astronauts)
+                MessageBox.Show(A.Name);
         }
     }
 }

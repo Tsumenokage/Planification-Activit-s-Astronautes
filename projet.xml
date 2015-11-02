@@ -1,0 +1,52 @@
+<Mission>
+	<Name>Mars 1</Name>
+	<Map></Map>
+	<Astronauts>
+		<Astronaut>Bruce Willis</Astronaut>
+		<Astronaut>Will Smith</Astronaut>
+		<Astronaut>Arnold Schwarzenegger</Astronaut>
+		<Astronaut>Amy Pond</Astronaut>
+	</Astronauts>
+	<Activities>
+		<Living>
+			<Activity>Living</Activity>
+			<Activity>Sleeping</Activity>
+			<Activity>Entertainment</Activity>
+			<Activity>Private</Activity>
+			<Activity>Health Control</Activity>
+			<Activity>Medical Act</Activity>
+		</Living>
+		<Science>
+			<Exploration>
+				<Activity>Space Suit</Activity>
+				<Activity>Vehicule</Activity>
+			</Exploration>
+			<Activity>Briefing</Activity>
+			<Activity>Debriefing</Activity>
+			<Activity>Inside Experiment</Activity>
+			<Activity>Ouside Experiment</Activity>
+		</Science>
+		<Maintenance>
+			<Activity>Cleaning</Activity>
+			<Activity>LSS Air System</Activity>
+			<Activity>LSS Water System</Activity>
+			<Activity>Power Systems</Activity>
+			<Activity>Space Suit</Activity>
+			<Activity>Other</Activity>			
+		</Maintenance>
+		<Communication>
+			<Activity>Sending Message</Activity>
+			<Activity>Receiving Message</Activity>
+		</Communication>
+		<Repair>
+			<Activity>LSS</Activity>
+			<Activity>Power Systems</Activity>
+			<Activity>Communications Systems</Activity>
+			<Activity>Propulsion Systems</Activity>
+			<Activity>Habitat</Activity>
+			<Activity>Space Suit</Activity>
+			<Activity>Vehicle</Activity>
+		</Repair>
+		<Activity>Emergency</Activity>
+	</Activities>
+</Mission>

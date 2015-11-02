@@ -7,8 +7,8 @@ namespace Astronauts_Activities
 {
     class Astronaut
     {
-        private string Name { get; set; }
-        private bool Available { get; set; } //Can be used to stop an astronaut from doing 2 tasks at once
+        public string Name { get; private set; }
+        public bool Available { get; set; } //Can be used to stop an astronaut from doing 2 tasks at once
 
         public Astronaut(string n)
         {
