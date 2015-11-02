@@ -15,6 +15,8 @@ namespace Astronauts_Activities
         private string Description;
         //Mettre une date de début et une date de fin selon nos définitions
 
+        public Task(string Tname, Activity Tactivity, List<Astronaut> Tastronauts, Place Tplace ) //ajouter dates
+
         //Fonctions de base de gestion des astronautes
         public void AddAstronaut(Astronaut astronaut)
         {
