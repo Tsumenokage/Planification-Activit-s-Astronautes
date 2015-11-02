@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    class Activity
+    class Planning
     {
-        private string Name;
-        private string Description;
+       private List<Day> Calendar;
     }
 }

@@ -7,5 +7,6 @@ namespace Astronauts_Activities
 {
     class OutsideActivity : Activity
     {
+        private Place place;
     }
 }

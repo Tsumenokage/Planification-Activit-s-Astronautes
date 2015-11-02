@@ -7,7 +7,7 @@ namespace Astronauts_Activities
 {
     class Category : Activity
     {
+        private string CategoryName;
         List<Activity> Activities;
-
     }
 }

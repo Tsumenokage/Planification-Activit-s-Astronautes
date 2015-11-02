@@ -5,9 +5,10 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    class Activity
+    class Place
     {
+        private int Xcoordinate;
+        private int Ycoordinate;
         private string Name;
-        private string Description;
     }
 }
