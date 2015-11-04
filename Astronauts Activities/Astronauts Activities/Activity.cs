@@ -9,5 +9,10 @@ namespace Astronauts_Activities
     {
         private string Name;
         private string Description;
+
+        public Activity(string Name)
+        {
+            this.Name = Name;
+        }
     }
 }

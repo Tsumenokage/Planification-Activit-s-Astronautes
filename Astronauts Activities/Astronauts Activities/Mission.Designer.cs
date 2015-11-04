@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.listCalendar = new System.Windows.Forms.ListView();
             this.buttonShowReport = new System.Windows.Forms.Button();
             this.buttonNextDay = new System.Windows.Forms.Button();
             this.buttonPreviousDay = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoSurLaMissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listCalendar = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,16 +73,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(1071, 620);
             this.splitContainer1.SplitterDistance = 369;
             this.splitContainer1.TabIndex = 1;
-            // 
-            // listCalendar
-            // 
-            this.listCalendar.Location = new System.Drawing.Point(3, 3);
-            this.listCalendar.Name = "listCalendar";
-            this.listCalendar.Size = new System.Drawing.Size(363, 614);
-            this.listCalendar.TabIndex = 0;
-            this.listCalendar.UseCompatibleStateImageBehavior = false;
-            this.listCalendar.View = System.Windows.Forms.View.List;
-            this.listCalendar.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // buttonShowReport
             // 
@@ -209,6 +199,13 @@
             this.infoSurLaMissionToolStripMenuItem.Text = "Info sur la mission";
             this.infoSurLaMissionToolStripMenuItem.Click += new System.EventHandler(this.infoSurLaMissionToolStripMenuItem_Click);
             // 
+            // listCalendar
+            // 
+            this.listCalendar.Location = new System.Drawing.Point(4, 4);
+            this.listCalendar.Name = "listCalendar";
+            this.listCalendar.Size = new System.Drawing.Size(362, 613);
+            this.listCalendar.TabIndex = 0;
+            // 
             // Mission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,7 +230,6 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListView listCalendar;
         private System.Windows.Forms.ListView listActivityOfDay;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -241,17 +237,15 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
-<<<<<<< HEAD:Astronauts Activities/Astronauts Activities/Mission.Designer.cs
         private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem infoSurLaMissionToolStripMenuItem;
-=======
         private System.Windows.Forms.Button buttonRemoveTask;
         private System.Windows.Forms.Button buttonAddTask;
         private System.Windows.Forms.Button buttonShowReport;
         private System.Windows.Forms.Button buttonNextDay;
         private System.Windows.Forms.Button buttonPreviousDay;
         private System.Windows.Forms.Button buttonEditTask;
->>>>>>> origin/master:Astronauts Activities/Astronauts Activities/Form1.Designer.cs
+        private System.Windows.Forms.TreeView listCalendar;
     }
 }
 

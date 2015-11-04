@@ -14,7 +14,8 @@ namespace Astronauts_Activities
     {
         private List<Astronaut> Astronauts;
         private String Map;
-        private List<Activity> Living;
+        private List<Category> Categories;
+        private Planning PlanningMission;
 
         public Mission()
         {
@@ -29,6 +30,24 @@ namespace Astronauts_Activities
 
         private void newPlanningToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+            
+            PlanningMission = new Planning();
+
+            NewPlanning newPlan = new NewPlanning();
+
+            newPlan.ShowDialog();
+
+            if (newPlan.DialogResult == DialogResult.OK)
+            {
+                foreach (Day day in PlanningMission.Calendar)
+                {
+                    listCalendar.Nodes.Add(day.ToString());
+                }
+            }
+
+
+
 
         }
 
@@ -73,13 +92,15 @@ namespace Astronauts_Activities
             }
         }
 
-<<<<<<< HEAD:Astronauts Activities/Astronauts Activities/Mission.cs
         private void infoSurLaMissionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Astronaut A in Astronauts)
                 MessageBox.Show(A.Name);
         }
-=======
->>>>>>> origin/master:Astronauts Activities/Astronauts Activities/Form1.cs
+
+        private void Mission_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

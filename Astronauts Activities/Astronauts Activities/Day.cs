@@ -8,8 +8,22 @@ namespace Astronauts_Activities
     class Day
     {
         private int NumberDay;
-        private int NumberDayOfMonth;
-        private enum Days { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday } ;
-        private int NumberYear; 
+        private List<Task> Tasks;
+        //private int NumberDayOfMonth;
+        //private enum Days { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday } ;
+        //private int NumberYear;
+        private const int MINUTES = 1480; //Nombre de minutes dans une journée martienne
+
+        public Day(int NumberDay)
+        {
+            Tasks = new List<Task>();
+            this.NumberDay = NumberDay;
+        }
+
+        public override string ToString()
+        {
+            string s = "Day : " + this.NumberDay;
+            return s;
+        }
     }
 }
