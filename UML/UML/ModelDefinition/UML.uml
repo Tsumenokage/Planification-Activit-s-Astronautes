@@ -248,6 +248,32 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="56ab4ef1-d92c-47dc-b22d-cb03dc6eb8f7"
+            name="AddActivity"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="33d9d62d-eec1-42df-b2f7-896510dd5546"
+                  name="activity"
+                  direction="In">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="c8684d11-937c-4112-bb09-ec7e57e60755"
+                      LastKnownName="Activity"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
