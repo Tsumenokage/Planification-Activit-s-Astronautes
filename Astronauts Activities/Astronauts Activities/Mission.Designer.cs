@@ -30,13 +30,17 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listCalendar = new System.Windows.Forms.TreeView();
+<<<<<<< HEAD
+=======
+            this.DayActivities = new System.Windows.Forms.ListView();
+            this.AstronautList = new System.Windows.Forms.ComboBox();
+>>>>>>> origin/master
             this.buttonShowReport = new System.Windows.Forms.Button();
             this.buttonNextDay = new System.Windows.Forms.Button();
             this.buttonPreviousDay = new System.Windows.Forms.Button();
             this.buttonEditTask = new System.Windows.Forms.Button();
             this.buttonRemoveTask = new System.Windows.Forms.Button();
             this.buttonAddTask = new System.Windows.Forms.Button();
-            this.listActivityOfDay = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newPlanningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,13 +67,14 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.DayActivities);
+            this.splitContainer1.Panel2.Controls.Add(this.AstronautList);
             this.splitContainer1.Panel2.Controls.Add(this.buttonShowReport);
             this.splitContainer1.Panel2.Controls.Add(this.buttonNextDay);
             this.splitContainer1.Panel2.Controls.Add(this.buttonPreviousDay);
             this.splitContainer1.Panel2.Controls.Add(this.buttonEditTask);
             this.splitContainer1.Panel2.Controls.Add(this.buttonRemoveTask);
             this.splitContainer1.Panel2.Controls.Add(this.buttonAddTask);
-            this.splitContainer1.Panel2.Controls.Add(this.listActivityOfDay);
             this.splitContainer1.Size = new System.Drawing.Size(1071, 620);
             this.splitContainer1.SplitterDistance = 369;
             this.splitContainer1.TabIndex = 1;
@@ -80,7 +85,30 @@
             this.listCalendar.Name = "listCalendar";
             this.listCalendar.Size = new System.Drawing.Size(362, 613);
             this.listCalendar.TabIndex = 0;
+<<<<<<< HEAD
             this.listCalendar.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.listCalendar_AfterSelect);
+=======
+            // 
+            // DayActivities
+            // 
+            this.DayActivities.LabelWrap = false;
+            this.DayActivities.Location = new System.Drawing.Point(171, 48);
+            this.DayActivities.MultiSelect = false;
+            this.DayActivities.Name = "DayActivities";
+            this.DayActivities.Size = new System.Drawing.Size(312, 540);
+            this.DayActivities.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.DayActivities.TabIndex = 8;
+            this.DayActivities.UseCompatibleStateImageBehavior = false;
+            this.DayActivities.View = System.Windows.Forms.View.Details;
+            // 
+            // AstronautList
+            // 
+            this.AstronautList.FormattingEnabled = true;
+            this.AstronautList.Location = new System.Drawing.Point(13, 48);
+            this.AstronautList.Name = "AstronautList";
+            this.AstronautList.Size = new System.Drawing.Size(152, 21);
+            this.AstronautList.TabIndex = 7;
+>>>>>>> origin/master
             // 
             // buttonShowReport
             // 
@@ -138,14 +166,6 @@
             this.buttonAddTask.Text = "Add New Task";
             this.buttonAddTask.UseVisualStyleBackColor = true;
             this.buttonAddTask.Click += new System.EventHandler(this.buttonAddTask_Click);
-            // 
-            // listActivityOfDay
-            // 
-            this.listActivityOfDay.Location = new System.Drawing.Point(4, 35);
-            this.listActivityOfDay.Name = "listActivityOfDay";
-            this.listActivityOfDay.Size = new System.Drawing.Size(691, 553);
-            this.listActivityOfDay.TabIndex = 0;
-            this.listActivityOfDay.UseCompatibleStateImageBehavior = false;
             // 
             // menuStrip1
             // 
@@ -234,7 +254,6 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListView listActivityOfDay;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newPlanningToolStripMenuItem;
@@ -250,6 +269,8 @@
         private System.Windows.Forms.Button buttonPreviousDay;
         private System.Windows.Forms.Button buttonEditTask;
         private System.Windows.Forms.TreeView listCalendar;
+        private System.Windows.Forms.ComboBox AstronautList;
+        private System.Windows.Forms.ListView DayActivities;
     }
 }
 

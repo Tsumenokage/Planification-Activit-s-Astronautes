@@ -8,7 +8,7 @@ namespace Astronauts_Activities
     class Day
     {
         private int NumberDay;
-        private List<Task> Tasks;
+        public List<Task> Tasks { get; private set; }
         //private int NumberDayOfMonth;
         //private enum Days { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday } ;
         //private int NumberYear;
@@ -24,6 +24,11 @@ namespace Astronauts_Activities
         {
             string s = "Day : " + this.NumberDay;
             return s;
+        }
+
+        public void AddTask(Task t)
+        {
+            Tasks.Add(t);
         }
     }
 }

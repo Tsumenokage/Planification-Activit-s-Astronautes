@@ -7,7 +7,7 @@ namespace Astronauts_Activities
 {
     class Activity
     {
-        private string Name;
+        public string Name {get; private set;}
         private string Description;
 
         public Activity(string Name)
