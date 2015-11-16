@@ -5,14 +5,12 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    class Category
+    class Category : Activity
     {
-        private string CategoryName;
-        List<Activity> Activities;
+        public List<Activity> Activities {get; private set;}
 
-        public Category(string CategoryName)
+        public Category(string CategoryName):base(CategoryName)
         {
-            this.CategoryName = CategoryName;
             Activities = new List<Activity>();
         }
 

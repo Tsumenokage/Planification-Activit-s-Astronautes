@@ -8,17 +8,31 @@ namespace Astronauts_Activities
     class Task
     {
         //Variables
-        private string Name;
+        public string Name { get; private set; }
         private Activity Activity;
-        private List<Astronaut> Astronauts;
+        public List<Astronaut> Astronauts { get; private set; }
         private Place TaskPlace;
         private string Description;
-        //Mettre une date de début et une date de fin selon nos définitions
+        private int StartHour;
+        private int DureeMinute;
 
-        public Task(string Tname, Activity Tactivity, List<Astronaut> Tastronauts, Place Tplace ) //ajouter dates
+        public Task(Activity Tactivity, List<Astronaut> Tastronauts, Place Tplace, int DureeMinute, int StartHour) //ajouter dates
         {
-
+            Name = Tactivity.Name;
+            Activity = Tactivity;
+            TaskPlace = Tplace;
+            this.DureeMinute = DureeMinute;
+            this.StartHour = StartHour;
         }
+
+        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute,int StartHour) //ajouter dates
+        {
+            Name = Tactivity.Name;
+            Activity = Tactivity;
+            this.DureeMinute = DureeMinute;
+            this.StartHour = StartHour; 
+        }
+
         //Fonctions de base de gestion des astronautes
         public void AddAstronaut(Astronaut astronaut)
         {

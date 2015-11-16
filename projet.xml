@@ -47,6 +47,6 @@
 			<Activity>Space Suit</Activity>
 			<Activity>Vehicle</Activity>
 		</Repair>
-		<Activity>Emergency</Activity>
+		<Emergency></Emergency>
 	</Activities>
 </Mission>
