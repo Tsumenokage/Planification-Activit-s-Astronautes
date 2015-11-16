@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+<<<<<<< HEAD
             this.listCalendar = new System.Windows.Forms.TreeView();
 <<<<<<< HEAD
 =======
             this.DayActivities = new System.Windows.Forms.ListView();
             this.AstronautList = new System.Windows.Forms.ComboBox();
 >>>>>>> origin/master
+=======
+>>>>>>> parent of 9185240... Flo_Commit
             this.buttonShowReport = new System.Windows.Forms.Button();
             this.buttonNextDay = new System.Windows.Forms.Button();
             this.buttonPreviousDay = new System.Windows.Forms.Button();
@@ -49,6 +52,7 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoSurLaMissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listCalendar = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -79,6 +83,7 @@
             this.splitContainer1.SplitterDistance = 369;
             this.splitContainer1.TabIndex = 1;
             // 
+<<<<<<< HEAD
             // listCalendar
             // 
             this.listCalendar.Location = new System.Drawing.Point(4, 4);
@@ -110,6 +115,8 @@
             this.AstronautList.TabIndex = 7;
 >>>>>>> origin/master
             // 
+=======
+>>>>>>> parent of 9185240... Flo_Commit
             // buttonShowReport
             // 
             this.buttonShowReport.Location = new System.Drawing.Point(284, 4);
@@ -145,7 +152,6 @@
             this.buttonEditTask.TabIndex = 3;
             this.buttonEditTask.Text = "Edit Selected Task";
             this.buttonEditTask.UseVisualStyleBackColor = true;
-            this.buttonEditTask.Click += new System.EventHandler(this.buttonEditTask_Click);
             // 
             // buttonRemoveTask
             // 
@@ -155,7 +161,6 @@
             this.buttonRemoveTask.TabIndex = 2;
             this.buttonRemoveTask.Text = "Remove Selected Task";
             this.buttonRemoveTask.UseVisualStyleBackColor = true;
-            this.buttonRemoveTask.Click += new System.EventHandler(this.buttonRemoveTask_Click);
             // 
             // buttonAddTask
             // 
@@ -165,7 +170,6 @@
             this.buttonAddTask.TabIndex = 1;
             this.buttonAddTask.Text = "Add New Task";
             this.buttonAddTask.UseVisualStyleBackColor = true;
-            this.buttonAddTask.Click += new System.EventHandler(this.buttonAddTask_Click);
             // 
             // menuStrip1
             // 
@@ -229,6 +233,13 @@
             this.infoSurLaMissionToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.infoSurLaMissionToolStripMenuItem.Text = "Info sur la mission";
             this.infoSurLaMissionToolStripMenuItem.Click += new System.EventHandler(this.infoSurLaMissionToolStripMenuItem_Click);
+            // 
+            // listCalendar
+            // 
+            this.listCalendar.Location = new System.Drawing.Point(4, 4);
+            this.listCalendar.Name = "listCalendar";
+            this.listCalendar.Size = new System.Drawing.Size(362, 613);
+            this.listCalendar.TabIndex = 0;
             // 
             // Mission
             // 
