@@ -102,5 +102,34 @@ namespace Astronauts_Activities
         {
 
         }
+
+        private void listCalendar_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        //Suppression de la tâche
+        private void buttonRemoveTask_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to delete this task ?","Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                //Ajouter nouvelle boite si l'activité est présente dans le planning de plusieurs astronautes
+            }
+        }
+
+        private void buttonAddTask_Click(object sender, EventArgs e)
+        {
+            TaskForm addingTask = new TaskForm(Astronauts, Categories,"adding");
+            addingTask.Show();
+        }
+
+        private void buttonEditTask_Click(object sender, EventArgs e)
+        {
+            TaskForm modifyingTask = new TaskForm(Astronauts, Categories,"editing");
+            modifyingTask.Show();
+        }
+
+
     }
 }
