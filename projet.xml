@@ -10,6 +10,7 @@
 	<Activities>
 		<Living>
 			<Activity>Living</Activity>
+			<Activity>Eating</Activity>
 			<Activity>Sleeping</Activity>
 			<Activity>Entertainment</Activity>
 			<Activity>Private</Activity>

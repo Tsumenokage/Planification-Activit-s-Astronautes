@@ -23,14 +23,16 @@ namespace Astronauts_Activities
             TaskPlace = Tplace;
             this.DureeMinute = DureeMinute;
             this.StartHour = StartHour;
+            Astronauts = Tastronauts;
         }
 
-        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute,int StartHour) //ajouter dates
+        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour) //ajouter dates
         {
             Name = Tactivity.Name;
             Activity = Tactivity;
             this.DureeMinute = DureeMinute;
-            this.StartHour = StartHour; 
+            this.StartHour = StartHour;
+            Astronauts = Tastronauts;
         }
 
         //Fonctions de base de gestion des astronautes
@@ -56,6 +58,19 @@ namespace Astronauts_Activities
             }
             catch
             { Console.WriteLine("{0} is not assigned to this task", astronaut.Name); }
+        }
+
+        public string[] getInfo()
+        {
+            string[] arr = new string[4];
+
+            arr[0] = "";
+            arr[1] = this.StartHour.ToString();
+            int EndTask = StartHour + DureeMinute;
+            arr[2] = EndTask.ToString();
+            arr[3] = this.Name;
+            return arr;
+
         }
     }
 }

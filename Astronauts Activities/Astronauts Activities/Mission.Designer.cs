@@ -29,15 +29,13 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-<<<<<<< HEAD
             this.listCalendar = new System.Windows.Forms.TreeView();
-<<<<<<< HEAD
-=======
             this.DayActivities = new System.Windows.Forms.ListView();
+            this.Type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BeginHour = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.EndHour = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Task = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AstronautList = new System.Windows.Forms.ComboBox();
->>>>>>> origin/master
-=======
->>>>>>> parent of 9185240... Flo_Commit
             this.buttonShowReport = new System.Windows.Forms.Button();
             this.buttonNextDay = new System.Windows.Forms.Button();
             this.buttonPreviousDay = new System.Windows.Forms.Button();
@@ -52,7 +50,6 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoSurLaMissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listCalendar = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -83,28 +80,52 @@
             this.splitContainer1.SplitterDistance = 369;
             this.splitContainer1.TabIndex = 1;
             // 
-<<<<<<< HEAD
             // listCalendar
             // 
+            this.listCalendar.HideSelection = false;
             this.listCalendar.Location = new System.Drawing.Point(4, 4);
             this.listCalendar.Name = "listCalendar";
             this.listCalendar.Size = new System.Drawing.Size(362, 613);
             this.listCalendar.TabIndex = 0;
-<<<<<<< HEAD
-            this.listCalendar.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.listCalendar_AfterSelect);
-=======
+            this.listCalendar.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ViewDayPlanning);
             // 
             // DayActivities
             // 
+            this.DayActivities.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Type,
+            this.BeginHour,
+            this.EndHour,
+            this.Task});
+            this.DayActivities.FullRowSelect = true;
+            this.DayActivities.HideSelection = false;
             this.DayActivities.LabelWrap = false;
-            this.DayActivities.Location = new System.Drawing.Point(171, 48);
+            this.DayActivities.Location = new System.Drawing.Point(187, 48);
             this.DayActivities.MultiSelect = false;
             this.DayActivities.Name = "DayActivities";
             this.DayActivities.Size = new System.Drawing.Size(312, 540);
-            this.DayActivities.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.DayActivities.TabIndex = 8;
             this.DayActivities.UseCompatibleStateImageBehavior = false;
             this.DayActivities.View = System.Windows.Forms.View.Details;
+            // 
+            // Type
+            // 
+            this.Type.Text = "Type";
+            this.Type.Width = 51;
+            // 
+            // BeginHour
+            // 
+            this.BeginHour.Text = "Begin";
+            this.BeginHour.Width = 51;
+            // 
+            // EndHour
+            // 
+            this.EndHour.Text = "End";
+            this.EndHour.Width = 72;
+            // 
+            // Task
+            // 
+            this.Task.Text = "Task";
+            this.Task.Width = 130;
             // 
             // AstronautList
             // 
@@ -113,10 +134,8 @@
             this.AstronautList.Name = "AstronautList";
             this.AstronautList.Size = new System.Drawing.Size(152, 21);
             this.AstronautList.TabIndex = 7;
->>>>>>> origin/master
+            this.AstronautList.SelectedIndexChanged += new System.EventHandler(this.ViewDayPlanning);
             // 
-=======
->>>>>>> parent of 9185240... Flo_Commit
             // buttonShowReport
             // 
             this.buttonShowReport.Location = new System.Drawing.Point(284, 4);
@@ -234,13 +253,6 @@
             this.infoSurLaMissionToolStripMenuItem.Text = "Info sur la mission";
             this.infoSurLaMissionToolStripMenuItem.Click += new System.EventHandler(this.infoSurLaMissionToolStripMenuItem_Click);
             // 
-            // listCalendar
-            // 
-            this.listCalendar.Location = new System.Drawing.Point(4, 4);
-            this.listCalendar.Name = "listCalendar";
-            this.listCalendar.Size = new System.Drawing.Size(362, 613);
-            this.listCalendar.TabIndex = 0;
-            // 
             // Mission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,6 +294,10 @@
         private System.Windows.Forms.TreeView listCalendar;
         private System.Windows.Forms.ComboBox AstronautList;
         private System.Windows.Forms.ListView DayActivities;
+        private System.Windows.Forms.ColumnHeader Type;
+        private System.Windows.Forms.ColumnHeader BeginHour;
+        private System.Windows.Forms.ColumnHeader EndHour;
+        private System.Windows.Forms.ColumnHeader Task;
     }
 }
 

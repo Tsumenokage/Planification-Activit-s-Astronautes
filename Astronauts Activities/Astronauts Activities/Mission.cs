@@ -31,7 +31,7 @@ namespace Astronauts_Activities
 
         private void newPlanningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             
             PlanningMission = new Planning();
 
@@ -80,9 +80,9 @@ namespace Astronauts_Activities
                 }
             }
 
-            listCalendar.SelectedNode =  listCalendar.Nodes[0];
-            ViewDayPlanning();
-            
+            listCalendar.SelectedNode = listCalendar.Nodes[0];
+            //ViewDayPlanning();
+
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -227,9 +227,7 @@ namespace Astronauts_Activities
         {
 
         }
-<<<<<<< HEAD
 
-<<<<<<< HEAD
         private void listCalendar_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
@@ -258,9 +256,10 @@ namespace Astronauts_Activities
         }
 
 
-=======
-        private void ViewDayPlanning()
+        private void ViewDayPlanning(object sender, TreeViewEventArgs e)
         {
+            MessageBox.Show("Jour modifié");
+            DayActivities.Items.Clear();
             int numDay = listCalendar.SelectedNode.Index;
             Day day = PlanningMission.Calendar[numDay];
             Astronaut astronautSelected = Astronauts.Find(x => x.Name == AstronautList.SelectedItem.ToString());
@@ -269,7 +268,7 @@ namespace Astronauts_Activities
 
             foreach (Task t in day.Tasks)
             {
-                if(t.Astronauts.Contains(astronautSelected))
+                if (t.Astronauts.Contains(astronautSelected))
                 {
                     AstronautDailyPlanning.Add(t);
                 }
@@ -277,12 +276,41 @@ namespace Astronauts_Activities
 
             foreach (Task t in AstronautDailyPlanning)
             {
-                DayActivities.Items.Add(t.Name);  
-            }            
+                //MessageBox.Show(t.Name);
+                ListViewItem itm = new ListViewItem(t.getInfo());
+                DayActivities.Items.Add(itm);
+
+            }
         }
-    
->>>>>>> origin/master
-=======
->>>>>>> parent of 9185240... Flo_Commit
+
+        private void ViewDayPlanning(object sender, EventArgs e)
+        {
+            if (listCalendar.SelectedNode != null)//Sécurité, on ne met pas à jour si aucun jour n'est sélectionné
+            {
+                MessageBox.Show("Astronaute modifié");
+                DayActivities.Items.Clear();
+                int numDay = listCalendar.SelectedNode.Index;
+                Day day = PlanningMission.Calendar[numDay];
+                Astronaut astronautSelected = Astronauts.Find(x => x.Name == AstronautList.SelectedItem.ToString());
+
+                List<Task> AstronautDailyPlanning = new List<Task>();
+
+                foreach (Task t in day.Tasks)
+                {
+                    if (t.Astronauts.Contains(astronautSelected))
+                    {
+                        AstronautDailyPlanning.Add(t);
+                    }
+                }
+
+                foreach (Task t in AstronautDailyPlanning)
+                {
+                    //MessageBox.Show(t.Name);
+                    ListViewItem itm = new ListViewItem(t.getInfo());
+                    DayActivities.Items.Add(itm);
+
+                }
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    class Astronaut
+    public class Astronaut
     {
         public string Name { get; private set; }
         public bool Available { get; set; } //Can be used to stop an astronaut from doing 2 tasks at once

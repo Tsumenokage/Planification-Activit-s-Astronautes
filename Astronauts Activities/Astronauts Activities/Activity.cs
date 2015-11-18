@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    class Activity
+    public class Activity
     {
         public string Name {get; private set;}
         private string Description;
