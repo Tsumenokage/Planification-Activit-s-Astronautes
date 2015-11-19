@@ -16,17 +16,59 @@ namespace Astronauts_Activities
         private String Map;
         private List<Category> Categories;
         private Planning PlanningMission;
+        private DateTime StartMission;
+        Timer bg = new Timer();
 
         public Mission()
         {
             InitializeComponent();
             Astronauts = new List<Astronaut>();
             Categories = new List<Category>();
+
+            bg.Tick += (s, e) => { EarthHour.Text = DateTime.Now.ToString(); };
+            bg.Tick += (s, e) => { MajTime(); };
+            bg.Interval = 500;
+            bg.Start();
+            
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void MajTime()
+        {
+            if(StartMission != null)
+            {
+                double TicksPass;
+                TimeSpan ts = DateTime.Now - StartMission;
+                TicksPass = Math.Floor(ts.TotalSeconds);
+                MissionTime.Text = MartianTime(TicksPass).ToString();
+            }
+        }
+
+        private string  MartianTime(double SecondsBegin)
+        {
+            string Date;
+            double Day = 0;
+            double Hour = 0;
+            double Minute = 0;
+            double Second = 0;
+            //Nombre de seconde dans une seule journée : 88 800
+
+            Day = Math.Truncate(SecondsBegin / 88800);
+            SecondsBegin = SecondsBegin % 88800;
+
+            Hour = Math.Truncate(SecondsBegin / 3600);
+            Minute = Math.Truncate((SecondsBegin % 3600) / 60);
+            Second = Math.Truncate((SecondsBegin % 3600) % 60);
+
+            Date = "Day : " + Day + "  " + Hour + ":" + Minute + ":" + Second;
+            return Date;
+
+
+            
         }
 
         private void newPlanningToolStripMenuItem_Click(object sender, EventArgs e)
@@ -178,6 +220,12 @@ namespace Astronauts_Activities
                         Astronauts.Add(A);
                     }
 
+                    XmlNode DateMissionXml = noeud.SelectSingleNode("BeginMission");
+                    string Day = DateMissionXml.SelectSingleNode("Day").InnerText;
+                    string Month = DateMissionXml.SelectSingleNode("Month").InnerText;
+                    string Year = DateMissionXml.SelectSingleNode("Year").InnerText;
+
+                    this.StartMission = new DateTime(int.Parse(Year),int.Parse(Month), int.Parse(Day), 0, 0, 0);
 
                     XmlNode ActivityXml = noeud.SelectSingleNode("Activities");
                     XmlNodeList ActivitiesXml = ActivityXml.ChildNodes;

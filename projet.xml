@@ -1,6 +1,17 @@
 <Mission>
 	<Name>Mars 1</Name>
 	<Map></Map>
+	<BeginMission>
+		<Day>
+			9
+		</Day>
+		<Month>
+			11
+		</Month>
+		<Year>
+			2014
+		</Year>
+	</BeginMission>
 	<Astronauts>
 		<Astronaut>Bruce Willis</Astronaut>
 		<Astronaut>Will Smith</Astronaut>

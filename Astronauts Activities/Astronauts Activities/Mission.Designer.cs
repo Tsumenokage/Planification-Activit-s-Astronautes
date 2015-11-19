@@ -50,6 +50,10 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoSurLaMissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.EarthHour = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.MissionTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -68,6 +72,10 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.MissionTime);
+            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.EarthHour);
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.DayActivities);
             this.splitContainer1.Panel2.Controls.Add(this.AstronautList);
             this.splitContainer1.Panel2.Controls.Add(this.buttonShowReport);
@@ -253,6 +261,42 @@
             this.infoSurLaMissionToolStripMenuItem.Text = "Info sur la mission";
             this.infoSurLaMissionToolStripMenuItem.Click += new System.EventHandler(this.infoSurLaMissionToolStripMenuItem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(59, 115);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Earth Hour";
+            // 
+            // EarthHour
+            // 
+            this.EarthHour.AutoSize = true;
+            this.EarthHour.Location = new System.Drawing.Point(30, 152);
+            this.EarthHour.Name = "EarthHour";
+            this.EarthHour.Size = new System.Drawing.Size(36, 13);
+            this.EarthHour.TabIndex = 10;
+            this.EarthHour.Text = "Heure";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(59, 199);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Mission Time";
+            // 
+            // MissionTime
+            // 
+            this.MissionTime.AutoSize = true;
+            this.MissionTime.Location = new System.Drawing.Point(30, 248);
+            this.MissionTime.Name = "MissionTime";
+            this.MissionTime.Size = new System.Drawing.Size(36, 13);
+            this.MissionTime.TabIndex = 12;
+            this.MissionTime.Text = "Heure";
+            // 
             // Mission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,6 +309,7 @@
             this.Text = "Form1";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
@@ -298,6 +343,10 @@
         private System.Windows.Forms.ColumnHeader BeginHour;
         private System.Windows.Forms.ColumnHeader EndHour;
         private System.Windows.Forms.ColumnHeader Task;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label EarthHour;
+        private System.Windows.Forms.Label MissionTime;
+        private System.Windows.Forms.Label label2;
     }
 }
 

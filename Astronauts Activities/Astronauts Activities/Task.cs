@@ -65,12 +65,33 @@ namespace Astronauts_Activities
             string[] arr = new string[4];
 
             arr[0] = "";
-            arr[1] = this.StartHour.ToString();
+            //arr[1] = this.StartHour.ToString();
+            arr[1] = FormatHour(this.StartHour);
             int EndTask = StartHour + DureeMinute;
-            arr[2] = EndTask.ToString();
+            //arr[2] = EndTask.ToString();
+            arr[2] = FormatHour(EndTask);
             arr[3] = this.Name;
             return arr;
 
         }
+
+        private string FormatHour(int Time)
+        {
+            string HourFormat;
+            int Minutes = Time % 60;
+            Time = Time - Minutes;
+            int Hours = Time / 60;
+
+            
+            HourFormat = Hours.ToString() + "H" + Minutes.ToString();
+            if (Minutes == 0)
+                HourFormat += "0";
+            return HourFormat;
+
+        }
     }
+
+    /*Note pour la calcul des correspondance entre Heure Terrestre et Martienne  : 
+        1) Calculer le nombre de secondes depuis le lancement sur Terre à l'heure 00
+        2) Calculer le nombre de Jour, Heures, Minutes, secondes écoulés depuis ce moment*/
 }
