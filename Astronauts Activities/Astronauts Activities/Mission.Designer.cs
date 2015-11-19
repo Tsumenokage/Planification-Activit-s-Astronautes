@@ -30,6 +30,10 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listCalendar = new System.Windows.Forms.TreeView();
+            this.MissionTime = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.EarthHour = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.DayActivities = new System.Windows.Forms.ListView();
             this.Type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BeginHour = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -50,10 +54,6 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoSurLaMissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.EarthHour = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.MissionTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -96,6 +96,42 @@
             this.listCalendar.Size = new System.Drawing.Size(362, 613);
             this.listCalendar.TabIndex = 0;
             this.listCalendar.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ViewDayPlanning);
+            // 
+            // MissionTime
+            // 
+            this.MissionTime.AutoSize = true;
+            this.MissionTime.Location = new System.Drawing.Point(30, 248);
+            this.MissionTime.Name = "MissionTime";
+            this.MissionTime.Size = new System.Drawing.Size(36, 13);
+            this.MissionTime.TabIndex = 12;
+            this.MissionTime.Text = "Heure";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(59, 199);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Mission Time";
+            // 
+            // EarthHour
+            // 
+            this.EarthHour.AutoSize = true;
+            this.EarthHour.Location = new System.Drawing.Point(30, 152);
+            this.EarthHour.Name = "EarthHour";
+            this.EarthHour.Size = new System.Drawing.Size(36, 13);
+            this.EarthHour.TabIndex = 10;
+            this.EarthHour.Text = "Heure";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(59, 115);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Earth Hour";
             // 
             // DayActivities
             // 
@@ -197,6 +233,7 @@
             this.buttonAddTask.TabIndex = 1;
             this.buttonAddTask.Text = "Add New Task";
             this.buttonAddTask.UseVisualStyleBackColor = true;
+            this.buttonAddTask.Click += new System.EventHandler(this.buttonAddTask_Click_1);
             // 
             // menuStrip1
             // 
@@ -260,42 +297,6 @@
             this.infoSurLaMissionToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.infoSurLaMissionToolStripMenuItem.Text = "Info sur la mission";
             this.infoSurLaMissionToolStripMenuItem.Click += new System.EventHandler(this.infoSurLaMissionToolStripMenuItem_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 115);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Earth Hour";
-            // 
-            // EarthHour
-            // 
-            this.EarthHour.AutoSize = true;
-            this.EarthHour.Location = new System.Drawing.Point(30, 152);
-            this.EarthHour.Name = "EarthHour";
-            this.EarthHour.Size = new System.Drawing.Size(36, 13);
-            this.EarthHour.TabIndex = 10;
-            this.EarthHour.Text = "Heure";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(59, 199);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Mission Time";
-            // 
-            // MissionTime
-            // 
-            this.MissionTime.AutoSize = true;
-            this.MissionTime.Location = new System.Drawing.Point(30, 248);
-            this.MissionTime.Name = "MissionTime";
-            this.MissionTime.Size = new System.Drawing.Size(36, 13);
-            this.MissionTime.TabIndex = 12;
-            this.MissionTime.Text = "Heure";
             // 
             // Mission
             // 

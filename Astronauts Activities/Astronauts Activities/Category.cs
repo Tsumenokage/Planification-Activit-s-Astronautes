@@ -7,7 +7,7 @@ namespace Astronauts_Activities
 {
     public class Category : Activity
     {
-        public List<Activity> Activities {get; private set;}
+        
 
         public Category(string CategoryName):base(CategoryName)
         {

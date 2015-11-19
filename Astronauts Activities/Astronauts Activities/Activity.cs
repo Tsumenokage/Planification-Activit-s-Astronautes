@@ -7,6 +7,7 @@ namespace Astronauts_Activities
 {
     public class Activity
     {
+        public List<Activity> Activities { get; protected set; }
         public string Name {get; private set;}
         private string Description;
 

@@ -15,25 +15,41 @@ namespace Astronauts_Activities
         private List<Astronaut> Astronauts;
         private List<Category> Categories;
         public string TypeForm;
+        public int MinuteStartSend;
+        public int MinuteDurationSend;
+        public List<Astronaut> SelectedAstronaut;
+        public string ActivitySend;
 
         //Constructeur
         public TaskForm(List<Astronaut> astro, List<Category> categ, string form)
         {
             InitializeComponent();
-
-            //Initialisation des textbox
-            textBoxStartHour.ForeColor = SystemColors.GrayText;
-            textBoxDuration.ForeColor = SystemColors.GrayText;
-            textBoxStartHour.Text = "Enter the hour like this : HH/MM/SS"; //A remplacer par le format de l'heure dont on aura besoin
-            textBoxDuration.Text = "In minutes";
-            this.textBoxStartHour.Leave += new System.EventHandler(this.textBoxStartHour_Leave);
-            this.textBoxStartHour.Enter += new System.EventHandler(this.textBoxStartHour_Enter);
-            this.textBoxDuration.Leave += new System.EventHandler(this.textBoxDuration_Leave);
-            this.textBoxDuration.Enter += new System.EventHandler(this.textBoxDuration_Enter);
+            Astronauts = astro;
+            Categories = categ;
             
             //Initialisation astronautes
             foreach (Astronaut A in Astronauts)
-            { MessageBox.Show(A.Name); }
+            {
+                AstronautView.Items.Add(A.Name);
+            }
+
+            foreach (Category c in Categories)
+            {
+                TreeNode n = ActivityView.Nodes.Add(c.Name);
+
+                foreach (Activity Act in c.Activities)
+                {
+                    TreeNode NiveauSup = n.Nodes.Add(Act.Name);
+                    if(Act.Activities != null)
+                    {
+                        foreach (Activity Act2 in Act.Activities)
+                        {
+                            NiveauSup.Nodes.Add(Act2.Name);
+                        }
+                    }
+                }
+            
+            }
 
             //Initialisation bouton fin
             TypeForm = form;
@@ -45,57 +61,24 @@ namespace Astronauts_Activities
             {
                     buttonAddActivity.Text = "Edit Task";
             }
-            else
-            {
-                }
 
          }
-            
-         private void textBoxStartHour_Leave(object sender, EventArgs e)
-            {
-                if (textBoxStartHour.Text.Length == 0)
-                {
-                    textBoxStartHour.Text = "Enter the hour like this : HH/MM/SS"; //A remplacer par le format de l'heure dont on aura besoin
-                    textBoxStartHour.ForeColor = SystemColors.GrayText;
-                }
-            }
-
-          private void textBoxStartHour_Enter(object sender, EventArgs e)
-            {
-                if (textBoxStartHour.Text == "Enter the hour like this : HH/MM/SS")
-                {
-                    textBoxStartHour.Text = "";
-                    textBoxStartHour.ForeColor = SystemColors.WindowText;
-                }
-            }
-
-          private void textBoxDuration_Leave(object sender, EventArgs e)
-            {
-                if (textBoxDuration.Text.Length == 0)
-                {
-                    textBoxDuration.Text = "In minutes";
-                    textBoxDuration.ForeColor = SystemColors.GrayText;
-                }
-            }
-
-          private void textBoxDuration_Enter(object sender, EventArgs e)
-            {
-                if (textBoxDuration.Text == "In minutes")
-                {
-                    textBoxDuration.Text = "";
-                    textBoxDuration.ForeColor = SystemColors.WindowText;
-                }
-            }
 
           private void buttonAddActivity_Click(object sender, EventArgs e)
           {
               if (TypeForm == "adding") //Le if est ici pour l'instant si le traitement diffère entre chaque possibilité
               {
                   DialogResult result = MessageBox.Show("Do you want to add this task ?", "Confirmation", MessageBoxButtons.YesNo);
-                  if (result == DialogResult.Yes)
+                  if (result == DialogResult.Yes && ActivityView.SelectedNode.Nodes.Count == 0)
                   {
-                      this.Close(); //Ajouter la tâche sur l'emploi
-                  }
+                    MinuteStartSend = (int)StartHour.Value * 60 + (int)MinutesStart.Value;
+                    MinuteDurationSend = (int)DurationHour.Value * 60 + (int)DurationMinute.Value;
+                    ActivitySend = ActivityView.SelectedNode.ToString();
+                    SelectedAstronaut = new List<Astronaut>();
+                    foreach (String A in AstronautView.SelectedItems)
+                    {
+                        MessageBox.Show(A.ToString());                    }
+                    }
               }
               else if (TypeForm == "editing")
               {
@@ -115,5 +98,17 @@ namespace Astronauts_Activities
                   this.Close();
               }
           }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            if (StartHour.Value == 24)
+            {
+                MinutesStart.Maximum = 40;
+                if (MinutesStart.Value > 40)
+                    MinutesStart.Value = 40;
+            }
+            else
+                MinutesStart.Maximum = 59;
         }
     }
+}

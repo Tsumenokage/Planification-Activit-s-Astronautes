@@ -252,6 +252,7 @@ namespace Astronauts_Activities
                                 foreach (XmlNode SubActivity in SecondaryActivity)
                                 {
                                     Activity a2 = new Activity(SubActivity.InnerText);
+                                    MessageBox.Show(SubActivity.InnerText);
                                     c2.addActivity(a2);
                                 }
                             }
@@ -358,6 +359,16 @@ namespace Astronauts_Activities
                     DayActivities.Items.Add(itm);
 
                 }
+            }
+        }
+
+        private void buttonAddTask_Click_1(object sender, EventArgs e)
+        {
+            TaskForm AddTask = new TaskForm(Astronauts, Categories,"adding");
+
+            if(AddTask.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("TODO : Ajouter l'ajout de la tâche");
             }
         }
     }
