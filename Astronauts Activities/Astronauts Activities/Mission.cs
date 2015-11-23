@@ -48,14 +48,14 @@ namespace Astronauts_Activities
             }
         }
 
-        private string  MartianTime(double SecondsBegin)
+        private string MartianTime(double SecondsBegin)
         {
             string Date;
             double Day = 0;
             double Hour = 0;
             double Minute = 0;
             double Second = 0;
-            //Nombre de seconde dans une seule journée : 88 800
+            //Nombre de secondes dans une seule journée : 88 800
 
             Day = Math.Truncate(SecondsBegin / 88800);
             SecondsBegin = SecondsBegin % 88800;
@@ -125,6 +125,7 @@ namespace Astronauts_Activities
 
                     List<Astronaut> astroSleep2 = Astronauts.ToList();
                     Task sleep2 = new Task(sleep, astroSleep2, 100, 1380);
+
 
                     day.AddTask(sleep1);
                     day.AddTask(eat1);
@@ -447,6 +448,16 @@ namespace Astronauts_Activities
                 this.majDayPlanning();
 
             }
+        }
+
+        private void buttonShowReport_Click(object sender, EventArgs e)
+        {
+            if (listCalendar.SelectedNode != null)
+            {
+                DayReport dayReporting = new DayReport(PlanningMission.Calendar[listCalendar.SelectedNode.Index]);
+                dayReporting.Show();
+            }
+            //Retour des données TODO
         }
     }
 }

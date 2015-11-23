@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    class Place
+    public class Place
     {
         private int Xcoordinate;
         private int Ycoordinate;
