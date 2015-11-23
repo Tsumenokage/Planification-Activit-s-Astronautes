@@ -188,6 +188,7 @@
             this.buttonShowReport.TabIndex = 6;
             this.buttonShowReport.Text = "Show Report";
             this.buttonShowReport.UseVisualStyleBackColor = true;
+            this.buttonShowReport.Click += new System.EventHandler(this.buttonShowReport_Click);
             // 
             // buttonNextDay
             // 

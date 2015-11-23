@@ -5,9 +5,11 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    class Day
+    public class Day
     {
-        private int NumberDay;
+        public int NumberDay { get; private set; }
+        public bool done;
+        public string Report { get; set; }
         public List<Task> Tasks { get; private set; }
         //private int NumberDayOfMonth;
         //private enum Days { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday } ;

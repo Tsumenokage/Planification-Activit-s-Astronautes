@@ -48,14 +48,14 @@ namespace Astronauts_Activities
             }
         }
 
-        private string  MartianTime(double SecondsBegin)
+        private string MartianTime(double SecondsBegin)
         {
             string Date;
             double Day = 0;
             double Hour = 0;
             double Minute = 0;
             double Second = 0;
-            //Nombre de seconde dans une seule journée : 88 800
+            //Nombre de secondes dans une seule journée : 88 800
 
             Day = Math.Truncate(SecondsBegin / 88800);
             SecondsBegin = SecondsBegin % 88800;
@@ -100,7 +100,6 @@ namespace Astronauts_Activities
                     Activity sleep = Activities.Find(x => x.Name == "Sleeping");
                     Activity eat = Activities.Find(x => x.Name == "Eating");
                     Activity privateActivity = Activities.Find(x => x.Name == "Private");
-
 
                     Task sleep1 = new Task(sleep,Astronauts,420,0);
                     Task eat1 = new Task(eat, Astronauts, 60, 420);
@@ -370,6 +369,16 @@ namespace Astronauts_Activities
             {
                 MessageBox.Show("TODO : Ajouter l'ajout de la tâche");
             }
+        }
+
+        private void buttonShowReport_Click(object sender, EventArgs e)
+        {
+            if (listCalendar.SelectedNode != null)
+            {
+                DayReport dayReporting = new DayReport(PlanningMission.Calendar[listCalendar.SelectedNode.Index]);
+                dayReporting.Show();
+            }
+            //Retour des données TODO
         }
     }
 }

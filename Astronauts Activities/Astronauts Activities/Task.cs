@@ -5,23 +5,23 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    class Task
+    public class Task
     {
         //Variables
         public string Name { get; private set; }
         private Activity Activity;
         public List<Astronaut> Astronauts { get; private set; }
-        private Place TaskPlace;
+        public Place TaskPlace {get; private set;}
         private string Description;
-        private int StartHour;
-        private int DureeMinute;
+        public int StartHour {get; private set;}
+        public int DurationMinute {get; private set;}
 
         public Task(Activity Tactivity, List<Astronaut> Tastronauts, Place Tplace, int DureeMinute, int StartHour) //ajouter dates
         {
             Name = Tactivity.Name;
             Activity = Tactivity;
             TaskPlace = Tplace;
-            this.DureeMinute = DureeMinute;
+            this.DurationMinute = DureeMinute;
             this.StartHour = StartHour;
             Astronauts = Tastronauts;
         }
@@ -30,7 +30,7 @@ namespace Astronauts_Activities
         {
             Name = Tactivity.Name;
             Activity = Tactivity;
-            this.DureeMinute = DureeMinute;
+            this.DurationMinute = DureeMinute;
             this.StartHour = StartHour;
             Astronauts = Tastronauts;
         }
@@ -67,7 +67,7 @@ namespace Astronauts_Activities
             arr[0] = "";
             //arr[1] = this.StartHour.ToString();
             arr[1] = FormatHour(this.StartHour);
-            int EndTask = StartHour + DureeMinute;
+            int EndTask = StartHour + DurationMinute;
             //arr[2] = EndTask.ToString();
             arr[2] = FormatHour(EndTask);
             arr[3] = this.Name;
