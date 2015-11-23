@@ -13,7 +13,7 @@ namespace Astronauts_Activities
         public List<Astronaut> Astronauts { get; private set; }
         private Place TaskPlace;
         private string Description;
-        private int StartHour;
+        public int StartHour { get; private set; }
         private int DureeMinute;
 
         public Task(Activity Tactivity, List<Astronaut> Tastronauts, Place Tplace, int DureeMinute, int StartHour) //ajouter dates
@@ -33,6 +33,27 @@ namespace Astronauts_Activities
             this.DureeMinute = DureeMinute;
             this.StartHour = StartHour;
             Astronauts = Tastronauts;
+        }
+
+        public Task(Activity Tactivity, List<Astronaut> Tastronauts, Place Tplace, int DureeMinute, int StartHour, string Description) //ajouter dates
+        {
+            Name = Tactivity.Name;
+            Activity = Tactivity;
+            TaskPlace = Tplace;
+            this.DureeMinute = DureeMinute;
+            this.StartHour = StartHour;
+            Astronauts = Tastronauts;
+            this.Description = Description;
+        }
+
+        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, string Description) //ajouter dates
+        {
+            Name = Tactivity.Name;
+            Activity = Tactivity;
+            this.DureeMinute = DureeMinute;
+            this.StartHour = StartHour;
+            Astronauts = Tastronauts;
+            this.Description = Description;
         }
 
         //Fonctions de base de gestion des astronautes

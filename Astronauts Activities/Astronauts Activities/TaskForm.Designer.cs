@@ -54,7 +54,7 @@
             // labelAstronauts
             // 
             this.labelAstronauts.AutoSize = true;
-            this.labelAstronauts.Location = new System.Drawing.Point(501, 19);
+            this.labelAstronauts.Location = new System.Drawing.Point(464, 20);
             this.labelAstronauts.Name = "labelAstronauts";
             this.labelAstronauts.Size = new System.Drawing.Size(57, 13);
             this.labelAstronauts.TabIndex = 1;
@@ -106,7 +106,6 @@
             // 
             // buttonAddActivity
             // 
-            this.buttonAddActivity.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonAddActivity.Location = new System.Drawing.Point(280, 295);
             this.buttonAddActivity.Name = "buttonAddActivity";
             this.buttonAddActivity.Size = new System.Drawing.Size(75, 23);
@@ -215,9 +214,9 @@
             this.AstronautView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.AstroName});
             this.AstronautView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.AstronautView.Location = new System.Drawing.Point(470, 39);
+            this.AstronautView.Location = new System.Drawing.Point(388, 39);
             this.AstronautView.Name = "AstronautView";
-            this.AstronautView.Size = new System.Drawing.Size(121, 97);
+            this.AstronautView.Size = new System.Drawing.Size(203, 97);
             this.AstronautView.TabIndex = 20;
             this.AstronautView.UseCompatibleStateImageBehavior = false;
             this.AstronautView.View = System.Windows.Forms.View.Details;

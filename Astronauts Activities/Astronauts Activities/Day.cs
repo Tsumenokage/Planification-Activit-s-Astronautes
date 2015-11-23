@@ -29,6 +29,13 @@ namespace Astronauts_Activities
         public void AddTask(Task t)
         {
             Tasks.Add(t);
+            OrderTask();
         }
+
+        private void OrderTask()
+        {
+            this.Tasks = this.Tasks.OrderBy(x => x.StartHour).ToList();
+        }
+
     }
 }

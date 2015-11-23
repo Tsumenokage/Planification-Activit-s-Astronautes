@@ -102,14 +102,29 @@ namespace Astronauts_Activities
                     Activity privateActivity = Activities.Find(x => x.Name == "Private");
 
 
-                    Task sleep1 = new Task(sleep,Astronauts,420,0);
-                    Task eat1 = new Task(eat, Astronauts, 60, 420);
-                    Task private1 = new Task(privateActivity, Astronauts, 240, 480);
-                    Task eat2 = new Task(eat, Astronauts, 120 , 720 );
-                    Task private2 = new Task(privateActivity, Astronauts, 300, 840);
-                    Task eat3 = new Task(eat, Astronauts, 120, 1140);
-                    Task private3 = new Task(privateActivity, Astronauts, 120, 1260);
-                    Task sleep2 = new Task(sleep, Astronauts, 100, 1380);
+                    List<Astronaut> astroSleep1 = Astronauts.ToList();
+                    Task sleep1 = new Task(sleep, astroSleep1, 420, 0);
+
+                    List<Astronaut> astroEat = Astronauts.ToList();
+                    Task eat1 = new Task(eat, astroEat, 60, 420);
+
+                    List<Astronaut> astroPV1 = Astronauts.ToList();
+                    Task private1 = new Task(privateActivity, astroPV1, 240, 480);
+
+                    List<Astronaut> astroEat2 = Astronauts.ToList();
+                    Task eat2 = new Task(eat, astroEat2, 120, 720);
+
+                    List<Astronaut> astroPV2 = Astronauts.ToList();
+                    Task private2 = new Task(privateActivity, astroPV2, 300, 840);
+
+                    List<Astronaut> astroEat3 = Astronauts.ToList();
+                    Task eat3 = new Task(eat, astroEat3, 120, 1140);
+
+                    List<Astronaut> astroPV3 = Astronauts.ToList();
+                    Task private3 = new Task(privateActivity, astroPV3, 120, 1260);
+
+                    List<Astronaut> astroSleep2 = Astronauts.ToList();
+                    Task sleep2 = new Task(sleep, astroSleep2, 100, 1380);
 
                     day.AddTask(sleep1);
                     day.AddTask(eat1);
@@ -288,8 +303,32 @@ namespace Astronauts_Activities
             DialogResult result = MessageBox.Show("Do you want to delete this task ?","Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                //Ajouter nouvelle boite si l'activité est présente dans le planning de plusieurs astronautes
+                //Comme on ne peut sélectionner qu'un seul index, sait qu'il s'agit du premier
+                int indexTask = DayActivities.SelectedItems[0].Index;
+                MessageBox.Show(indexTask.ToString());
+                Day day = PlanningMission.Calendar[listCalendar.SelectedNode.Index];
+                Task t = day.Tasks[indexTask];
+                SelectAstroDelete delete = new SelectAstroDelete(t.Astronauts);
+
+                if (delete.ShowDialog() == DialogResult.OK)
+                {
+                    this.Delete(t, delete.SelectedAstronaut);
+                }
+
+                if (t.Astronauts.Count == 0)
+                {
+                    day.Tasks.Remove(t);
+                }
+                this.majDayPlanning();
             }
+        }
+
+        private void Delete (Task t, List<Astronaut> Astronauts)
+        {
+            foreach (Astronaut A in Astronauts)
+	        {
+                t.Astronauts.Remove(A);
+	        }
         }
 
         private void buttonAddTask_Click(object sender, EventArgs e)
@@ -362,13 +401,51 @@ namespace Astronauts_Activities
             }
         }
 
+        private void majDayPlanning()
+        {
+            MessageBox.Show("Jour modifié");
+            DayActivities.Items.Clear();
+            int numDay = listCalendar.SelectedNode.Index;
+            Day day = PlanningMission.Calendar[numDay];
+            Astronaut astronautSelected = Astronauts.Find(x => x.Name == AstronautList.SelectedItem.ToString());
+
+            List<Task> AstronautDailyPlanning = new List<Task>();
+
+            foreach (Task t in day.Tasks)
+            {
+                if (t.Astronauts.Contains(astronautSelected))
+                {
+                    AstronautDailyPlanning.Add(t);
+                }
+            }
+
+            foreach (Task t in AstronautDailyPlanning)
+            {
+                //MessageBox.Show(t.Name);
+                ListViewItem itm = new ListViewItem(t.getInfo());
+                DayActivities.Items.Add(itm);
+            }
+        }
+
         private void buttonAddTask_Click_1(object sender, EventArgs e)
         {
             TaskForm AddTask = new TaskForm(Astronauts, Categories,"adding");
 
             if(AddTask.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("TODO : Ajouter l'ajout de la tâche");
+                Activity newAct = AddTask.ActivitySend;
+                List<Astronaut> AstronautNew = AddTask.SelectedAstronaut;
+                int Duration = AddTask.MinuteDurationSend;
+                int startHour = AddTask.MinuteStartSend;
+                string DescriptionTask = AddTask.Description;
+
+
+                Task newTask = new Task(newAct, AstronautNew, Duration, startHour,DescriptionTask);
+
+                int jour = listCalendar.SelectedNode.Index;
+                PlanningMission.Calendar[jour].AddTask(newTask);
+                this.majDayPlanning();
+
             }
         }
     }

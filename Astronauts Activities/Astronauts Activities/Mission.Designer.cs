@@ -224,6 +224,7 @@
             this.buttonRemoveTask.TabIndex = 2;
             this.buttonRemoveTask.Text = "Remove Selected Task";
             this.buttonRemoveTask.UseVisualStyleBackColor = true;
+            this.buttonRemoveTask.Click += new System.EventHandler(this.buttonRemoveTask_Click);
             // 
             // buttonAddTask
             // 

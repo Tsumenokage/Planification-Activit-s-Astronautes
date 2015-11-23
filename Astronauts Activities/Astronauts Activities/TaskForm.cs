@@ -18,7 +18,8 @@ namespace Astronauts_Activities
         public int MinuteStartSend;
         public int MinuteDurationSend;
         public List<Astronaut> SelectedAstronaut;
-        public string ActivitySend;
+        public Activity ActivitySend;
+        public String Description;
 
         //Constructeur
         public TaskForm(List<Astronaut> astro, List<Category> categ, string form)
@@ -69,16 +70,34 @@ namespace Astronauts_Activities
               if (TypeForm == "adding") //Le if est ici pour l'instant si le traitement diffère entre chaque possibilité
               {
                   DialogResult result = MessageBox.Show("Do you want to add this task ?", "Confirmation", MessageBoxButtons.YesNo);
+                  
                   if (result == DialogResult.Yes && ActivityView.SelectedNode.Nodes.Count == 0)
                   {
-                    MinuteStartSend = (int)StartHour.Value * 60 + (int)MinutesStart.Value;
-                    MinuteDurationSend = (int)DurationHour.Value * 60 + (int)DurationMinute.Value;
-                    ActivitySend = ActivityView.SelectedNode.ToString();
-                    SelectedAstronaut = new List<Astronaut>();
-                    foreach (String A in AstronautView.SelectedItems)
-                    {
-                        MessageBox.Show(A.ToString());                    }
-                    }
+                      MinuteStartSend = (int)StartHour.Value * 60 + (int)MinutesStart.Value;
+                      MinuteDurationSend = (int)DurationHour.Value * 60 + (int)DurationMinute.Value;
+
+                      String NodeCategory = ActivityView.SelectedNode.Parent.Text;
+                      MessageBox.Show(NodeCategory);
+                      Category category = Categories.Find(x => x.Name == NodeCategory);
+                      
+                      ActivitySend = category.Activities.Find(x => x.Name == ActivityView.SelectedNode.Text);
+                      SelectedAstronaut = new List<Astronaut>();               
+                      
+
+                      foreach (int indice in AstronautView.CheckedIndices)
+                      {
+                          Astronaut A = Astronauts.Find(x => x.Name == AstronautView.Items[indice].Text);
+                          SelectedAstronaut.Add(A);
+                          MessageBox.Show(A.Name);
+                      }
+
+                      Description = richTextBoxDescription.Text;
+                
+                      DialogResult = DialogResult.OK;
+                      this.Close();
+                 }
+
+                  
               }
               else if (TypeForm == "editing")
               {
