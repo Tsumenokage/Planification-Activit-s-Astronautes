@@ -20,13 +20,15 @@ namespace Astronauts_Activities
         public List<Astronaut> SelectedAstronaut;
         public Activity ActivitySend;
         public String Description;
+        private Day ActualDay;
 
         //Constructeur
-        public TaskForm(List<Astronaut> astro, List<Category> categ, string form)
+        public TaskForm(List<Astronaut> astro, List<Category> categ, string form, Day day)
         {
             InitializeComponent();
             Astronauts = astro;
             Categories = categ;
+            this.ActualDay = day;
             
             //Initialisation astronautes
             foreach (Astronaut A in Astronauts)
@@ -65,36 +67,51 @@ namespace Astronauts_Activities
 
          }
 
-          private void buttonAddActivity_Click(object sender, EventArgs e)
+        private void buttonAddActivity_Click(object sender, EventArgs e)
           {
               if (TypeForm == "adding") //Le if est ici pour l'instant si le traitement diffère entre chaque possibilité
               {
                   DialogResult result = MessageBox.Show("Do you want to add this task ?", "Confirmation", MessageBoxButtons.YesNo);
-                  
-                  if (result == DialogResult.Yes && ActivityView.SelectedNode.Nodes.Count == 0)
+                  bool AllAstroFree = true;
+                  if (result == DialogResult.Yes && ActivityView.SelectedNode.Nodes.Count != null)
                   {
                       MinuteStartSend = (int)StartHour.Value * 60 + (int)MinutesStart.Value;
                       MinuteDurationSend = (int)DurationHour.Value * 60 + (int)DurationMinute.Value;
 
-                      String NodeCategory = ActivityView.SelectedNode.Parent.Text;
-                      MessageBox.Show(NodeCategory);
-                      Category category = Categories.Find(x => x.Name == NodeCategory);
-                      
-                      ActivitySend = category.Activities.Find(x => x.Name == ActivityView.SelectedNode.Text);
-                      SelectedAstronaut = new List<Astronaut>();               
-                      
-
-                      foreach (int indice in AstronautView.CheckedIndices)
+                      if (MinuteStartSend + MinuteDurationSend <= 1480)
                       {
-                          Astronaut A = Astronauts.Find(x => x.Name == AstronautView.Items[indice].Text);
-                          SelectedAstronaut.Add(A);
-                          MessageBox.Show(A.Name);
-                      }
+                          String NodeCategory = ActivityView.SelectedNode.Parent.Text;
+                          Category category = Categories.Find(x => x.Name == NodeCategory);
 
-                      Description = richTextBoxDescription.Text;
-                
-                      DialogResult = DialogResult.OK;
-                      this.Close();
+                          ActivitySend = category.Activities.Find(x => x.Name == ActivityView.SelectedNode.Text);
+                          SelectedAstronaut = new List<Astronaut>();
+
+
+                          foreach (int indice in AstronautView.CheckedIndices)
+                          {
+                              Astronaut A = Astronauts.Find(x => x.Name == AstronautView.Items[indice].Text);
+
+                              if (AstronautIsFree(A))
+                                  SelectedAstronaut.Add(A);
+                              else
+                              {
+                                  MessageBox.Show(A.Name + " is not available for this task on this period");
+                                  AllAstroFree = false;
+                              }
+                          }
+
+                          Description = richTextBoxDescription.Text;
+
+                          if (AllAstroFree)
+                          {
+                              DialogResult = DialogResult.OK;
+                              this.Close();
+                          }
+                      }
+                      else
+                      {
+                          MessageBox.Show("Error : End of the task exceed 24h40, you can't add a task on 2 days.");
+                      }
                  }
 
                   
@@ -109,14 +126,14 @@ namespace Astronauts_Activities
               }
           }
 
-          private void buttonCancel_Click(object sender, EventArgs e)
-          {
-              DialogResult result2 = MessageBox.Show("Do you want to cancel your work ?", "Confirmation", MessageBoxButtons.YesNo);
-              if (result2 == DialogResult.Yes)
-              {
-                  this.Close();
-              }
-          }
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult result2 = MessageBox.Show("Do you want to cancel your work ?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result2 == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
@@ -128,6 +145,26 @@ namespace Astronauts_Activities
             }
             else
                 MinutesStart.Maximum = 59;
+        }
+
+        private bool AstronautIsFree(Astronaut A)
+        {
+            List<Task> AstroTask;
+            AstroTask = ActualDay.Tasks.FindAll(x => x.Astronauts.Contains(A));
+            int EndNewTask = MinuteStartSend + MinuteDurationSend;
+            int EndTask;
+            bool AstronautFree = true;
+
+            foreach (Task task in AstroTask)
+            {
+                EndTask = task.DurationMinute + task.StartHour;
+                if((MinuteStartSend > task.StartHour && MinuteStartSend < EndTask) || (EndNewTask > task.StartHour && EndNewTask < EndTask))
+                {
+                    AstronautFree = false;
+                }
+            }
+
+            return AstronautFree;
         }
     }
 }
