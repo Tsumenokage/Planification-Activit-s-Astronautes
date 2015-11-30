@@ -45,10 +45,12 @@
             this.ActivityView = new System.Windows.Forms.TreeView();
             this.AstronautView = new System.Windows.Forms.ListView();
             this.AstroName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.MapPic = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.StartHour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DurationHour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DurationMinute)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MapPic)).BeginInit();
             this.SuspendLayout();
             // 
             // labelAstronauts
@@ -221,11 +223,23 @@
             this.AstronautView.UseCompatibleStateImageBehavior = false;
             this.AstronautView.View = System.Windows.Forms.View.Details;
             // 
+            // MapPic
+            // 
+            this.MapPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MapPic.Location = new System.Drawing.Point(649, 39);
+            this.MapPic.Name = "MapPic";
+            this.MapPic.Size = new System.Drawing.Size(299, 357);
+            this.MapPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MapPic.TabIndex = 21;
+            this.MapPic.TabStop = false;
+            this.MapPic.DoubleClick += new System.EventHandler(this.MapPic_DoubleClick);
+            // 
             // TaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 408);
+            this.ClientSize = new System.Drawing.Size(976, 451);
+            this.Controls.Add(this.MapPic);
             this.Controls.Add(this.AstronautView);
             this.Controls.Add(this.ActivityView);
             this.Controls.Add(this.label2);
@@ -248,6 +262,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinutesStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DurationHour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DurationMinute)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MapPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +286,6 @@
         private System.Windows.Forms.TreeView ActivityView;
         private System.Windows.Forms.ListView AstronautView;
         private System.Windows.Forms.ColumnHeader AstroName;
+        private System.Windows.Forms.PictureBox MapPic;
     }
 }

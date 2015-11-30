@@ -11,19 +11,21 @@ namespace Astronauts_Activities
         public string Name { get; private set; }
         private Activity Activity;
         public List<Astronaut> Astronauts { get; private set; }
-        public Place TaskPlace {get; private set;}
         private string Description;
         public int StartHour {get; private set;}
         public int DurationMinute {get; private set;}
+        public int Xposition { get; private set; }
+        public int Yposition { get; private set; }
 
-        public Task(Activity Tactivity, List<Astronaut> Tastronauts, Place Tplace, int DureeMinute, int StartHour) //ajouter dates
+        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, int X, int Y) //ajouter dates
         {
             Name = Tactivity.Name;
             Activity = Tactivity;
-            TaskPlace = Tplace;
             this.DurationMinute = DureeMinute;
             this.StartHour = StartHour;
             Astronauts = Tastronauts;
+            this.Xposition = X;
+            this.Yposition = Y;
         }
 
         public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour) //ajouter dates
@@ -35,17 +37,6 @@ namespace Astronauts_Activities
             Astronauts = Tastronauts;
         }
 
-        public Task(Activity Tactivity, List<Astronaut> Tastronauts, Place Tplace, int DureeMinute, int StartHour, string Description) //ajouter dates
-        {
-            Name = Tactivity.Name;
-            Activity = Tactivity;
-            TaskPlace = Tplace;
-            this.DurationMinute = DureeMinute;
-            this.StartHour = StartHour;
-            Astronauts = Tastronauts;
-            this.Description = Description;
-        }
-
         public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, string Description) //ajouter dates
         {
             Name = Tactivity.Name;
@@ -54,6 +45,18 @@ namespace Astronauts_Activities
             this.StartHour = StartHour;
             Astronauts = Tastronauts;
             this.Description = Description;
+        }
+
+        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, string Description, int X, int Y) //ajouter dates
+        {
+            Name = Tactivity.Name;
+            Activity = Tactivity;
+            this.DurationMinute = DureeMinute;
+            this.StartHour = StartHour;
+            Astronauts = Tastronauts;
+            this.Description = Description;
+            this.Xposition = X;
+            this.Yposition = Y;
         }
 
         //Fonctions de base de gestion des astronautes

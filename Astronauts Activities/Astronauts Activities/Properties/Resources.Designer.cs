@@ -63,6 +63,16 @@ namespace Astronauts_Activities.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap crossImage {
+            get {
+                object obj = ResourceManager.GetObject("crossImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap envelope9 {
             get {
                 object obj = ResourceManager.GetObject("envelope9", resourceCulture);

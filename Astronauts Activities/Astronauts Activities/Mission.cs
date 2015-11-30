@@ -17,6 +17,8 @@ namespace Astronauts_Activities
         private List<Category> Categories;
         private Planning PlanningMission;
         private DateTime StartMission;
+        private int xOrigin;
+        private int yOrigin;
         Timer bg = new Timer();
 
         public Mission()
@@ -227,6 +229,15 @@ namespace Astronauts_Activities
                     XmlNodeList nomMission = noeud.SelectNodes("Name");
                     this.Text = nomMission[0].InnerText;
 
+                    XmlNodeList MapMars = noeud.SelectNodes("Map");
+                    this.Map = MapMars[0].InnerText;
+
+                    XmlNodeList XMap = noeud.SelectNodes("X");
+                    this.xOrigin = int.Parse(XMap[0].InnerText);
+
+                    XmlNodeList YMap = noeud.SelectNodes("Y");
+                    this.yOrigin = int.Parse(YMap[0].InnerText);
+
                     XmlNode AstronautXml = noeud.SelectSingleNode("Astronauts");
                     XmlNodeList AstronautsXml = AstronautXml.SelectNodes("Astronaut");
 
@@ -418,7 +429,7 @@ namespace Astronauts_Activities
         private void buttonAddTask_Click_1(object sender, EventArgs e)
         {
             int jour = listCalendar.SelectedNode.Index;
-            TaskForm AddTask = new TaskForm(Astronauts, Categories, "adding", PlanningMission.Calendar[jour]);
+            TaskForm AddTask = new TaskForm(Astronauts, Categories, "adding", PlanningMission.Calendar[jour],Map, this.xOrigin, this.yOrigin);
             
 
 
@@ -429,9 +440,10 @@ namespace Astronauts_Activities
                 int Duration = AddTask.MinuteDurationSend;
                 int startHour = AddTask.MinuteStartSend;
                 string DescriptionTask = AddTask.Description;
+                int XPosition = AddTask.xMap;
+                int YPosition = AddTask.yMap;
 
-
-                Task newTask = new Task(newAct, AstronautNew, Duration, startHour,DescriptionTask);
+                Task newTask = new Task(newAct, AstronautNew, Duration, startHour,DescriptionTask,XPosition,YPosition);
 
                 
                 PlanningMission.Calendar[jour].AddTask(newTask);

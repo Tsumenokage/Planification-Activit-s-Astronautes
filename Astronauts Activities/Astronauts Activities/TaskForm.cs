@@ -20,15 +20,32 @@ namespace Astronauts_Activities
         public List<Astronaut> SelectedAstronaut;
         public Activity ActivitySend;
         public String Description;
+        public int xMap;
+        public int yMap;
         private Day ActualDay;
+        private string MapString;
+        private Image MapImage;
+        private Image imageCross;
+        private Graphics graMap;
 
         //Constructeur
-        public TaskForm(List<Astronaut> astro, List<Category> categ, string form, Day day)
+        public TaskForm(List<Astronaut> astro, List<Category> categ, string form, Day day, string MapString, int xOrigin, int yOrigin)
         {
             InitializeComponent();
             Astronauts = astro;
             Categories = categ;
             this.ActualDay = day;
+            this.MapString = MapString;
+            this.MapImage = Image.FromFile(this.MapString);
+            MessageBox.Show(MapString);
+            Image img = Image.FromFile(MapString);
+            imageCross = Astronauts_Activities.Properties.Resources.crossImage;     
+            //MapPic.BackgroundImage = img;
+            this.graMap = MapPic.CreateGraphics();
+            this.xMap = xOrigin;
+            this.yMap = yOrigin;
+
+            
             
             //Initialisation astronautes
             foreach (Astronaut A in Astronauts)
@@ -67,13 +84,21 @@ namespace Astronauts_Activities
 
          }
 
+        private void DrawOrigin()
+        {
+            this.graMap.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);
+            int miniX = (MapPic.Width * this.xMap) / MapImage.Width;
+            int miniY = (MapPic.Height * this.yMap) / MapImage.Height;
+            this.graMap.DrawImage(imageCross, miniX - (imageCross.Width / 2), miniY - (imageCross.Height));
+        }
+
         private void buttonAddActivity_Click(object sender, EventArgs e)
           {
               if (TypeForm == "adding") //Le if est ici pour l'instant si le traitement diffère entre chaque possibilité
               {
                   DialogResult result = MessageBox.Show("Do you want to add this task ?", "Confirmation", MessageBoxButtons.YesNo);
                   bool AllAstroFree = true;
-                  if (result == DialogResult.Yes && ActivityView.SelectedNode.Nodes.Count != null)
+                  if (result == DialogResult.Yes && ActivityView.SelectedNode.Nodes.Count == 0)
                   {
                       MinuteStartSend = (int)StartHour.Value * 60 + (int)MinutesStart.Value;
                       MinuteDurationSend = (int)DurationHour.Value * 60 + (int)DurationMinute.Value;
@@ -166,5 +191,28 @@ namespace Astronauts_Activities
 
             return AstronautFree;
         }
+
+        private void MapPic_DoubleClick(object sender, EventArgs e)
+        {
+            Map mapForm = new Map(this.MapString);
+
+            if (mapForm.ShowDialog() == DialogResult.OK)
+            {
+                this.xMap = mapForm.sendX;
+                this.yMap = mapForm.sendY;
+
+                //On affiche sur la miniMap
+                graMap.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);
+
+                int miniX = (MapPic.Width * this.xMap) / MapImage.Width;
+                int miniY = (MapPic.Height * this.yMap) / MapImage.Height;
+                graMap.DrawImage(imageCross, miniX-(imageCross.Width/2), miniY-(imageCross.Height));
+            }
+        }
+
     }
 }
+
+            
+            
+            
