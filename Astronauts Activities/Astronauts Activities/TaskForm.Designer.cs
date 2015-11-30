@@ -56,7 +56,7 @@
             // labelAstronauts
             // 
             this.labelAstronauts.AutoSize = true;
-            this.labelAstronauts.Location = new System.Drawing.Point(464, 20);
+            this.labelAstronauts.Location = new System.Drawing.Point(482, 20);
             this.labelAstronauts.Name = "labelAstronauts";
             this.labelAstronauts.Size = new System.Drawing.Size(57, 13);
             this.labelAstronauts.TabIndex = 1;
@@ -65,7 +65,7 @@
             // labelStartHour
             // 
             this.labelStartHour.AutoSize = true;
-            this.labelStartHour.Location = new System.Drawing.Point(193, 91);
+            this.labelStartHour.Location = new System.Drawing.Point(193, 74);
             this.labelStartHour.Name = "labelStartHour";
             this.labelStartHour.Size = new System.Drawing.Size(55, 13);
             this.labelStartHour.TabIndex = 5;
@@ -74,7 +74,7 @@
             // labelDuration
             // 
             this.labelDuration.AutoSize = true;
-            this.labelDuration.Location = new System.Drawing.Point(201, 116);
+            this.labelDuration.Location = new System.Drawing.Point(201, 99);
             this.labelDuration.Name = "labelDuration";
             this.labelDuration.Size = new System.Drawing.Size(47, 13);
             this.labelDuration.TabIndex = 6;
@@ -128,7 +128,7 @@
             // 
             // StartHour
             // 
-            this.StartHour.Location = new System.Drawing.Point(254, 89);
+            this.StartHour.Location = new System.Drawing.Point(254, 72);
             this.StartHour.Maximum = new decimal(new int[] {
             24,
             0,
@@ -146,7 +146,7 @@
             0,
             0,
             0});
-            this.MinutesStart.Location = new System.Drawing.Point(318, 89);
+            this.MinutesStart.Location = new System.Drawing.Point(318, 72);
             this.MinutesStart.Maximum = new decimal(new int[] {
             59,
             0,
@@ -158,7 +158,7 @@
             // 
             // DurationHour
             // 
-            this.DurationHour.Location = new System.Drawing.Point(254, 116);
+            this.DurationHour.Location = new System.Drawing.Point(254, 99);
             this.DurationHour.Maximum = new decimal(new int[] {
             24,
             0,
@@ -175,7 +175,7 @@
             0,
             0,
             0});
-            this.DurationMinute.Location = new System.Drawing.Point(318, 116);
+            this.DurationMinute.Location = new System.Drawing.Point(318, 99);
             this.DurationMinute.Maximum = new decimal(new int[] {
             59,
             0,
@@ -188,7 +188,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(297, 91);
+            this.label1.Location = new System.Drawing.Point(297, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 13);
             this.label1.TabIndex = 17;
@@ -197,7 +197,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(297, 123);
+            this.label2.Location = new System.Drawing.Point(297, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(15, 13);
             this.label2.TabIndex = 18;
@@ -216,7 +216,7 @@
             this.AstronautView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.AstroName});
             this.AstronautView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.AstronautView.Location = new System.Drawing.Point(388, 39);
+            this.AstronautView.Location = new System.Drawing.Point(402, 36);
             this.AstronautView.Name = "AstronautView";
             this.AstronautView.Size = new System.Drawing.Size(203, 97);
             this.AstronautView.TabIndex = 20;

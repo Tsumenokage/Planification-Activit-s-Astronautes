@@ -11,17 +11,19 @@ namespace Astronauts_Activities
 {
     public partial class DayReport : Form
     {
-
+        //Variables
         private Day Today;
         public string Report { get; set; }
 
+        //Méthodes
         public DayReport(Day daySelected)
         {
             InitializeComponent();
             Today = daySelected;
-            Report = Today.ToString() + ".";
-            if (Today.Report == null)
+            Report = daySelected.Report;
+            if (Report == null)
             {
+                Report = Today.ToString() + ".";
                 for (int i = 0; i < Today.Tasks.Count(); i++)
                 {
                     Report = Report + "\n\n   Activity " + (i + 1) + ": " + Today.Tasks[i].Name + ". It will start at " + MartianTime(Today.Tasks[i].StartHour) + "\nIt concerns " + Today.Tasks[i].Astronauts.Count() + " astronauts.";
@@ -29,22 +31,32 @@ namespace Astronauts_Activities
             }
             else
             {
-                Report = Today.Report;
             }
             richTextBoxReport.Text = Report;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            //Gestion erreur et données TODO
-            Today.Report = Report; 
-            MessageBox.Show("Successfully saved.", "Saved", MessageBoxButtons.OK);
-            this.Close();
+            if (richTextBoxReport.Text.Length <= 1000)
+            {
+                MessageBox.Show("Successfully saved.", "Saved", MessageBoxButtons.OK);
+                Report = richTextBoxReport.Text;
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Reports can't exceed 1000 characters.", "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to cancel your work ?", "Confirmation", MessageBoxButtons.OK);
+            DialogResult result = MessageBox.Show("Do you want to cancel your work ?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            { 
+                this.Close();
+            }
         }
 
         private string MartianTime(double SecondsBegin)

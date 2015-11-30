@@ -8,7 +8,6 @@ namespace Astronauts_Activities
     public class Day
     {
         public int NumberDay { get; private set; }
-        public bool done;
         public string Report { get; set; }
         public List<Task> Tasks { get; private set; }
         //private int NumberDayOfMonth;

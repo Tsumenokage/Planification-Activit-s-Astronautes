@@ -150,6 +150,7 @@
             this.DayActivities.TabIndex = 8;
             this.DayActivities.UseCompatibleStateImageBehavior = false;
             this.DayActivities.View = System.Windows.Forms.View.Details;
+            this.DayActivities.DoubleClick += new System.EventHandler(this.DayActivities_DoubleClick);
             // 
             // Type
             // 
@@ -198,6 +199,7 @@
             this.buttonNextDay.TabIndex = 5;
             this.buttonNextDay.Text = "Next Day --->";
             this.buttonNextDay.UseVisualStyleBackColor = true;
+            this.buttonNextDay.Click += new System.EventHandler(this.buttonNextDay_Click);
             // 
             // buttonPreviousDay
             // 
@@ -207,6 +209,7 @@
             this.buttonPreviousDay.TabIndex = 4;
             this.buttonPreviousDay.Text = "<--- Previous Day";
             this.buttonPreviousDay.UseVisualStyleBackColor = true;
+            this.buttonPreviousDay.Click += new System.EventHandler(this.buttonPreviousDay_Click);
             // 
             // buttonEditTask
             // 

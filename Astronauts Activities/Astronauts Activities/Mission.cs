@@ -19,6 +19,7 @@ namespace Astronauts_Activities
         private DateTime StartMission;
         private int xOrigin;
         private int yOrigin;
+        private int CurrentDay;
         Timer bg = new Timer();
 
         public Mission()
@@ -28,7 +29,7 @@ namespace Astronauts_Activities
             Categories = new List<Category>();
 
             bg.Tick += (s, e) => { EarthHour.Text = DateTime.Now.ToString(); };
-            bg.Tick += (s, e) => { MajTime(); };
+            bg.Tick += (s, e) => { CurrentDay = MajTime(); };
             bg.Interval = 500;
             bg.Start();
             
@@ -39,18 +40,20 @@ namespace Astronauts_Activities
 
         }
 
-        private void MajTime()
+        private int MajTime()
         {
+            int nbDay = 0;
             if(StartMission != null)
             {
                 double TicksPass;
                 TimeSpan ts = DateTime.Now - StartMission;
                 TicksPass = Math.Floor(ts.TotalSeconds);
-                MissionTime.Text = MartianTime(TicksPass).ToString();
+                MissionTime.Text = MartianTime(TicksPass, out nbDay).ToString();
             }
+            return nbDay;
         }
 
-        private string MartianTime(double SecondsBegin)
+        private string MartianTime(double SecondsBegin, out int nbDay)
         {
             string Date;
             double Day = 0;
@@ -67,15 +70,13 @@ namespace Astronauts_Activities
             Second = Math.Truncate((SecondsBegin % 3600) % 60);
 
             Date = "Day : " + Day + "  " + Hour + ":" + Minute + ":" + Second;
+            nbDay = (int)Day;
             return Date;
-
-
-            
+          
         }
 
         private void newPlanningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             
             PlanningMission = new Planning();
 
@@ -95,7 +96,17 @@ namespace Astronauts_Activities
             {
                 foreach (Day day in PlanningMission.Calendar)
                 {
-                    listCalendar.Nodes.Add(day.ToString());
+                    TreeNode MyNode;
+                    if (day.NumberDay < CurrentDay)
+                    {
+                        MyNode = listCalendar.Nodes.Add(day.ToString());
+
+                        MyNode.BackColor = Color.LightGray;
+                    }
+                        else
+                    {
+                        MyNode = listCalendar.Nodes.Add(day.ToString());
+                    }
 
                     List<Activity> Activities = Categories.Find(x => x.Name == "Living").Activities;
 
@@ -348,6 +359,20 @@ namespace Astronauts_Activities
             MessageBox.Show("Jour modifié");
             DayActivities.Items.Clear();
             int numDay = listCalendar.SelectedNode.Index;
+
+            if (numDay < CurrentDay - 1)
+            {
+                buttonAddTask.Enabled = false;
+                buttonEditTask.Enabled = false;
+                buttonRemoveTask.Enabled = false;
+            }
+            else
+            {
+                buttonAddTask.Enabled = true;
+                buttonEditTask.Enabled = true;
+                buttonRemoveTask.Enabled = true;
+            }
+
             Day day = PlanningMission.Calendar[numDay];
             Astronaut astronautSelected = Astronauts.Find(x => x.Name == AstronautList.SelectedItem.ToString());
 
@@ -374,9 +399,9 @@ namespace Astronauts_Activities
         {
             if (listCalendar.SelectedNode != null)//Sécurité, on ne met pas à jour si aucun jour n'est sélectionné
             {
+                int numDay = listCalendar.SelectedNode.Index;
                 MessageBox.Show("Astronaute modifié");
                 DayActivities.Items.Clear();
-                int numDay = listCalendar.SelectedNode.Index;
                 Day day = PlanningMission.Calendar[numDay];
                 Astronaut astronautSelected = Astronauts.Find(x => x.Name == AstronautList.SelectedItem.ToString());
 
@@ -443,10 +468,10 @@ namespace Astronauts_Activities
                 int XPosition = AddTask.xMap;
                 int YPosition = AddTask.yMap;
 
-                Task newTask = new Task(newAct, AstronautNew, Duration, startHour,DescriptionTask,XPosition,YPosition);
 
-                
-                PlanningMission.Calendar[jour].AddTask(newTask);
+                Task newTask = new Task(newAct, AstronautNew, Duration, startHour,DescriptionTask,XPosition,YPosition);
+                int numDay = listCalendar.SelectedNode.Index;
+                PlanningMission.Calendar[numDay].AddTask(newTask);
                 this.majDayPlanning();
 
             }
@@ -456,10 +481,35 @@ namespace Astronauts_Activities
         {
             if (listCalendar.SelectedNode != null)
             {
-                DayReport dayReporting = new DayReport(PlanningMission.Calendar[listCalendar.SelectedNode.Index]);
-                dayReporting.Show();
+                int numDay = listCalendar.SelectedNode.Index;
+                DayReport DayReporting = new DayReport(PlanningMission.Calendar[numDay]);
+                if (DayReporting.ShowDialog() == DialogResult.OK)
+                {
+                    PlanningMission.Calendar[numDay].Report = DayReporting.Report;
+                }
             }
-            //Retour des données TODO
+        }
+
+        private void buttonPreviousDay_Click(object sender, EventArgs e)
+        {
+            int numDay = listCalendar.SelectedNode.Index;
+            listCalendar.SelectedNode = listCalendar.Nodes[numDay - 1];
+        }
+
+        private void buttonNextDay_Click(object sender, EventArgs e)
+        {
+            int numDay = listCalendar.SelectedNode.Index;
+            listCalendar.SelectedNode = listCalendar.Nodes[numDay + 1];
+        }
+
+        private void DayActivities_DoubleClick(object sender, EventArgs e)
+        {
+            if (DayActivities.SelectedItems != null)
+            {
+                int numActiv = DayActivities.SelectedIndices[0];
+                TaskView TaskViewing = new TaskView(DayActivities.SelectedItems[0]);
+                TaskViewing.Show();
+            }
         }
     }
 }

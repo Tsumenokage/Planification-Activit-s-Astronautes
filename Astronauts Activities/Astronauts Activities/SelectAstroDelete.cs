@@ -55,6 +55,11 @@ namespace Astronauts_Activities
             this.Close();
         }
 
+        private void AstronautView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
