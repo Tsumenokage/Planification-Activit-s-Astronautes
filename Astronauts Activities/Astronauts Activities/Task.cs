@@ -40,7 +40,7 @@ namespace Astronauts_Activities
             Name = Tactivity.Name;
             Activity = Tactivity;
             TaskPlace = Tplace;
-            this.DureeMinute = DureeMinute;
+            this.DurationMinute = DureeMinute;
             this.StartHour = StartHour;
             Astronauts = Tastronauts;
             this.Description = Description;
@@ -50,7 +50,7 @@ namespace Astronauts_Activities
         {
             Name = Tactivity.Name;
             Activity = Tactivity;
-            this.DureeMinute = DureeMinute;
+            this.DurationMinute = DureeMinute;
             this.StartHour = StartHour;
             Astronauts = Tastronauts;
             this.Description = Description;

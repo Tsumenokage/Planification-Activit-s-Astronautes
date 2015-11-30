@@ -332,19 +332,6 @@ namespace Astronauts_Activities
 	        }
         }
 
-        private void buttonAddTask_Click(object sender, EventArgs e)
-        {
-            TaskForm addingTask = new TaskForm(Astronauts, Categories,"adding");
-            addingTask.Show();
-        }
-
-        private void buttonEditTask_Click(object sender, EventArgs e)
-        {
-            TaskForm modifyingTask = new TaskForm(Astronauts, Categories,"editing");
-            modifyingTask.Show();
-        }
-
-
         private void ViewDayPlanning(object sender, TreeViewEventArgs e)
         {
             MessageBox.Show("Jour modifié");
@@ -430,7 +417,10 @@ namespace Astronauts_Activities
 
         private void buttonAddTask_Click_1(object sender, EventArgs e)
         {
-            TaskForm AddTask = new TaskForm(Astronauts, Categories,"adding");
+            int jour = listCalendar.SelectedNode.Index;
+            TaskForm AddTask = new TaskForm(Astronauts, Categories, "adding", PlanningMission.Calendar[jour]);
+            
+
 
             if(AddTask.ShowDialog() == DialogResult.OK)
             {
@@ -443,7 +433,7 @@ namespace Astronauts_Activities
 
                 Task newTask = new Task(newAct, AstronautNew, Duration, startHour,DescriptionTask);
 
-                int jour = listCalendar.SelectedNode.Index;
+                
                 PlanningMission.Calendar[jour].AddTask(newTask);
                 this.majDayPlanning();
 
