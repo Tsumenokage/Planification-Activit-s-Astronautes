@@ -47,6 +47,7 @@
             this.AstronautView.TabIndex = 21;
             this.AstronautView.UseCompatibleStateImageBehavior = false;
             this.AstronautView.View = System.Windows.Forms.View.Details;
+            this.AstronautView.SelectedIndexChanged += new System.EventHandler(this.AstronautView_SelectedIndexChanged);
             // 
             // OkButton
             // 
