@@ -100,12 +100,6 @@
     <Compile Include="TaskView.Designer.cs">
       <DependentUpon>TaskView.cs</DependentUpon>
     </Compile>
-    <Compile Include="TaskView2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TaskView2.Designer.cs">
-      <DependentUpon>TaskView2.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="SelectAstroDelete.resx">
       <DependentUpon>SelectAstroDelete.cs</DependentUpon>
     </EmbeddedResource>
