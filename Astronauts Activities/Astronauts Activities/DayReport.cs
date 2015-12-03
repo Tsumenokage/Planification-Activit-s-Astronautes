@@ -26,7 +26,7 @@ namespace Astronauts_Activities
                 Report = Today.ToString() + ".";
                 for (int i = 0; i < Today.Tasks.Count(); i++)
                 {
-                    Report = Report + "\n\n   Activity " + (i + 1) + ": " + Today.Tasks[i].Name + ". It will start at " + MartianTime(Today.Tasks[i].StartHour) + "\nIt concerns " + Today.Tasks[i].Astronauts.Count() + " astronauts.";
+                    Report = Report + "\n\n   Activity " + (i + 1) + ": " + Today.Tasks[i].Name + ". It will start at " + FormatHour(Today.Tasks[i].StartHour) + "\nIt concerns " + Today.Tasks[i].Astronauts.Count() + " astronauts.";
                 }
             }
             else
@@ -54,25 +54,29 @@ namespace Astronauts_Activities
         {
             DialogResult result = MessageBox.Show("Do you want to cancel your work ?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
-            { 
+            {
                 this.Close();
             }
         }
 
-        private string MartianTime(double SecondsBegin)
+        public string FormatHour(int Time)
         {
-            string Date;
-            double Hour = 0;
-            double Minute = 0;
-            double Second = 0;
-            //Nombre de seconde dans une seule journée : 88 800
+            string HourFormat;
+            int Minutes = Time % 60;
+            Time = Time - Minutes;
+            int Hours = Time / 60;
 
-            Hour = Math.Truncate(SecondsBegin / 60);
-            Minute = Math.Truncate((SecondsBegin % 60) / 60);
-            Second = Math.Truncate((SecondsBegin % 60) % 60);
 
-            Date = Hour + ":" + Minute + ":" + Second;
-            return Date;
+            HourFormat = Hours.ToString() + "H" + Minutes.ToString();
+            if (Minutes == 0)
+                HourFormat += "0";
+            return HourFormat;
+
+        }
+
+        private void DayReport_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

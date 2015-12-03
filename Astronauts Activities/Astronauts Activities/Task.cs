@@ -28,7 +28,7 @@ namespace Astronauts_Activities
             this.Yposition = Y;
         }
 
-        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour) //ajouter dates
+        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour)
         {
             Name = Tactivity.Name;
             Activity = Tactivity;
@@ -37,7 +37,7 @@ namespace Astronauts_Activities
             Astronauts = Tastronauts;
         }
 
-        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, string Description) //ajouter dates
+        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, string Description)
         {
             Name = Tactivity.Name;
             Activity = Tactivity;
@@ -47,7 +47,7 @@ namespace Astronauts_Activities
             this.Description = Description;
         }
 
-        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, string Description, int X, int Y) //ajouter dates
+        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, string Description, int X, int Y)
         {
             Name = Tactivity.Name;
             Activity = Tactivity;

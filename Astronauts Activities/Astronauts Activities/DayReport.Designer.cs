@@ -71,6 +71,7 @@
             this.Controls.Add(this.richTextBoxReport);
             this.Name = "DayReport";
             this.Text = "DayReport";
+            this.Load += new System.EventHandler(this.DayReport_Load);
             this.ResumeLayout(false);
 
         }
