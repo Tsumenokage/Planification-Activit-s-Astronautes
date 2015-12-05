@@ -36,17 +36,14 @@ namespace Astronauts_Activities
             Categories = categ;
             this.ActualDay = day;
             this.MapString = MapString;
-            this.MapImage = Image.FromFile(this.MapString);
-            MessageBox.Show(MapString);
+            this.MapImage = Image.FromFile(this.MapString);            
             Image img = Image.FromFile(MapString);
             imageCross = Astronauts_Activities.Properties.Resources.crossImage;     
-            //MapPic.BackgroundImage = img;
             this.graMap = MapPic.CreateGraphics();
             this.xMap = xOrigin;
             this.yMap = yOrigin;
+            MapPic.Invalidate();
 
-            
-            
             //Initialisation astronautes
             foreach (Astronaut A in Astronauts)
             {
@@ -83,14 +80,6 @@ namespace Astronauts_Activities
             }
 
          }
-
-        private void DrawOrigin()
-        {
-            this.graMap.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);
-            int miniX = (MapPic.Width * this.xMap) / MapImage.Width;
-            int miniY = (MapPic.Height * this.yMap) / MapImage.Height;
-            this.graMap.DrawImage(imageCross, miniX - (imageCross.Width / 2), miniY - (imageCross.Height));
-        }
 
         private void buttonAddActivity_Click(object sender, EventArgs e)
           {
@@ -210,9 +199,20 @@ namespace Astronauts_Activities
             }
         }
 
+        private void ActivityView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            this.graMap.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);
+            int miniX = (MapPic.Width * this.xMap) / MapImage.Width;
+            int miniY = (MapPic.Height * this.yMap) / MapImage.Height;
+            this.graMap.DrawImage(imageCross, miniX - (imageCross.Width / 2), miniY - (imageCross.Height));
+        }
+
+        private void TaskForm_Paint(object sender, PaintEventArgs e)
+        {
+            this.graMap.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);
+            int miniX = (MapPic.Width * this.xMap) / MapImage.Width;
+            int miniY = (MapPic.Height * this.yMap) / MapImage.Height;
+            this.graMap.DrawImage(imageCross, miniX - (imageCross.Width / 2), miniY - (imageCross.Height));
+        }
     }
 }
-
-            
-            
-            

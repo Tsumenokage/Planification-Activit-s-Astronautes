@@ -13,12 +13,12 @@ namespace Astronauts_Activities
     public partial class Mission : Form
     {
         private List<Astronaut> Astronauts;
-        private String Map;
+        public String Map { get; private set; }
         private List<Category> Categories;
-        private Planning PlanningMission;
+        public Planning PlanningMission { get; private set; }
         private DateTime StartMission;
-        private int xOrigin;
-        private int yOrigin;
+        public int xOrigin { get; private set; }
+        public int yOrigin { get; private set; }
         private int CurrentDay;
         Timer bg = new Timer();
 
@@ -116,28 +116,28 @@ namespace Astronauts_Activities
 
 
                     List<Astronaut> astroSleep1 = Astronauts.ToList();
-                    Task sleep1 = new Task(sleep, astroSleep1, 420, 0);
+                    Task sleep1 = new Task(sleep, astroSleep1, 420, 0,this.xOrigin,this.yOrigin);
 
                     List<Astronaut> astroEat = Astronauts.ToList();
-                    Task eat1 = new Task(eat, astroEat, 60, 420);
+                    Task eat1 = new Task(eat, astroEat, 60, 420, this.xOrigin, this.yOrigin);
 
                     List<Astronaut> astroPV1 = Astronauts.ToList();
-                    Task private1 = new Task(privateActivity, astroPV1, 240, 480);
+                    Task private1 = new Task(privateActivity, astroPV1, 240, 480, this.xOrigin, this.yOrigin);
 
                     List<Astronaut> astroEat2 = Astronauts.ToList();
-                    Task eat2 = new Task(eat, astroEat2, 120, 720);
+                    Task eat2 = new Task(eat, astroEat2, 120, 720, this.xOrigin, this.yOrigin);
 
                     List<Astronaut> astroPV2 = Astronauts.ToList();
-                    Task private2 = new Task(privateActivity, astroPV2, 300, 840);
+                    Task private2 = new Task(privateActivity, astroPV2, 300, 840, this.xOrigin, this.yOrigin);
 
                     List<Astronaut> astroEat3 = Astronauts.ToList();
-                    Task eat3 = new Task(eat, astroEat3, 120, 1140);
+                    Task eat3 = new Task(eat, astroEat3, 120, 1140, this.xOrigin, this.yOrigin);
 
                     List<Astronaut> astroPV3 = Astronauts.ToList();
-                    Task private3 = new Task(privateActivity, astroPV3, 120, 1260);
+                    Task private3 = new Task(privateActivity, astroPV3, 120, 1260, this.xOrigin, this.yOrigin);
 
                     List<Astronaut> astroSleep2 = Astronauts.ToList();
-                    Task sleep2 = new Task(sleep, astroSleep2, 100, 1380);
+                    Task sleep2 = new Task(sleep, astroSleep2, 100, 1380, this.xOrigin, this.yOrigin);
 
 
                     day.AddTask(sleep1);
@@ -310,11 +310,6 @@ namespace Astronauts_Activities
                 MessageBox.Show(A.Name);
         }
 
-        private void Mission_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void listCalendar_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
@@ -388,7 +383,7 @@ namespace Astronauts_Activities
 
             foreach (Task t in AstronautDailyPlanning)
             {
-                //MessageBox.Show(t.Name);
+
                 ListViewItem itm = new ListViewItem(t.getInfo());
                 DayActivities.Items.Add(itm);
 
@@ -508,7 +503,17 @@ namespace Astronauts_Activities
             {
                 int numActiv = DayActivities.SelectedIndices[0];
                 TaskView TaskViewing = new TaskView(DayActivities.SelectedItems[0]);
-                TaskViewing.Show();
+                TaskViewing.ShowDialog();
+            }
+        }
+
+        private void MenuMissionMap_Click(object sender, EventArgs e)
+        {
+            MissionMap mM = new MissionMap(this);
+
+            if(mM.ShowDialog() == DialogResult.OK)
+            {
+
             }
         }
     }

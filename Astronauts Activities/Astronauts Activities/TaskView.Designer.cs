@@ -148,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 340);
+            this.ClientSize = new System.Drawing.Size(455, 341);
             this.Controls.Add(this.AstronautView);
             this.Controls.Add(this.ActivityView);
             this.Controls.Add(this.label2);

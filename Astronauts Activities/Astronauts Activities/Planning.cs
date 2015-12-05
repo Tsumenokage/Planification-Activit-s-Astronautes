@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    class Planning
+    public class Planning
     {
        public List<Day> Calendar { get; private set; }
 

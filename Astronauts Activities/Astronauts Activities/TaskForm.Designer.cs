@@ -209,6 +209,7 @@
             this.ActivityView.Name = "ActivityView";
             this.ActivityView.Size = new System.Drawing.Size(161, 361);
             this.ActivityView.TabIndex = 19;
+            this.ActivityView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ActivityView_NodeMouseClick);
             // 
             // AstronautView
             // 
@@ -226,6 +227,7 @@
             // MapPic
             // 
             this.MapPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MapPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MapPic.Location = new System.Drawing.Point(649, 39);
             this.MapPic.Name = "MapPic";
             this.MapPic.Size = new System.Drawing.Size(299, 357);
@@ -258,6 +260,7 @@
             this.Controls.Add(this.labelAstronauts);
             this.Name = "TaskForm";
             this.Text = "Task";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.TaskForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.StartHour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DurationHour)).EndInit();

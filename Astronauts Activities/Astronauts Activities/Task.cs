@@ -27,7 +27,7 @@ namespace Astronauts_Activities
             this.Xposition = X;
             this.Yposition = Y;
         }
-
+/*
         public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour)
         {
             Name = Tactivity.Name;
@@ -45,7 +45,7 @@ namespace Astronauts_Activities
             this.StartHour = StartHour;
             Astronauts = Tastronauts;
             this.Description = Description;
-        }
+        }*/
 
         public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, string Description, int X, int Y)
         {

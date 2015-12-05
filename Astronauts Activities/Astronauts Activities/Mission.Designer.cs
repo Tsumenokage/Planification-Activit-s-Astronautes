@@ -53,7 +53,7 @@
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.infoSurLaMissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMissionMap = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -291,17 +291,17 @@
             // infoToolStripMenuItem
             // 
             this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.infoSurLaMissionToolStripMenuItem});
+            this.MenuMissionMap});
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.infoToolStripMenuItem.Text = "Info";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.infoToolStripMenuItem.Text = "Map";
             // 
-            // infoSurLaMissionToolStripMenuItem
+            // MenuMissionMap
             // 
-            this.infoSurLaMissionToolStripMenuItem.Name = "infoSurLaMissionToolStripMenuItem";
-            this.infoSurLaMissionToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.infoSurLaMissionToolStripMenuItem.Text = "Info sur la mission";
-            this.infoSurLaMissionToolStripMenuItem.Click += new System.EventHandler(this.infoSurLaMissionToolStripMenuItem_Click);
+            this.MenuMissionMap.Name = "MenuMissionMap";
+            this.MenuMissionMap.Size = new System.Drawing.Size(174, 22);
+            this.MenuMissionMap.Text = "Show Mission Map";
+            this.MenuMissionMap.Click += new System.EventHandler(this.MenuMissionMap_Click);
             // 
             // Mission
             // 
@@ -335,7 +335,6 @@
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem infoSurLaMissionToolStripMenuItem;
         private System.Windows.Forms.Button buttonRemoveTask;
         private System.Windows.Forms.Button buttonAddTask;
         private System.Windows.Forms.Button buttonShowReport;
@@ -353,6 +352,7 @@
         private System.Windows.Forms.Label EarthHour;
         private System.Windows.Forms.Label MissionTime;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem MenuMissionMap;
     }
 }
 
