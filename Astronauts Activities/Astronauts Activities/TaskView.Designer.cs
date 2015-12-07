@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.AstronautView = new System.Windows.Forms.ListView();
-            this.AstroName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ActivityView = new System.Windows.Forms.TreeView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonAddActivity = new System.Windows.Forms.Button();
@@ -40,34 +37,19 @@
             this.labelDuration = new System.Windows.Forms.Label();
             this.labelStartHour = new System.Windows.Forms.Label();
             this.labelAstronauts = new System.Windows.Forms.Label();
+            this.ActivityName = new System.Windows.Forms.Label();
+            this.StartHour = new System.Windows.Forms.Label();
+            this.StartMinutes = new System.Windows.Forms.Label();
+            this.EndMinutes = new System.Windows.Forms.Label();
+            this.EndHour = new System.Windows.Forms.Label();
+            this.AstronautView = new System.Windows.Forms.ListView();
+            this.AstroName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
-            // 
-            // AstronautView
-            // 
-            this.AstronautView.CheckBoxes = true;
-            this.AstronautView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.AstroName});
-            this.AstronautView.Enabled = false;
-            this.AstronautView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.AstronautView.Location = new System.Drawing.Point(218, 27);
-            this.AstronautView.Name = "AstronautView";
-            this.AstronautView.Size = new System.Drawing.Size(203, 97);
-            this.AstronautView.TabIndex = 52;
-            this.AstronautView.UseCompatibleStateImageBehavior = false;
-            this.AstronautView.View = System.Windows.Forms.View.Details;
-            // 
-            // ActivityView
-            // 
-            this.ActivityView.Enabled = false;
-            this.ActivityView.Location = new System.Drawing.Point(12, 27);
-            this.ActivityView.Name = "ActivityView";
-            this.ActivityView.Size = new System.Drawing.Size(161, 24);
-            this.ActivityView.TabIndex = 51;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(113, 97);
+            this.label2.Location = new System.Drawing.Point(113, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(15, 13);
             this.label2.TabIndex = 50;
@@ -84,10 +66,12 @@
             // 
             // buttonAddActivity
             // 
-            this.buttonAddActivity.Location = new System.Drawing.Point(167, 305);
+            this.buttonAddActivity.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonAddActivity.Location = new System.Drawing.Point(187, 306);
             this.buttonAddActivity.Name = "buttonAddActivity";
             this.buttonAddActivity.Size = new System.Drawing.Size(75, 23);
             this.buttonAddActivity.TabIndex = 43;
+            this.buttonAddActivity.Text = "Ok";
             this.buttonAddActivity.UseVisualStyleBackColor = true;
             // 
             // labelDescription
@@ -120,11 +104,11 @@
             // labelDuration
             // 
             this.labelDuration.AutoSize = true;
-            this.labelDuration.Location = new System.Drawing.Point(17, 90);
+            this.labelDuration.Location = new System.Drawing.Point(9, 90);
             this.labelDuration.Name = "labelDuration";
-            this.labelDuration.Size = new System.Drawing.Size(47, 13);
+            this.labelDuration.Size = new System.Drawing.Size(52, 13);
             this.labelDuration.TabIndex = 39;
-            this.labelDuration.Text = "Duration";
+            this.labelDuration.Text = "End Hour";
             // 
             // labelStartHour
             // 
@@ -144,13 +128,77 @@
             this.labelAstronauts.TabIndex = 37;
             this.labelAstronauts.Text = "Astronauts";
             // 
+            // ActivityName
+            // 
+            this.ActivityName.AutoSize = true;
+            this.ActivityName.Location = new System.Drawing.Point(62, 27);
+            this.ActivityName.Name = "ActivityName";
+            this.ActivityName.Size = new System.Drawing.Size(0, 13);
+            this.ActivityName.TabIndex = 53;
+            // 
+            // StartHour
+            // 
+            this.StartHour.AutoSize = true;
+            this.StartHour.Location = new System.Drawing.Point(72, 65);
+            this.StartHour.Name = "StartHour";
+            this.StartHour.Size = new System.Drawing.Size(35, 13);
+            this.StartHour.TabIndex = 54;
+            this.StartHour.Text = "label3";
+            // 
+            // StartMinutes
+            // 
+            this.StartMinutes.AutoSize = true;
+            this.StartMinutes.Location = new System.Drawing.Point(136, 65);
+            this.StartMinutes.Name = "StartMinutes";
+            this.StartMinutes.Size = new System.Drawing.Size(35, 13);
+            this.StartMinutes.TabIndex = 55;
+            this.StartMinutes.Text = "label4";
+            // 
+            // EndMinutes
+            // 
+            this.EndMinutes.AutoSize = true;
+            this.EndMinutes.Location = new System.Drawing.Point(136, 90);
+            this.EndMinutes.Name = "EndMinutes";
+            this.EndMinutes.Size = new System.Drawing.Size(35, 13);
+            this.EndMinutes.TabIndex = 57;
+            this.EndMinutes.Text = "label5";
+            // 
+            // EndHour
+            // 
+            this.EndHour.AutoSize = true;
+            this.EndHour.Location = new System.Drawing.Point(72, 90);
+            this.EndHour.Name = "EndHour";
+            this.EndHour.Size = new System.Drawing.Size(35, 13);
+            this.EndHour.TabIndex = 56;
+            this.EndHour.Text = "label6";
+            // 
+            // AstronautView
+            // 
+            this.AstronautView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.AstroName});
+            this.AstronautView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.AstronautView.Location = new System.Drawing.Point(227, 27);
+            this.AstronautView.Name = "AstronautView";
+            this.AstronautView.Size = new System.Drawing.Size(216, 120);
+            this.AstronautView.TabIndex = 58;
+            this.AstronautView.UseCompatibleStateImageBehavior = false;
+            this.AstronautView.View = System.Windows.Forms.View.Details;
+            // 
+            // AstroName
+            // 
+            this.AstroName.Width = 271;
+            // 
             // TaskView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 341);
             this.Controls.Add(this.AstronautView);
-            this.Controls.Add(this.ActivityView);
+            this.Controls.Add(this.EndMinutes);
+            this.Controls.Add(this.EndHour);
+            this.Controls.Add(this.StartMinutes);
+            this.Controls.Add(this.StartHour);
+            this.Controls.Add(this.ActivityName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonAddActivity);
@@ -169,9 +217,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView AstronautView;
-        private System.Windows.Forms.ColumnHeader AstroName;
-        private System.Windows.Forms.TreeView ActivityView;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonAddActivity;
@@ -181,6 +226,13 @@
         private System.Windows.Forms.Label labelDuration;
         private System.Windows.Forms.Label labelStartHour;
         private System.Windows.Forms.Label labelAstronauts;
+        private System.Windows.Forms.Label ActivityName;
+        private System.Windows.Forms.Label StartHour;
+        private System.Windows.Forms.Label StartMinutes;
+        private System.Windows.Forms.Label EndMinutes;
+        private System.Windows.Forms.Label EndHour;
+        private System.Windows.Forms.ListView AstronautView;
+        private System.Windows.Forms.ColumnHeader AstroName;
 
     }
 }

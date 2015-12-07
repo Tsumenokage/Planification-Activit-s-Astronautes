@@ -409,7 +409,6 @@ namespace Astronauts_Activities
             if (listCalendar.SelectedNode != null)//Sécurité, on ne met pas à jour si aucun jour n'est sélectionné
             {
                 int numDay = listCalendar.SelectedNode.Index;
-                MessageBox.Show("Astronaute modifié");
                 DayActivities.Items.Clear();
                 Day day = PlanningMission.Calendar[numDay];
                 Astronaut astronautSelected = Astronauts.Find(x => x.Name == AstronautList.SelectedItem.ToString());
@@ -436,7 +435,6 @@ namespace Astronauts_Activities
 
         private void majDayPlanning()
         {
-            MessageBox.Show("Jour modifié");
             DayActivities.Items.Clear();
             int numDay = listCalendar.SelectedNode.Index;
             Day day = PlanningMission.Calendar[numDay];
@@ -515,8 +513,12 @@ namespace Astronauts_Activities
         {
             if (DayActivities.SelectedItems != null)
             {
-                int numActiv = DayActivities.SelectedIndices[0];
-                TaskView TaskViewing = new TaskView(DayActivities.SelectedItems[0]);
+                int numDay = listCalendar.SelectedNode.Index;
+                Day day = PlanningMission.Calendar[numDay];
+                int numActivity = DayActivities.SelectedIndices[0];
+
+                Task t = day.Tasks[numActivity];
+                TaskView TaskViewing = new TaskView(t);
                 TaskViewing.ShowDialog();
             }
         }

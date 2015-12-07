@@ -11,17 +11,49 @@ namespace Astronauts_Activities
 {
     public partial class TaskView : Form
     {
-        private ListViewItem listViewItem;
+        Task task;
 
-        public TaskView()
+        public TaskView(Task task)
         {
-            //Activity =
+            
             InitializeComponent();
-        }
+            this.task = task;
 
-        public TaskView(ListViewItem listViewItem)
-        {
-            this.listViewItem = listViewItem;
+            this.ActivityName.Text =  task.Name;
+            this.richTextBoxDescription.Text = task.Description;
+
+            int StartHour = task.StartHour / 60;
+            int StartMinutes = task.StartHour % 60;
+
+            if (StartHour == 0)
+                this.StartHour.Text = "00";
+            else
+                this.StartHour.Text = StartHour.ToString();
+
+            if (StartMinutes == 0)
+                this.StartMinutes.Text = "00";
+            else
+                this.StartMinutes.Text = StartMinutes.ToString();
+
+            int EndHour = (task.StartHour + task.DurationMinute) / 60;
+            int EndMinutes = (task.StartHour + task.DurationMinute) % 60;
+
+            if (EndHour == 0)
+                this.EndHour.Text = "00";
+            else
+                this.EndHour.Text = EndHour.ToString();
+
+            if (EndMinutes == 0)
+                this.EndMinutes.Text = "00";
+            else
+                this.EndMinutes.Text = EndMinutes.ToString();
+
+            foreach (Astronaut A in task.Astronauts)
+            {
+                AstronautView.Items.Add(A.Name);
+            }
+
+            
         }
     }
 }

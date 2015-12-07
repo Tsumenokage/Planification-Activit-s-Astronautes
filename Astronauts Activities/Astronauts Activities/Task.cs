@@ -16,7 +16,7 @@ namespace Astronauts_Activities
         public string Name { get; private set; }
         private Activity Activity;
         public List<Astronaut> Astronauts { get; private set; }
-        private string Description;
+        public string Description { get; private set; }
         public int StartHour {get; private set;}
         public int DurationMinute {get; private set;}
         public int Xposition { get; private set; }

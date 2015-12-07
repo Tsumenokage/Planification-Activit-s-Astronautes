@@ -32,11 +32,10 @@
             this.labelStartHour = new System.Windows.Forms.Label();
             this.EndDaySelector = new System.Windows.Forms.NumericUpDown();
             this.EndDay = new System.Windows.Forms.Label();
-            this.MapPic = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.MapPic = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.StartDaySelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndDaySelector)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MapPic)).BeginInit();
             this.SuspendLayout();
             // 
             // StartDaySelector
@@ -101,17 +100,6 @@
             this.EndDay.TabIndex = 26;
             this.EndDay.Text = "End Day";
             // 
-            // MapPic
-            // 
-            this.MapPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MapPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MapPic.Location = new System.Drawing.Point(367, 12);
-            this.MapPic.Name = "MapPic";
-            this.MapPic.Size = new System.Drawing.Size(299, 357);
-            this.MapPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MapPic.TabIndex = 22;
-            this.MapPic.TabStop = false;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(15, 120);
@@ -122,22 +110,30 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // MapPic
+            // 
+            this.MapPic.Location = new System.Drawing.Point(218, 13);
+            this.MapPic.Name = "MapPic";
+            this.MapPic.Size = new System.Drawing.Size(299, 357);
+            this.MapPic.TabIndex = 29;
+            this.MapPic.Paint += new System.Windows.Forms.PaintEventHandler(this.MapPic_Paint);
+            this.MapPic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapPic_MouseDown);
+            // 
             // MissionMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 377);
+            this.Controls.Add(this.MapPic);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.EndDaySelector);
             this.Controls.Add(this.EndDay);
             this.Controls.Add(this.StartDaySelector);
             this.Controls.Add(this.labelStartHour);
-            this.Controls.Add(this.MapPic);
             this.Name = "MissionMap";
             this.Text = "MissionMap";
             ((System.ComponentModel.ISupportInitialize)(this.StartDaySelector)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndDaySelector)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MapPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,11 +141,11 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox MapPic;
         private System.Windows.Forms.NumericUpDown StartDaySelector;
         private System.Windows.Forms.Label labelStartHour;
         private System.Windows.Forms.NumericUpDown EndDaySelector;
         private System.Windows.Forms.Label EndDay;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel MapPic;
     }
 }

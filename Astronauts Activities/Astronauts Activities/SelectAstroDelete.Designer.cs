@@ -49,6 +49,10 @@
             this.AstronautView.View = System.Windows.Forms.View.Details;
             this.AstronautView.SelectedIndexChanged += new System.EventHandler(this.AstronautView_SelectedIndexChanged);
             // 
+            // AstroName
+            // 
+            this.AstroName.Width = 271;
+            // 
             // OkButton
             // 
             this.OkButton.Location = new System.Drawing.Point(12, 151);

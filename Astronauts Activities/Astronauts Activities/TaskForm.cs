@@ -196,10 +196,10 @@ namespace Astronauts_Activities
                 this.yMap = mapForm.sendY;
 
                 //On affiche sur la miniMap
-                graMap.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);
-
+                graMap.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);                
                 int miniX = (MapPic.Width * this.xMap) / MapImage.Width;
                 int miniY = (MapPic.Height * this.yMap) / MapImage.Height;
+                MessageBox.Show(miniX + "   " + miniY);
                 graMap.DrawImage(imageCross, miniX-(imageCross.Width/2), miniY-(imageCross.Height));
             }
         }

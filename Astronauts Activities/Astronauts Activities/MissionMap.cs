@@ -16,6 +16,9 @@ namespace Astronauts_Activities
         Image imageCross;
         String MapString;
         Mission mission;
+        List<Task> Marqueurs;
+        Image MapImage;
+        List<Rectangle> rectangles;
 
         public MissionMap(Mission mission)
         {
@@ -30,12 +33,39 @@ namespace Astronauts_Activities
             }
             MapGraph = MapPic.CreateGraphics();
             imageCross = Astronauts_Activities.Properties.Resources.crossImage;
+
+            Marqueurs = new List<Task>();
+            MapImage = Image.FromFile(MapString);
+            rectangles = new List<Rectangle>();
+
+        }
+
+        private void MapPic_Paint(object sender, PaintEventArgs e)
+        {
+            rectangles.Clear();
+            e.Graphics.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);
+            
+            int cpt = 0;
+            foreach (Task t in Marqueurs)
+            {
+                int miniX = (MapPic.Width * t.Xposition) / MapImage.Width;
+                int miniY = (MapPic.Height * t.Yposition) / MapImage.Height;
+                MessageBox.Show(miniX.ToString() + "  " + miniY.ToString());               
+                e.Graphics.DrawImage(imageCross, miniX - (imageCross.Width / 2), miniY - (imageCross.Height));
+                Rectangle r = new Rectangle(miniX-(imageCross.Width/2), miniY-imageCross.Height, imageCross.Width, imageCross.Height);
+                rectangles.Add(r);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.MapPic_Paint();
         }
 
         private void MapPic_Paint()
         {
-            List<Task> DrawTask = new List<Task>();
-
+            
+            Marqueurs.Clear();
             SelectedDay.Clear();
             for (int i = (int)StartDaySelector.Value; i <= EndDaySelector.Value; i++)
             {
@@ -48,29 +78,24 @@ namespace Astronauts_Activities
                 {
                     if(t.Xposition != mission.xOrigin && t.Yposition != mission.yOrigin )
                     {
-                        DrawTask.Add(t);
+                        Marqueurs.Add(t);
                     }
                 }
             }
-
-            MessageBox.Show(DrawTask.Count.ToString());
-
-            this.MapGraph.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);
-
-            foreach (Task t in DrawTask)
-            {
-                int miniX = (MapPic.Width * t.Xposition) / MapPic.Width;
-                int miniY = (MapPic.Height * t.Yposition) / MapPic.Height;
-                MessageBox.Show(miniX.ToString() + "  " + miniY.ToString());
-                this.MapGraph.DrawImage(imageCross, miniX - (imageCross.Width / 2), miniY - (imageCross.Height));
-            }
-
-            
+            MapPic.Invalidate();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void MapPic_MouseDown(object sender, MouseEventArgs e)
         {
-            this.MapPic_Paint();
+            foreach (Rectangle r in rectangles)
+            {
+                if (r.Contains(e.X, e.Y))
+                {
+                    TaskView TV = new TaskView(Marqueurs[rectangles.IndexOf(r)]);
+                    TV.ShowDialog();
+                }
+            }
         }
+
     }
 }
