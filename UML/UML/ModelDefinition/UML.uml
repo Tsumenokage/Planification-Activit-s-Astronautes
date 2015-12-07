@@ -96,7 +96,71 @@
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false" />
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="6979a0a8-bf13-47ec-94f3-a884235ecfa5"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d871ee45-13ec-49a5-9ed7-eb7d02e1615c"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d1fc71a1-401a-4054-8e8f-a1628c453e26"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="Activities"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c8684d11-937c-4112-bb09-ec7e57e60755"
+              LastKnownName="Activity"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="17d2f524-80ad-47aa-a3de-beee4202854d"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d77bf997-a576-4c70-a412-8675bc50bf33"
+                      name="Lower"
+                      value="n" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="9e2c7822-e447-45a5-bfc8-78854cc18072"
+                      name="Upper"
+                      value="n" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ed397940-d998-4b09-a203-1d06f109be25"
+                  name="Activities"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -278,14 +342,6 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
-        Id="220ad8a6-dcda-459a-8cd0-8297f6c41c90"
-        name="Class3"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
         Id="0a704d75-f59e-47da-821c-53ab9fa4d4fd"
         name="Planning"
         isAbstract="false"
@@ -295,7 +351,7 @@
           <association
             Id="a7f905d3-0f3d-4b9e-9175-e5c33ab112cb"
             isDerived="false"
-            sourceEndRoleName="Planning"
+            sourceEndRoleName=""
             targetEndRoleName="Calendar"
             isLeaf="false"
             isAbstract="false">
@@ -307,7 +363,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="af60e9df-ac0d-434a-8f0e-a8b2de27ab14"
-                  name="Planning"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -356,62 +411,10 @@
         isActiveClass="false">
         <targetEnds>
           <association
-            Id="074f872c-2c4d-4aac-9226-49c0b4662095"
-            isDerived="false"
-            sourceEndRoleName="TaskBeginDay"
-            targetEndRoleName="Task"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="a5c7d5d7-efd1-4b78-857d-847aace822c3"
-              LastKnownName="Task"
-              LastKnownLocation="UML.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="fe690826-9f85-4c82-9449-6bee5123fc5c"
-                  name="TaskBeginDay"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="cadb0521-b78e-445a-b8b8-de72f79bf5f5"
-                  name="Task"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="0f8b1831-12db-40fc-b4a1-60aaf53155da"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="da68d2dc-e109-44d0-ad99-e1284ebc770e"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
             Id="817a0601-f995-4568-a18f-7f5d7eedc551"
             isDerived="false"
-            sourceEndRoleName="TaskEndDay"
-            targetEndRoleName="Task"
+            sourceEndRoleName=""
+            targetEndRoleName="Tasks"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -422,7 +425,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="eb314687-9f56-4e2b-9717-33f4c7af9844"
-                  name="TaskEndDay"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -435,7 +437,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="c9bd20f8-e539-4484-ba1d-23a75e11adb9"
-                  name="Task"
+                  name="Tasks"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -463,27 +465,7 @@
         <ownedAttributesInternal>
           <property
             Id="3def9d6c-d611-42fb-8c22-9a96ba0a5b8e"
-            name="Days"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="0ec6497d-45d5-4e98-a5c8-aea9e95be672"
-                LastKnownName="Enum"
-                LastKnownLocation="UML.uml" />
-            </type_NamedElement>
-          </property>
-          <property
-            Id="9d5afd3d-eb62-459b-b0c7-f373a5de8fc5"
-            name="NumberDayOfMonth"
-            visibility="Private"
+            name="NumberDay"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -501,8 +483,7 @@
           </property>
           <property
             Id="db093730-a3e8-4df0-89e4-b3922bc6bd60"
-            name="NumberDay"
-            visibility="Private"
+            name="Report"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -513,14 +494,14 @@
             isComposite="false">
             <type_NamedElement>
               <primitiveTypeMoniker
-                Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                LastKnownName="Integer"
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
                 LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
           <property
             Id="7affc6ef-5a0f-4e4b-95d5-c2077365e82e"
-            name="NumberYear"
+            name="MINUTES"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -570,7 +551,6 @@
           <property
             Id="4242d636-3487-4e82-b282-b2206fc9b2e7"
             name="Name"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -583,6 +563,78 @@
               <primitiveTypeMoniker
                 Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
                 LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="be9fd556-dc72-4a64-8b4d-6222b91a9903"
+            name="StartHour"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="84381f9f-2095-4f8e-b564-327a91cf8a56"
+            name="DurationMinute"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="2b1f81f5-a748-4985-a7e3-b1085a5b1c5c"
+            name="Xposition"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="db60eaf2-00ac-4698-b86e-390bdffd1a4b"
+            name="Yposition"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
                 LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
@@ -630,6 +682,68 @@
                     <classMoniker
                       Id="b20f2d57-db5b-475e-9f37-1b6699ada55a"
                       LastKnownName="Astronaut"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="70de2bf2-94b5-4b16-80cb-c2334b18659d"
+            name="getInfo"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="42f9232e-fb11-4864-9436-0ef84f8d7e6d"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="42556c47-c74e-406e-b057-a9024442e5c8"
+            name="formatHour"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="717d6fef-3746-4867-b968-1a2d772cd0cc"
+                  name="Integer"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="9fab1252-b349-44d0-8aec-30adb375061d"
+                      LastKnownName="Time"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="26d2d36a-3c43-4064-ae45-301d72b27b05"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
                       LastKnownLocation="UML.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -1180,6 +1294,21 @@
           </association>
         </targetEnds>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="6a972ff7-feed-4e49-906c-be65fd30c9f3"
+        name="List&lt;Task&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="555738a9-6590-4250-ac8a-5e19ee6b9a9d"
+        name="int" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="9fab1252-b349-44d0-8aec-30adb375061d"
+        name="Time" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

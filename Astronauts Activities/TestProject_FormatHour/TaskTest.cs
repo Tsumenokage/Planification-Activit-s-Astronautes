@@ -75,9 +75,9 @@ namespace TestProject_FormatHour
             List<Astronaut> Tastronauts = null; // TODO: initialisez à une valeur appropriée
             int DureeMinute = 0; // TODO: initialisez à une valeur appropriée
             int StartHour = 0; // TODO: initialisez à une valeur appropriée
-            Task target = new Task(Tactivity, Tastronauts, DureeMinute, StartHour); // TODO: initialisez à une valeur appropriée
+            //Task target = new Task(Tactivity, Tastronauts, DureeMinute, StartHour); // TODO: initialisez à une valeur appropriée
             Astronaut astronaut = null; // TODO: initialisez à une valeur appropriée
-            target.AddAstronaut(astronaut);
+            //target.AddAstronaut(astronaut);
             Assert.Inconclusive("Une méthode qui ne retourne pas une valeur ne peut pas être vérifiée.");
         }
     }

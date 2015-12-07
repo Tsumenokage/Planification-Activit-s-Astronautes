@@ -5,6 +5,11 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
+    // Classe principale de l'application. Les objets sont instanciés à des valeurs par défaut mais ils peuvent être supprimés, édités et / ou ajoutés.
+    // Ils sont liés à une activité (Activity). Astronauts définit les astronautes réalisant la tâche. Description le descriptif de 400 caractères.
+    // StartHour et DurationMinute définissent la plage horaire de la tâche. Cette solution a été choisie au lieu d'un StartHour et d'un EndHour pour faciliter les calculs.
+    // Les coordonnées Xposition et Yposition permettent le répérage sur la carte.
+
     public class Task
     {
         //Variables

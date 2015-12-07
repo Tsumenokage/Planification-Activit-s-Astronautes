@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
+    // Classe représentant un astronaute, définie à partir du fichier XML de mission.
     public class Astronaut
     {
         public string Name { get; private set; }

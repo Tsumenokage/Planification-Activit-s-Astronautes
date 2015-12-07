@@ -10,11 +10,11 @@ using System.Xml;
 
 namespace Astronauts_Activities
 {
+    // Cette
     public partial class Mission : Form
     {
         private List<Astronaut> Astronauts;
         public String Map { get; private set; }
-        private List<Category> Categories;
         public Planning PlanningMission { get; private set; }
         private DateTime StartMission;
         public int xOrigin { get; private set; }
@@ -26,7 +26,6 @@ namespace Astronauts_Activities
         {
             InitializeComponent();
             Astronauts = new List<Astronaut>();
-            Categories = new List<Category>();
 
             bg.Tick += (s, e) => { EarthHour.Text = DateTime.Now.ToString(); };
             bg.Tick += (s, e) => { CurrentDay = MajTime(); };
@@ -103,9 +102,17 @@ namespace Astronauts_Activities
 
                         MyNode.BackColor = Color.LightGray;
                     }
+                        else if (day.NumberDay == CurrentDay)
+                    {
+                        MyNode = listCalendar.Nodes.Add(day.ToString());
+
+                        MyNode.BackColor = Color.LightGreen;
+                    }
                         else
                     {
                         MyNode = listCalendar.Nodes.Add(day.ToString());
+
+                        MyNode.BackColor = Color.LightBlue;
                     }
 
                     List<Activity> Activities = Categories.Find(x => x.Name == "Living").Activities;

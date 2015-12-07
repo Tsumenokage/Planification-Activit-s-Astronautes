@@ -5,14 +5,13 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
+    // Classe représentant les jours. Les objets de cette classe sont instanciées au lancement du fichier XML de mission. NumberDay correspond
+    // au numéro du jeu (de 1 à 500 ici), Report au compte-rendu quotidien, Tasks à la liste de tâche de la journée.
     public class Day
     {
         public int NumberDay { get; private set; }
         public string Report { get; set; }
         public List<Task> Tasks { get; private set; }
-        //private int NumberDayOfMonth;
-        //private enum Days { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday } ;
-        //private int NumberYear;
         private const int MINUTES = 1480; //Nombre de minutes dans une journée martienne
 
         public Day(int NumberDay)

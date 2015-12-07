@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace Astronauts_Activities
 {
+    // Windows Form du compte-rendu quotidien, il est donc lié à un jour. Long de 1000 caractères au maximum.
     public partial class DayReport : Form
     {
         //Variables
