@@ -10,11 +10,18 @@ using System.Xml;
 
 namespace Astronauts_Activities
 {
-    // Cette
+    // Cette classe regroupe les niveaux 1 et 2 définis dans le cahier des charges du projet. A gauche, la liste des jours correspond au niveau 1 : les jours sont affichés
+    // différement selon leur position par rapport au jour actuel.
+    // Sélectionner un jour modifie le contenu du panel de droite, qui correspond au niveau 2. Ce panel affiche les activités du jour sélectionné, les boutons de gestion
+    // comme l'ajout ou l'édition d'une tâche. On peut aussi afficher le compte-rendu, ou naviguer vers les jours suivants / précédents.
+    // Double-cliquer sur une tâche affiche le niveau 3.
+    // Le contenu de la mission est initialisé ici, par l'ouverture du fichier XML de mission.
+
     public partial class Mission : Form
     {
         private List<Astronaut> Astronauts;
         public String Map { get; private set; }
+        private List<Category> Categories;
         public Planning PlanningMission { get; private set; }
         private DateTime StartMission;
         public int xOrigin { get; private set; }

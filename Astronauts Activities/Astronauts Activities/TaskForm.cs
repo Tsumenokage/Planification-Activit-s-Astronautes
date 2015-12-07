@@ -9,6 +9,11 @@ using System.Windows.Forms;
 
 namespace Astronauts_Activities
 {
+    // Ce Windows Form est utilisé pour l'ajout, l'édition (et éventuellement la suppression) d'une tâche. Il est affiché différement selon que cela soit un
+    // ajout ou une édition.
+    // On peut y gérer les astronautes concernés, le nom de l'activité, la date de début et la durée de la tâche, la localisation de la tâche grâce à une carte
+    // de la région.
+
     public partial class TaskForm : Form
     {
         //Variable
