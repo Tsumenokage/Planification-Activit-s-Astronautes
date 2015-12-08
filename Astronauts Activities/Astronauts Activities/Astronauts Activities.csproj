@@ -82,12 +82,6 @@
     </Compile>
     <Compile Include="Astronaut.cs" />
     <Compile Include="Day.cs" />
-    <Compile Include="TaskReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>TaskReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Mission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,9 +118,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>TaskReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mission.resx">
       <DependentUpon>Mission.cs</DependentUpon>

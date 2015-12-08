@@ -33,6 +33,7 @@ namespace Astronauts_Activities
         {
             InitializeComponent();
             Astronauts = new List<Astronaut>();
+            Categories = new List<Category>();
 
             bg.Tick += (s, e) => { EarthHour.Text = DateTime.Now.ToString(); };
             bg.Tick += (s, e) => { CurrentDay = MajTime(); };
@@ -254,14 +255,17 @@ namespace Astronauts_Activities
                     XmlNodeList nomMission = noeud.SelectNodes("Name");
                     this.Text = nomMission[0].InnerText;
 
+                    
                     XmlNodeList MapMars = noeud.SelectNodes("Map");
                     this.Map = MapMars[0].InnerText;
 
+                    
                     XmlNodeList XMap = noeud.SelectNodes("X");
                     this.xOrigin = int.Parse(XMap[0].InnerText);
 
                     XmlNodeList YMap = noeud.SelectNodes("Y");
                     this.yOrigin = int.Parse(YMap[0].InnerText);
+                    
 
                     XmlNode AstronautXml = noeud.SelectSingleNode("Astronauts");
                     XmlNodeList AstronautsXml = AstronautXml.SelectNodes("Astronaut");
@@ -340,6 +344,19 @@ namespace Astronauts_Activities
                 MessageBox.Show(indexTask.ToString());
                 Day day = PlanningMission.Calendar[listCalendar.SelectedNode.Index];
                 Task t = day.Tasks[indexTask];
+
+                foreach (Task ta in day.Tasks)
+                {
+                    String[] info = ta.getInfo();
+
+                    if (info[1] == DayActivities.SelectedItems[0].SubItems[1].Text &&
+                        info[2] == DayActivities.SelectedItems[0].SubItems[2].Text &&
+                        info[3] == DayActivities.SelectedItems[0].SubItems[3].Text)
+                    {
+                        t = ta;
+                    }
+                }
+
                 SelectAstroDelete delete = new SelectAstroDelete(t.Astronauts);
 
                 if (delete.ShowDialog() == DialogResult.OK)
@@ -425,7 +442,6 @@ namespace Astronauts_Activities
 
                 foreach (Task t in AstronautDailyPlanning)
                 {
-                    //MessageBox.Show(t.Name);
                     ListViewItem itm = new ListViewItem(t.getInfo());
                     DayActivities.Items.Add(itm);
 
@@ -516,8 +532,22 @@ namespace Astronauts_Activities
                 int numDay = listCalendar.SelectedNode.Index;
                 Day day = PlanningMission.Calendar[numDay];
                 int numActivity = DayActivities.SelectedIndices[0];
-
                 Task t = day.Tasks[numActivity];
+
+
+                foreach (Task ta in day.Tasks)
+                {
+                    String[] info = ta.getInfo();
+
+                    if(info[1] == DayActivities.SelectedItems[0].SubItems[1].Text &&
+                        info[2] == DayActivities.SelectedItems[0].SubItems[2].Text &&
+                        info[3] == DayActivities.SelectedItems[0].SubItems[3].Text)
+                    {
+                        t = ta;
+                    }
+                }
+                          
+                
                 TaskView TaskViewing = new TaskView(t);
                 TaskViewing.ShowDialog();
             }
