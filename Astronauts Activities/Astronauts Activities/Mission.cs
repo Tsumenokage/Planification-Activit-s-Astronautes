@@ -173,66 +173,11 @@ namespace Astronauts_Activities
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            XmlDocument file = new XmlDocument();
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            LoadMission load = new LoadMission();
 
-            // Set filter options and filter index.
-            openFileDialog1.Filter = "Text Files (.xml)|*.xml|All Files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
-
-            openFileDialog1.Multiselect = true;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if(load.ShowDialog() == DialogResult.OK)
             {
-                try
-                {
-                    file.Load(openFileDialog1.OpenFile());
-                    XmlNode noeud = file.DocumentElement;
-                    XmlNodeList nomMission = noeud.SelectNodes("Name");
-                    this.Text = nomMission[0].InnerText;
-
-                    XmlNode AstronautXml = noeud.SelectSingleNode("Astronauts");
-                    XmlNodeList AstronautsXml = AstronautXml.SelectNodes("Astronaut");
-
-                    foreach (XmlNode nodeAstro in AstronautsXml)
-                    {
-                        Astronaut A = new Astronaut(nodeAstro.InnerText);
-                        Astronauts.Add(A);
-                    }
-
-                    XmlNodeList ActivitiesXml = noeud.ChildNodes;
-                    foreach (XmlNode category in ActivitiesXml)
-                    {
-                        Category c = new Category(category.Name);
-                        XmlNodeList Activities = category.ChildNodes;
-
-                        foreach (XmlNode activity in Activities)
-                        {
-                            if (activity.Name == "Activity")
-                            {
-                                Activity a = new Activity(activity.InnerText);
-                                c.addActivity(a);
-                            }
-                            else
-                            {
-                                Category c2 = new Category(activity.Name);
-                                c.addActivity(c2);
-                                XmlNodeList SecondaryActivity = activity.ChildNodes;
-
-                                foreach (XmlNode SubActivity in SecondaryActivity)
-                                {
-                                    Activity a2 = new Activity(SubActivity.InnerText);
-                                    c2.addActivity(a2);
-                                }
-                            }
-                        }
-                        
-                    }                   
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                }
+                MessageBox.Show("TODO");
             }
         }
 
@@ -561,6 +506,57 @@ namespace Astronauts_Activities
             {
 
             }
+        }
+
+        private void SaveMission()
+        {
+            try
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                XmlNode rootNode = xmlDoc.CreateElement("Mission");
+                xmlDoc.AppendChild(rootNode);
+
+                foreach (Day d in PlanningMission.Calendar)
+                {
+                    XmlNode day = xmlDoc.CreateElement("Day");
+                    rootNode.AppendChild(day);
+
+                    XmlNode NumberDay = xmlDoc.CreateElement("Number");
+                    NumberDay.InnerText = d.NumberDay.ToString();
+
+                    foreach (Task t in d.Tasks)
+                    {
+                        XmlNode task = xmlDoc.CreateElement("Task");
+
+                        XmlNode TaskName = xmlDoc.CreateElement("TaskName");
+                        TaskName.InnerText = t.Name;
+
+                        XmlNode StartHour = xmlDoc.CreateElement("StartHour");
+                        StartHour.InnerText = t.StartHour.ToString();
+
+                        task.AppendChild(TaskName);
+                        task.AppendChild(StartHour);
+
+                        day.AppendChild(task);
+                    }
+
+                    day.AppendChild(NumberDay);
+                }
+
+
+                xmlDoc.Save("test-doc.xml");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveMission();
         }
     }
 }
