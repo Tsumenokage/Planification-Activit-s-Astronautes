@@ -20,6 +20,15 @@ namespace Astronauts_Activities
             this.NumberDay = NumberDay;
         }
 
+
+        public Day(int NumberDay, string Report)
+        {
+            Tasks = new List<Task>();
+            this.NumberDay = NumberDay;
+            this.Report = Report;
+        }
+
+
         public override string ToString()
         {
             string s = "Day : " + this.NumberDay;
