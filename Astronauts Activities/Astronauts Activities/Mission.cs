@@ -91,7 +91,7 @@ namespace Astronauts_Activities
 
             newPlan.ShowDialog();
 
-            LoadXml();
+            NewMission();
 
             foreach (Astronaut a in Astronauts)
             {
@@ -181,7 +181,7 @@ namespace Astronauts_Activities
             }
         }
 
-        private void LoadXml()
+        private void NewMission()
         {
             XmlDocument file = new XmlDocument();
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -523,6 +523,7 @@ namespace Astronauts_Activities
 
                     XmlNode NumberDay = xmlDoc.CreateElement("Number");
                     NumberDay.InnerText = d.NumberDay.ToString();
+                    day.AppendChild(NumberDay);
 
                     foreach (Task t in d.Tasks)
                     {
@@ -534,13 +535,35 @@ namespace Astronauts_Activities
                         XmlNode StartHour = xmlDoc.CreateElement("StartHour");
                         StartHour.InnerText = t.StartHour.ToString();
 
+                        XmlNode Duration = xmlDoc.CreateElement("Duration");
+                        Duration.InnerText = t.DurationMinute.ToString();
+
+                        XmlNode PositionX = xmlDoc.CreateElement("PositionX");
+                        PositionX.InnerText = t.Xposition.ToString();
+
+                        XmlNode PositionY = xmlDoc.CreateElement("PositionY");
+                        PositionY.InnerText = t.Yposition.ToString();
+
                         task.AppendChild(TaskName);
                         task.AppendChild(StartHour);
+                        task.AppendChild(Duration);
+                        task.AppendChild(PositionX);
+                        task.AppendChild(PositionY);
+
+                        XmlNode Astronauts = xmlDoc.CreateElement("Astronauts");
+
+                        foreach (Astronaut a in t.Astronauts)
+                        {
+                            XmlNode Astro = xmlDoc.CreateElement("Astronaut");
+                            Astro.InnerText = a.Name;
+                            Astronauts.AppendChild(Astro);
+                        }
+                        task.AppendChild(Astronauts);
 
                         day.AppendChild(task);
                     }
 
-                    day.AppendChild(NumberDay);
+                    
                 }
 
 
