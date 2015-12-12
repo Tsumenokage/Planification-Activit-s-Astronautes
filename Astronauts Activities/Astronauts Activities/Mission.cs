@@ -40,6 +40,7 @@ namespace Astronauts_Activities
             bg.Interval = 500;
             bg.Start();
             
+            
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -89,14 +90,14 @@ namespace Astronauts_Activities
 
 
             NewMission();
-
+            
             foreach (Astronaut a in Astronauts)
             {
                 AstronautList.Items.Add(a.Name);
                 AstronautList.SelectedIndex = 0;
             }
-
-                foreach (Day day in PlanningMission.Calendar)
+            CurrentDay = MajTime();
+            foreach (Day day in PlanningMission.Calendar)
                 {
                     TreeNode MyNode;
                     if (day.NumberDay < CurrentDay)
@@ -105,11 +106,11 @@ namespace Astronauts_Activities
 
                         MyNode.BackColor = Color.LightGray;
                     }
-                        else if (day.NumberDay == CurrentDay)
+                        else if (day.NumberDay == CurrentDay+1)
                     {
                         MyNode = listCalendar.Nodes.Add(day.ToString());
 
-                        MyNode.BackColor = Color.LightGreen;
+                        MyNode.BackColor = Color.Green;
                     }
                         else
                     {
@@ -173,6 +174,7 @@ namespace Astronauts_Activities
                 this.AstronautList.Items.Clear();
                 this.Astronauts.Clear();
                 this.Categories.Clear();
+                
                 LoadMissionXml(load.missionXml);
                 LoadMission(load.fileXml);
                 saveToolStripMenuItem.Enabled = true;
@@ -356,7 +358,8 @@ namespace Astronauts_Activities
                     AstronautList.Items.Add(a.Name);
                     AstronautList.SelectedIndex = 0;
                 }
-
+                CurrentDay = MajTime();
+                MessageBox.Show(CurrentDay.ToString());
                 foreach (Day day in PlanningMission.Calendar)
                 {
                     TreeNode MyNode;
@@ -370,7 +373,7 @@ namespace Astronauts_Activities
                     {
                         MyNode = listCalendar.Nodes.Add(day.ToString());
 
-                        MyNode.BackColor = Color.LightGreen;
+                        MyNode.BackColor = Color.Green;
                     }
                     else
                     {
@@ -378,6 +381,7 @@ namespace Astronauts_Activities
 
                         MyNode.BackColor = Color.LightBlue;
                     }
+                    
                 }
             }
             catch (Exception ex)
@@ -385,6 +389,7 @@ namespace Astronauts_Activities
 
                 MessageBox.Show(ex.Message);
             }
+            listCalendar.SelectedNode = listCalendar.Nodes[CurrentDay-1];
         }
 
         private void LoadMissionXml(string Path)
@@ -518,6 +523,7 @@ namespace Astronauts_Activities
 
         private void ViewDayPlanning(object sender, TreeViewEventArgs e)
         {
+            
             DayActivities.Items.Clear();
             int numDay = listCalendar.SelectedNode.Index;
 
@@ -551,7 +557,14 @@ namespace Astronauts_Activities
             {
 
                 ListViewItem itm = new ListViewItem(t.getInfo());
-                DayActivities.Items.Add(itm);
+
+
+                ListViewItem item = DayActivities.Items.Add(itm);
+
+                if (t.Xposition != xOrigin || t.Yposition != yOrigin)
+                {
+                    item.ImageIndex = 0;
+                }
 
             }
         }
@@ -588,6 +601,20 @@ namespace Astronauts_Activities
         {
             DayActivities.Items.Clear();
             int numDay = listCalendar.SelectedNode.Index;
+
+            if (numDay < CurrentDay - 1)
+            {
+                buttonAddTask.Enabled = false;
+                buttonEditTask.Enabled = false;
+                buttonRemoveTask.Enabled = false;
+            }
+            else
+            {
+                buttonAddTask.Enabled = true;
+                buttonEditTask.Enabled = true;
+                buttonRemoveTask.Enabled = true;
+            }
+
             Day day = PlanningMission.Calendar[numDay];
             Astronaut astronautSelected = Astronauts.Find(x => x.Name == AstronautList.SelectedItem.ToString());
 
@@ -603,9 +630,17 @@ namespace Astronauts_Activities
 
             foreach (Task t in AstronautDailyPlanning)
             {
-                //MessageBox.Show(t.Name);
+
                 ListViewItem itm = new ListViewItem(t.getInfo());
-                DayActivities.Items.Add(itm);
+
+
+                ListViewItem item = DayActivities.Items.Add(itm);
+
+                if (t.Xposition != xOrigin || t.Yposition != yOrigin)
+                {
+                    item.ImageIndex = 0;
+                }
+
             }
         }
 

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mission));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listCalendar = new System.Windows.Forms.TreeView();
             this.MissionTime = new System.Windows.Forms.Label();
@@ -54,6 +56,7 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMissionMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -143,10 +146,12 @@
             this.DayActivities.FullRowSelect = true;
             this.DayActivities.HideSelection = false;
             this.DayActivities.LabelWrap = false;
+            this.DayActivities.LargeImageList = this.imageList1;
             this.DayActivities.Location = new System.Drawing.Point(187, 48);
             this.DayActivities.MultiSelect = false;
             this.DayActivities.Name = "DayActivities";
             this.DayActivities.Size = new System.Drawing.Size(312, 540);
+            this.DayActivities.SmallImageList = this.imageList1;
             this.DayActivities.TabIndex = 8;
             this.DayActivities.UseCompatibleStateImageBehavior = false;
             this.DayActivities.View = System.Windows.Forms.View.Details;
@@ -265,7 +270,7 @@
             // newPlanningToolStripMenuItem
             // 
             this.newPlanningToolStripMenuItem.Name = "newPlanningToolStripMenuItem";
-            this.newPlanningToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newPlanningToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.newPlanningToolStripMenuItem.Text = "New Planning";
             this.newPlanningToolStripMenuItem.Click += new System.EventHandler(this.newPlanningToolStripMenuItem_Click);
             // 
@@ -273,21 +278,21 @@
             // 
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             // 
             // infoToolStripMenuItem
@@ -304,6 +309,12 @@
             this.MenuMissionMap.Size = new System.Drawing.Size(174, 22);
             this.MenuMissionMap.Text = "Show Mission Map";
             this.MenuMissionMap.Click += new System.EventHandler(this.MenuMissionMap_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "trains2.png");
             // 
             // Mission
             // 
@@ -355,6 +366,7 @@
         private System.Windows.Forms.Label MissionTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem MenuMissionMap;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

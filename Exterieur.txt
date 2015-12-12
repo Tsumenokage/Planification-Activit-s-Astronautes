@@ -44259,13 +44259,24 @@
       <TaskName>Sleeping</TaskName>
       <StartHour>0</StartHour>
       <Duration>420</Duration>
-      <PositionX>500</PositionX>
+      <PositionX>700</PositionX>
       <PositionY>1000</PositionY>
       <Astronauts>
-        <Astronaut>Bruce Willis</Astronaut>
         <Astronaut>Will Smith</Astronaut>
         <Astronaut>Arnold Schwarzenegger</Astronaut>
         <Astronaut>Amy Pond</Astronaut>
+      </Astronauts>
+      <Description>
+      </Description>
+    </Task>
+    <Task>
+      <TaskName>Private</TaskName>
+      <StartHour>0</StartHour>
+      <Duration>120</Duration>
+      <PositionX>141</PositionX>
+      <PositionY>1059</PositionY>
+      <Astronauts>
+        <Astronaut>Bruce Willis</Astronaut>
       </Astronauts>
       <Description>
       </Description>
