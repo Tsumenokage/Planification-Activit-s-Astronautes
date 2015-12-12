@@ -167,8 +167,6 @@ namespace Astronauts_Activities
             }
 
             listCalendar.SelectedNode = listCalendar.Nodes[0];
-            //ViewDayPlanning();
-
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -177,7 +175,7 @@ namespace Astronauts_Activities
 
             if(load.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("TODO");
+                LoadMission(load.fileXml);
             }
         }
 
@@ -195,6 +193,8 @@ namespace Astronauts_Activities
             {
                 try
                 {
+
+                    this.StartMission = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,0,0,0);
                     file.Load(openFileDialog1.OpenFile());
                     XmlNode noeud = file.DocumentElement;
                     XmlNodeList nomMission = noeud.SelectNodes("Name");
@@ -220,13 +220,7 @@ namespace Astronauts_Activities
                         Astronaut A = new Astronaut(nodeAstro.InnerText);
                         Astronauts.Add(A);
                     }
-
-                    XmlNode DateMissionXml = noeud.SelectSingleNode("BeginMission");
-                    string Day = DateMissionXml.SelectSingleNode("Day").InnerText;
-                    string Month = DateMissionXml.SelectSingleNode("Month").InnerText;
-                    string Year = DateMissionXml.SelectSingleNode("Year").InnerText;
-
-                    this.StartMission = new DateTime(int.Parse(Year),int.Parse(Month), int.Parse(Day), 0, 0, 0);
+                    
 
                     XmlNode ActivityXml = noeud.SelectSingleNode("Activities");
                     XmlNodeList ActivitiesXml = ActivityXml.ChildNodes;
@@ -253,7 +247,6 @@ namespace Astronauts_Activities
                                 foreach (XmlNode SubActivity in SecondaryActivity)
                                 {
                                     Activity a2 = new Activity(SubActivity.InnerText);
-                                    MessageBox.Show(SubActivity.InnerText);
                                     c2.addActivity(a2);
                                 }
                             }
@@ -264,6 +257,88 @@ namespace Astronauts_Activities
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
+            }
+        }
+
+        private void LoadMission(string Path)
+        {
+            XmlDocument file = new XmlDocument();
+
+            try
+            {
+                file.Load(Path);
+
+                XmlNode root = file.DocumentElement;
+
+                XmlNode Start = root.SelectSingleNode("StartMission");
+                XmlNode Year = Start.SelectSingleNode("Year");
+                XmlNode Month = Start.SelectSingleNode("Month");
+                XmlNode Day = Start.SelectSingleNode("Day");
+
+
+                this.StartMission = new DateTime(int.Parse(Year.InnerText), int.Parse(Month.InnerText), int.Parse(Day.InnerText));
+
+                XmlNodeList Days = root.SelectNodes("Day");
+
+                foreach (XmlNode d in Days)
+                {
+                    XmlNode Number = d.SelectSingleNode("Number");
+                    
+                    Day newDay = new Day(int.Parse(Number.InnerText));
+
+                    XmlNodeList Tasks = d.SelectNodes("Task");
+
+                    foreach (XmlNode n in Tasks)
+                    {
+                        XmlNode LoadActivity = n.SelectSingleNode("TaskName");
+                        String ActivityName = LoadActivity.InnerText;
+                        Activity newActivity;
+
+                        XmlNode StartHourLoad = n.SelectSingleNode("StartHour");
+                        int StartHour = int.Parse(StartHourLoad.InnerText);
+
+                        XmlNode DurationLoad = n.SelectSingleNode("Duration");
+                        int Duration = int.Parse(DurationLoad.InnerText);
+
+                        XmlNode PositionXLoad = n.SelectSingleNode("PositionX");
+                        int PositionX = int.Parse(PositionXLoad.InnerText);
+
+                        XmlNode PositionYLoad = n.SelectSingleNode("PositionY");
+                        int PositionY = int.Parse(PositionYLoad.InnerText);
+
+                        foreach (Activity c in this.Categories)
+                        {
+                            newActivity = c.Activities.Find(x => x.Name == ActivityName);
+                        }
+
+                        XmlNode AstronautsXml = n.SelectSingleNode("Astronaut");
+                        XmlNodeList AstronautsListXml = AstronautsXml.SelectNodes("Astronaut");
+
+
+                        List<Astronaut> newAstronaut = new List<Astronaut>();
+                        foreach (XmlNode astro in AstronautsListXml)
+                        {
+                            Astronaut a = this.Astronauts.Find(x => x.Name == astro.InnerText);
+                            if(a != null)
+                            {
+                                newAstronaut.Add(a);
+                            }
+                        }
+
+                        
+                        
+
+                    }
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -327,7 +402,6 @@ namespace Astronauts_Activities
 
         private void ViewDayPlanning(object sender, TreeViewEventArgs e)
         {
-            MessageBox.Show("Jour modifié");
             DayActivities.Items.Clear();
             int numDay = listCalendar.SelectedNode.Index;
 
@@ -516,6 +590,22 @@ namespace Astronauts_Activities
                 XmlNode rootNode = xmlDoc.CreateElement("Mission");
                 xmlDoc.AppendChild(rootNode);
 
+                XmlNode Start = xmlDoc.CreateElement("StartMission");
+                XmlNode StartYear = xmlDoc.CreateElement("Year");
+                StartYear.InnerText = this.StartMission.Year.ToString();
+
+                XmlNode StartMonth = xmlDoc.CreateElement("Month");
+                StartMonth.InnerText = this.StartMission.Month.ToString();
+
+                XmlNode StartDay = xmlDoc.CreateElement("Day");
+                StartDay.InnerText = this.StartMission.Day.ToString();
+
+                Start.AppendChild(StartYear);
+                Start.AppendChild(StartMonth);
+                Start.AppendChild(StartDay);
+
+                rootNode.AppendChild(Start);
+
                 foreach (Day d in PlanningMission.Calendar)
                 {
                     XmlNode day = xmlDoc.CreateElement("Day");
@@ -560,10 +650,18 @@ namespace Astronauts_Activities
                         }
                         task.AppendChild(Astronauts);
 
+                        XmlNode Description = xmlDoc.CreateElement("Description");
+                        Description.InnerText = t.Description;
+
+                        task.AppendChild(Description);
+
                         day.AppendChild(task);
                     }
 
-                    
+                    XmlNode ReportDay = xmlDoc.CreateElement("Report");
+                    ReportDay.InnerText = d.Report;
+
+                    day.AppendChild(ReportDay);
                 }
 
 
