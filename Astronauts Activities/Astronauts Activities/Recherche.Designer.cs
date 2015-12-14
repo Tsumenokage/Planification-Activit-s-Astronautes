@@ -57,6 +57,7 @@
             this.DayActivities.TabIndex = 9;
             this.DayActivities.UseCompatibleStateImageBehavior = false;
             this.DayActivities.View = System.Windows.Forms.View.Details;
+            this.DayActivities.DoubleClick += new System.EventHandler(this.DayActivities_DoubleClick);
             // 
             // Type
             // 

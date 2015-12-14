@@ -50,7 +50,6 @@ namespace Astronauts_Activities
             {
                 int miniX = (MapPic.Width * t.Xposition) / MapImage.Width;
                 int miniY = (MapPic.Height * t.Yposition) / MapImage.Height;
-                MessageBox.Show(miniX.ToString() + "  " + miniY.ToString());               
                 e.Graphics.DrawImage(imageCross, miniX - (imageCross.Width / 2), miniY - (imageCross.Height));
                 Rectangle r = new Rectangle(miniX-(imageCross.Width/2), miniY-imageCross.Height, imageCross.Width, imageCross.Height);
                 rectangles.Add(r);

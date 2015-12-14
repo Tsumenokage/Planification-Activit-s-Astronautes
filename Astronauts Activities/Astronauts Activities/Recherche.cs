@@ -11,18 +11,21 @@ namespace Astronauts_Activities
 {
     public partial class Recherche : Form
     {
-        Planning calendar;
+        private Planning calendar;
+        private List<Task> TaskFind;
 
         public Recherche(Planning calendar)
         {
             InitializeComponent();
             this.calendar = calendar;
+            TaskFind = new List<Task>();
         }
 
         private void Search_Click(object sender, EventArgs e)
         {
             string search = SearchText.Text;
             DayActivities.Items.Clear();
+            TaskFind.Clear();
             foreach (Day day in calendar.Calendar)
             {
                 foreach (Task task in day.Tasks)
@@ -33,6 +36,7 @@ namespace Astronauts_Activities
                         {                           
                             ListViewItem itm = new ListViewItem(day.TaskInfo(task));
                             ListViewItem item = DayActivities.Items.Add(itm);
+                            TaskFind.Add(task);
                         }
                     }
                     if (Filter.SelectedIndex == 1)
@@ -41,11 +45,19 @@ namespace Astronauts_Activities
                         {
                             ListViewItem itm = new ListViewItem(day.TaskInfo(task));
                             ListViewItem item = DayActivities.Items.Add(itm);
+                            TaskFind.Add(task);
+
                         }
                     }
                 }
 
             }
+        }
+
+        private void DayActivities_DoubleClick(object sender, EventArgs e)
+        {
+            TaskView TV = new TaskView(TaskFind[DayActivities.SelectedIndices[0]]);
+            TV.ShowDialog();
         }
     }
 }
