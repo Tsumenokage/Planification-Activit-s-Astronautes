@@ -104,7 +104,7 @@ namespace Astronauts_Activities
 
         }
 
-        private string FormatHour(int Time)
+        public string FormatHour(int Time)
         {
             string HourFormat;
             int Minutes = Time % 60;

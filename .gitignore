@@ -224,3 +224,5 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+Bureau - Raccourci.lnk
+*.lnk

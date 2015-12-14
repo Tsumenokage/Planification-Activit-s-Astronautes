@@ -530,13 +530,13 @@ namespace Astronauts_Activities
             if (numDay < CurrentDay - 1)
             {
                 buttonAddTask.Enabled = false;
-                buttonEditTask.Enabled = false;
+                SearchButton.Enabled = false;
                 buttonRemoveTask.Enabled = false;
             }
             else
             {
                 buttonAddTask.Enabled = true;
-                buttonEditTask.Enabled = true;
+                SearchButton.Enabled = true;
                 buttonRemoveTask.Enabled = true;
             }
 
@@ -605,13 +605,13 @@ namespace Astronauts_Activities
             if (numDay < CurrentDay - 1)
             {
                 buttonAddTask.Enabled = false;
-                buttonEditTask.Enabled = false;
+                SearchButton.Enabled = false;
                 buttonRemoveTask.Enabled = false;
             }
             else
             {
                 buttonAddTask.Enabled = true;
-                buttonEditTask.Enabled = true;
+                SearchButton.Enabled = true;
                 buttonRemoveTask.Enabled = true;
             }
 
@@ -840,6 +840,13 @@ namespace Astronauts_Activities
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveMission();
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            Recherche search = new Recherche(this.PlanningMission);
+
+            search.ShowDialog();
         }
     }
 }

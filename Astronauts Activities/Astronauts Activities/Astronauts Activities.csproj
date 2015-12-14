@@ -68,6 +68,12 @@
     <Compile Include="MissionMap.Designer.cs">
       <DependentUpon>MissionMap.cs</DependentUpon>
     </Compile>
+    <Compile Include="Recherche.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recherche.Designer.cs">
+      <DependentUpon>Recherche.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectAstroDelete.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </Compile>
     <EmbeddedResource Include="MissionMap.resx">
       <DependentUpon>MissionMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recherche.resx">
+      <DependentUpon>Recherche.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectAstroDelete.resx">
       <DependentUpon>SelectAstroDelete.cs</DependentUpon>

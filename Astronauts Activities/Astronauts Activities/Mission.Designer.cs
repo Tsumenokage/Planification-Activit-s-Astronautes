@@ -41,11 +41,11 @@
             this.BeginHour = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.EndHour = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Task = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.AstronautList = new System.Windows.Forms.ComboBox();
             this.buttonShowReport = new System.Windows.Forms.Button();
             this.buttonNextDay = new System.Windows.Forms.Button();
             this.buttonPreviousDay = new System.Windows.Forms.Button();
-            this.buttonEditTask = new System.Windows.Forms.Button();
             this.buttonRemoveTask = new System.Windows.Forms.Button();
             this.buttonAddTask = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -56,7 +56,7 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuMissionMap = new System.Windows.Forms.ToolStripMenuItem();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.SearchButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -75,6 +75,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.SearchButton);
             this.splitContainer1.Panel2.Controls.Add(this.MissionTime);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.EarthHour);
@@ -84,7 +85,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.buttonShowReport);
             this.splitContainer1.Panel2.Controls.Add(this.buttonNextDay);
             this.splitContainer1.Panel2.Controls.Add(this.buttonPreviousDay);
-            this.splitContainer1.Panel2.Controls.Add(this.buttonEditTask);
             this.splitContainer1.Panel2.Controls.Add(this.buttonRemoveTask);
             this.splitContainer1.Panel2.Controls.Add(this.buttonAddTask);
             this.splitContainer1.Size = new System.Drawing.Size(1071, 620);
@@ -177,6 +177,12 @@
             this.Task.Text = "Task";
             this.Task.Width = 130;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "trains2.png");
+            // 
             // AstronautList
             // 
             this.AstronautList.FormattingEnabled = true;
@@ -216,18 +222,10 @@
             this.buttonPreviousDay.UseVisualStyleBackColor = true;
             this.buttonPreviousDay.Click += new System.EventHandler(this.buttonPreviousDay_Click);
             // 
-            // buttonEditTask
-            // 
-            this.buttonEditTask.Location = new System.Drawing.Point(423, 594);
-            this.buttonEditTask.Name = "buttonEditTask";
-            this.buttonEditTask.Size = new System.Drawing.Size(133, 23);
-            this.buttonEditTask.TabIndex = 3;
-            this.buttonEditTask.Text = "Edit Selected Task";
-            this.buttonEditTask.UseVisualStyleBackColor = true;
-            // 
             // buttonRemoveTask
             // 
-            this.buttonRemoveTask.Location = new System.Drawing.Point(562, 594);
+            this.buttonRemoveTask.Enabled = false;
+            this.buttonRemoveTask.Location = new System.Drawing.Point(423, 594);
             this.buttonRemoveTask.Name = "buttonRemoveTask";
             this.buttonRemoveTask.Size = new System.Drawing.Size(133, 23);
             this.buttonRemoveTask.TabIndex = 2;
@@ -237,6 +235,7 @@
             // 
             // buttonAddTask
             // 
+            this.buttonAddTask.Enabled = false;
             this.buttonAddTask.Location = new System.Drawing.Point(284, 594);
             this.buttonAddTask.Name = "buttonAddTask";
             this.buttonAddTask.Size = new System.Drawing.Size(133, 23);
@@ -310,11 +309,16 @@
             this.MenuMissionMap.Text = "Show Mission Map";
             this.MenuMissionMap.Click += new System.EventHandler(this.MenuMissionMap_Click);
             // 
-            // imageList1
+            // SearchButton
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "trains2.png");
+            this.SearchButton.Enabled = false;
+            this.SearchButton.Location = new System.Drawing.Point(562, 594);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(110, 23);
+            this.SearchButton.TabIndex = 13;
+            this.SearchButton.Text = "Search task";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // Mission
             // 
@@ -353,7 +357,6 @@
         private System.Windows.Forms.Button buttonShowReport;
         private System.Windows.Forms.Button buttonNextDay;
         private System.Windows.Forms.Button buttonPreviousDay;
-        private System.Windows.Forms.Button buttonEditTask;
         private System.Windows.Forms.TreeView listCalendar;
         private System.Windows.Forms.ComboBox AstronautList;
         private System.Windows.Forms.ListView DayActivities;
@@ -367,6 +370,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem MenuMissionMap;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button SearchButton;
     }
 }
 

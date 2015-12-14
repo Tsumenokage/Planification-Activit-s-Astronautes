@@ -46,5 +46,18 @@ namespace Astronauts_Activities
             this.Tasks = this.Tasks.OrderBy(x => x.StartHour).ToList();
         }
 
+        public string[] TaskInfo(Task task)
+        {
+            string[] arr = new string[5];
+
+            arr[0] = "";
+            arr[1] = this.ToString();
+            arr[2] = task.FormatHour(task.StartHour);
+            int EndTask = task.StartHour + task.DurationMinute;
+            arr[3] = task.FormatHour(EndTask);
+            arr[4] = task.Name;
+            return arr;
+        }
+
     }
 }
