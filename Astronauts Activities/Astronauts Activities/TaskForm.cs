@@ -92,45 +92,62 @@ namespace Astronauts_Activities
               {
                   DialogResult result = MessageBox.Show("Do you want to add this task ?", "Confirmation", MessageBoxButtons.YesNo);
                   bool AllAstroFree = true;
-                  if (result == DialogResult.Yes && ActivityView.SelectedNode.Nodes.Count == 0)
-                  {
-                      MinuteStartSend = (int)StartHour.Value * 60 + (int)MinutesStart.Value;
-                      MinuteDurationSend = (int)DurationHour.Value * 60 + (int)DurationMinute.Value;
 
-                      if (MinuteStartSend + MinuteDurationSend <= 1480)
-                      {
-                          String NodeCategory = ActivityView.SelectedNode.Parent.Text;
-                          Category category = Categories.Find(x => x.Name == NodeCategory);
+                if (ActivityView.SelectedNode == null || ActivityView.SelectedNode.Parent == null)
+                    MessageBox.Show("Select a correct activity");
+                else if ((int)DurationHour.Value == 0 && (int)DurationMinute.Value==0)
+                {
+                    MessageBox.Show("Select a correct duration for this Task");
+                }
+                else if(AstronautView.CheckedIndices.Count == 0)
+                {
+                    MessageBox.Show("Select at least one astronaut");
+                }
+                    
+                else
+                {
 
-                          ActivitySend = category.Activities.Find(x => x.Name == ActivityView.SelectedNode.Text);
-                          SelectedAstronaut = new List<Astronaut>();
+
+                    if (result == DialogResult.Yes && ActivityView.SelectedNode != null)
+                    {
+                        MinuteStartSend = (int)StartHour.Value * 60 + (int)MinutesStart.Value;
+                        MinuteDurationSend = (int)DurationHour.Value * 60 + (int)DurationMinute.Value;
+
+                        if (MinuteStartSend + MinuteDurationSend <= 1480)
+                        {
+                            String NodeCategory = ActivityView.SelectedNode.Parent.Text;
+                            Category category = Categories.Find(x => x.Name == NodeCategory);
+
+                            ActivitySend = category.Activities.Find(x => x.Name == ActivityView.SelectedNode.Text);
+                            SelectedAstronaut = new List<Astronaut>();
 
 
-                          foreach (int indice in AstronautView.CheckedIndices)
-                          {
-                              Astronaut A = Astronauts.Find(x => x.Name == AstronautView.Items[indice].Text);
+                            foreach (int indice in AstronautView.CheckedIndices)
+                            {
+                                Astronaut A = Astronauts.Find(x => x.Name == AstronautView.Items[indice].Text);
 
-                              if (AstronautIsFree(A))
-                                  SelectedAstronaut.Add(A);
-                              else
-                              {
-                                  MessageBox.Show(A.Name + " is not available for this task on this period");
-                                  AllAstroFree = false;
-                              }
-                          }
+                                if (AstronautIsFree(A))
+                                    SelectedAstronaut.Add(A);
+                                else
+                                {
+                                    MessageBox.Show(A.Name + " is not available for this task on this period");
+                                    AllAstroFree = false;
+                                }
+                            }
 
-                          Description = richTextBoxDescription.Text;
+                            Description = richTextBoxDescription.Text;
 
-                          if (AllAstroFree)
-                          {
-                              DialogResult = DialogResult.OK;
-                              this.Close();
-                          }
-                      }
-                      else
-                      {
-                          MessageBox.Show("Error : End of the task exceed 24h40, you can't add a task on 2 days.");
-                      }
+                            if (AllAstroFree)
+                            {
+                                DialogResult = DialogResult.OK;
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error : End of the task exceed 24h40, you can't add a task on 2 days.");
+                        }
+                    }
                  }
 
                   

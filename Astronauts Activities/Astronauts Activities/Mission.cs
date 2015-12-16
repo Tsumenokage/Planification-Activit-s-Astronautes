@@ -89,15 +89,16 @@ namespace Astronauts_Activities
             PlanningMission = new Planning();
 
 
-            NewMission();
-            
-            foreach (Astronaut a in Astronauts)
+            if(NewMission())
             {
-                AstronautList.Items.Add(a.Name);
-                AstronautList.SelectedIndex = 0;
-            }
-            CurrentDay = MajTime();
-            foreach (Day day in PlanningMission.Calendar)
+                foreach (Astronaut a in Astronauts)
+                {
+                    AstronautList.Items.Add(a.Name);
+                    AstronautList.SelectedIndex = 0;
+                }
+
+                CurrentDay = MajTime();
+                foreach (Day day in PlanningMission.Calendar)
                 {
                     TreeNode MyNode;
                     if (day.NumberDay < CurrentDay)
@@ -106,13 +107,13 @@ namespace Astronauts_Activities
 
                         MyNode.BackColor = Color.LightGray;
                     }
-                        else if (day.NumberDay == CurrentDay+1)
+                    else if (day.NumberDay == CurrentDay + 1)
                     {
                         MyNode = listCalendar.Nodes.Add(day.ToString());
 
                         MyNode.BackColor = Color.Green;
                     }
-                        else
+                    else
                     {
                         MyNode = listCalendar.Nodes.Add(day.ToString());
 
@@ -127,7 +128,7 @@ namespace Astronauts_Activities
 
 
                     List<Astronaut> astroSleep1 = Astronauts.ToList();
-                    Task sleep1 = new Task(sleep, astroSleep1, 420, 0,this.xOrigin,this.yOrigin);
+                    Task sleep1 = new Task(sleep, astroSleep1, 420, 0, this.xOrigin, this.yOrigin);
 
                     List<Astronaut> astroEat = Astronauts.ToList();
                     Task eat1 = new Task(eat, astroEat, 60, 420, this.xOrigin, this.yOrigin);
@@ -160,9 +161,12 @@ namespace Astronauts_Activities
                     day.AddTask(private3);
                     day.AddTask(sleep2);
                 }
-            
 
-            listCalendar.SelectedNode = listCalendar.Nodes[0];
+                listCalendar.SelectedNode = listCalendar.Nodes[0];
+            }
+            
+                    
+            
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -174,14 +178,15 @@ namespace Astronauts_Activities
                 this.AstronautList.Items.Clear();
                 this.Astronauts.Clear();
                 this.Categories.Clear();
-                
-                LoadMissionXml(load.missionXml);
-                LoadMission(load.fileXml);
+
+                if (LoadMissionXml(load.missionXml))
+                    LoadMission(load.fileXml);
+
                 saveToolStripMenuItem.Enabled = true;
             }
         }
 
-        private void NewMission()
+        private bool NewMission()
         {
             this.Astronauts.Clear();
             this.Categories.Clear();
@@ -200,23 +205,33 @@ namespace Astronauts_Activities
                 try
                 {
 
-                    this.StartMission = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,0,0,0);
+                    this.StartMission = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
                     file.Load(openFileDialog1.OpenFile());
                     XmlNode noeud = file.DocumentElement;
                     XmlNodeList nomMission = noeud.SelectNodes("Name");
                     this.Text = nomMission[0].InnerText;
 
-                    
+
                     XmlNodeList MapMars = noeud.SelectNodes("Map");
                     this.Map = MapMars[0].InnerText;
 
-                    
+                    try
+                    {
+                        Image.FromFile(this.Map);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Unable to find Map picture : " + this.Map);
+                        return false;                        
+                    }
+
+
                     XmlNodeList XMap = noeud.SelectNodes("X");
                     this.xOrigin = int.Parse(XMap[0].InnerText);
 
                     XmlNodeList YMap = noeud.SelectNodes("Y");
                     this.yOrigin = int.Parse(YMap[0].InnerText);
-                    
+
 
                     XmlNode AstronautXml = noeud.SelectSingleNode("Astronauts");
                     XmlNodeList AstronautsXml = AstronautXml.SelectNodes("Astronaut");
@@ -226,11 +241,11 @@ namespace Astronauts_Activities
                         Astronaut A = new Astronaut(nodeAstro.InnerText);
                         Astronauts.Add(A);
                     }
-                    
+
 
                     XmlNode ActivityXml = noeud.SelectSingleNode("Activities");
                     XmlNodeList ActivitiesXml = ActivityXml.ChildNodes;
-                    
+
                     foreach (XmlNode category in ActivitiesXml)
                     {
                         Category c = new Category(category.LocalName);
@@ -258,12 +273,17 @@ namespace Astronauts_Activities
                             }
                         }
                     }
+
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    return false;
                 }
             }
+            else
+                return false;
         }
 
         private void LoadMission(string Path)
@@ -392,7 +412,7 @@ namespace Astronauts_Activities
             listCalendar.SelectedNode = listCalendar.Nodes[CurrentDay-1];
         }
 
-        private void LoadMissionXml(string Path)
+        private bool LoadMissionXml(string Path)
         {
             XmlDocument file = new XmlDocument();
 
@@ -407,8 +427,17 @@ namespace Astronauts_Activities
                     XmlNodeList MapMars = noeud.SelectNodes("Map");
                     this.Map = MapMars[0].InnerText;
 
+                    try
+                    {
+                        Image.FromFile(this.Map);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Unable to find Map picture : " + this.Map);
+                        return false;
+                    }
 
-                    XmlNodeList XMap = noeud.SelectNodes("X");
+                XmlNodeList XMap = noeud.SelectNodes("X");
                     this.xOrigin = int.Parse(XMap[0].InnerText);
 
                     XmlNodeList YMap = noeud.SelectNodes("Y");
@@ -455,11 +484,14 @@ namespace Astronauts_Activities
                             }
                         }
                     }
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    return false;
                 }
+            
             
         }
 
