@@ -10,13 +10,16 @@ using System.Xml;
 
 namespace Astronauts_Activities
 {
-    // Cette classe regroupe les niveaux 1 et 2 définis dans le cahier des charges du projet. A gauche, la liste des jours correspond au niveau 1 : les jours sont affichés
-    // différement selon leur position par rapport au jour actuel.
-    // Sélectionner un jour modifie le contenu du panel de droite, qui correspond au niveau 2. Ce panel affiche les activités du jour sélectionné, les boutons de gestion
-    // comme l'ajout ou l'édition d'une tâche. On peut aussi afficher le compte-rendu, ou naviguer vers les jours suivants / précédents.
-    // Double-cliquer sur une tâche affiche le niveau 3.
-    // Le contenu de la mission est initialisé ici, par l'ouverture du fichier XML de mission.
 
+    /// <summary>
+    /// Fenêtre principal du programme
+    /// Cette classe regroupe les niveaux 1 et 2 définis dans le cahier des charges du projet. A gauche, la liste des jours correspond au niveau 1 : les jours sont affichés
+    /// différement selon leur position par rapport au jour actuel.
+    /// Sélectionner un jour modifie le contenu du panel de droite, qui correspond au niveau 2. Ce panel affiche les activités du jour sélectionné, les boutons de gestion
+    /// comme l'ajout ou l'édition d'une tâche. On peut aussi afficher le compte-rendu, ou naviguer vers les jours suivants / précédents.
+    /// Double-cliquer sur une tâche affiche le niveau 3.
+    /// Le contenu de la mission est initialisé ici, par l'ouverture du fichier XML de mission.
+    /// </summary>
     public partial class Mission : Form
     {
         private List<Astronaut> Astronauts;
@@ -29,6 +32,9 @@ namespace Astronauts_Activities
         private int CurrentDay;
         Timer bg = new Timer();
 
+        /// <summary>
+        /// Constructeur de la classe Mission
+        /// </summary>
         public Mission()
         {
             InitializeComponent();
@@ -43,11 +49,10 @@ namespace Astronauts_Activities
             
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Fonction qui va mettre à jour la date martienne
+        /// </summary>
+        /// <returns>Le nombre de jour depuis le début de la mission</returns>
         private int MajTime()
         {
             int nbDay = 0;
@@ -61,6 +66,12 @@ namespace Astronauts_Activities
             return nbDay;
         }
 
+        /// <summary>
+        /// Foncton qui va calculer la date et l'heure martienne en fonction de la date de début de la mission
+        /// </summary>
+        /// <param name="SecondsBegin">La nombre de seconde depuis la date terrestre de lancement de la mission</param>
+        /// <param name="nbDay">Le nombre de jour écoulé depuis le début de la mission</param>
+        /// <returns></returns>
         private string MartianTime(double SecondsBegin, out int nbDay)
         {
             string Date;
@@ -83,6 +94,12 @@ namespace Astronauts_Activities
           
         }
 
+        /// <summary>
+        /// Action qui se lance après avoir cliqué sur New dans la barre de menu en haut
+        /// Va lancer le processus nécessaire à une nouvelle mission
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void newPlanningToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -169,6 +186,12 @@ namespace Astronauts_Activities
             
         }
 
+        /// <summary>
+        /// Action qui se lance après avoir cliqué sur load dans la barre de menu en haut
+        /// Va lancer le processus nécessaire au chargement d'une ancienne mission
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadMission load = new LoadMission();
@@ -186,6 +209,10 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Va lire le fichier Xml lancé par l'utilisateur pour une nouvelle mission
+        /// </summary>
+        /// <returns>Un booléen indiquant si le chargement c'est bien passé</returns>
         private bool NewMission()
         {
             this.Astronauts.Clear();
@@ -286,6 +313,10 @@ namespace Astronauts_Activities
                 return false;
         }
 
+        /// <summary>
+        /// Va lire un fichier Xml contenant un planning de mission enregistré
+        /// </summary>
+        /// <param name="Path">Le chemin vers le fichier Xml</param>
         private void LoadMission(string Path)
         {
             XmlDocument file = new XmlDocument();
@@ -412,6 +443,11 @@ namespace Astronauts_Activities
             listCalendar.SelectedNode = listCalendar.Nodes[CurrentDay-1];
         }
 
+        /// <summary>
+        /// Va lire un fichier Xml décrivant la mission (Activité, Map...)
+        /// </summary>
+        /// <param name="Path">Le chemin vers un fichier Xml</param>
+        /// <returns>Un booléen indiquant si le chargement c'est bien passé</returns>
         private bool LoadMissionXml(string Path)
         {
             XmlDocument file = new XmlDocument();
@@ -495,18 +531,12 @@ namespace Astronauts_Activities
             
         }
 
-        private void infoSurLaMissionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Astronaut A in Astronauts)
-                MessageBox.Show(A.Name);
-        }
-
-        private void listCalendar_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
-        //Suppression de la tâche
+        /// <summary>
+        /// Se déroule après avoir cliqué sur le bouton Delete
+        /// Va lancer le processus de suppresion de tâche
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonRemoveTask_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you want to delete this task ?","Confirmation", MessageBoxButtons.YesNo);
@@ -545,6 +575,11 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Va retirer les Astronaute d'une tâche
+        /// </summary>
+        /// <param name="t">Tâche dont on souhaite enlever des astronautes</param>
+        /// <param name="Astronauts">Astronautes à retirer</param>
         private void Delete (Task t, List<Astronaut> Astronauts)
         {
             foreach (Astronaut A in Astronauts)
@@ -553,6 +588,11 @@ namespace Astronauts_Activities
 	        }
         }
 
+        /// <summary>
+        /// Va mettre à jour l'affichage de l'emploi du temps de la journée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ViewDayPlanning(object sender, TreeViewEventArgs e)
         {
             
@@ -601,6 +641,11 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Va mettre à jour l'affichage de l'emploi du temps de la journée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ViewDayPlanning(object sender, EventArgs e)
         {
             if (listCalendar.SelectedNode != null)//Sécurité, on ne met pas à jour si aucun jour n'est sélectionné
@@ -629,6 +674,9 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Va mettre à jour l'affichage de l'emploi du temps de la journée
+        /// </summary>
         private void majDayPlanning()
         {
             DayActivities.Items.Clear();
@@ -676,6 +724,13 @@ namespace Astronauts_Activities
             }
         }
 
+
+        /// <summary>
+        /// Se déclenche après le clic sur le bouton Addtask
+        /// Va lancer le processus pour ajouter une tâche à une journée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAddTask_Click_1(object sender, EventArgs e)
         {
             int jour = listCalendar.SelectedNode.Index;
@@ -702,6 +757,11 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Va afficher le rapport de la journée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonShowReport_Click(object sender, EventArgs e)
         {
             if (listCalendar.SelectedNode != null)
@@ -715,18 +775,33 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Permet de se déplacer au jour précédent au clic
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonPreviousDay_Click(object sender, EventArgs e)
         {
             int numDay = listCalendar.SelectedNode.Index;
             listCalendar.SelectedNode = listCalendar.Nodes[numDay - 1];
         }
 
+        /// <summary>
+        /// Permet de se déplacer au jour précédent au clic
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonNextDay_Click(object sender, EventArgs e)
         {
             int numDay = listCalendar.SelectedNode.Index;
             listCalendar.SelectedNode = listCalendar.Nodes[numDay + 1];
         }
 
+        /// <summary>
+        /// Va afficher les détails d'une tâche pour afficher le troisième niveau (détails de la tâche)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DayActivities_DoubleClick(object sender, EventArgs e)
         {
             if (DayActivities.SelectedItems != null)
@@ -755,6 +830,11 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Va afficher la fenêtre permettant de voir la Map de mission globale
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuMissionMap_Click(object sender, EventArgs e)
         {
             MissionMap mM = new MissionMap(this);
@@ -765,6 +845,9 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Va sauvegarder les différentes options de la missions dans un fichier Xml
+        /// </summary>
         private void SaveMission()
         {
 
@@ -869,11 +952,21 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Va lancer le processus de sauvegarde de la mission en cours
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveMission();
         }
 
+        /// <summary>
+        /// Va ouvrir la fenêtre permettant de faire une recherche de tâche sur la Mission
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SearchButton_Click(object sender, EventArgs e)
         {
             Recherche search = new Recherche(this.PlanningMission);
