@@ -9,12 +9,16 @@ using System.Windows.Forms;
 
 namespace Astronauts_Activities
 {
+    /// <summary>
+    /// Cette fenêtre va permettre de renseigner les chemins des deux fichiers nécessaires au chargement d'une mission
+    /// </summary>
     public partial class LoadMission : Form
     {
 
         public string fileXml;
         public string missionXml;
 
+        //Constructeur par défaut de la classe LoadMission
         public LoadMission()
         {
             fileXml = "";
@@ -22,6 +26,11 @@ namespace Astronauts_Activities
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Action qui fait suite au clique sur le bouton Load et qui ve fermer cette fenêtre si les deux chemins vers les fichiers sont bien entrés.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadButton_Click(object sender, EventArgs e)
         {
             if(fileXml != "" && missionXml != "")
@@ -32,6 +41,12 @@ namespace Astronauts_Activities
 
         }
 
+        /// <summary>
+        /// Action qui fait suite au clique de la souris sur le champs MissionText
+        /// Va ouvrir une fenêtre modale pour choisir le bon fichier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MissionText_MouseClick(object sender, MouseEventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -48,6 +63,12 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Action qui fait suite au clique de la souris sur le champs SaveText
+        /// Va ouvrir une fenêtre modale pour choisir le bon fichier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveText_MouseClick(object sender, MouseEventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();

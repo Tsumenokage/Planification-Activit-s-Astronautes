@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace Astronauts_Activities
 {
+    /// <summary>
+    /// Fenêtre qui va afficher la Map avec les différents pointeurs en fonction des données par l'utilisateur
+    /// </summary>
     public partial class MissionMap : Form
     {
         List<Day> SelectedDay;
@@ -20,6 +23,10 @@ namespace Astronauts_Activities
         Image MapImage;
         List<Rectangle> rectangles;
 
+        /// <summary>
+        /// Constructeur de la classe Map
+        /// </summary>
+        /// <param name="mission">Mission : Objet représenter la mission compléte en cours</param>
         public MissionMap(Mission mission)
         {
             InitializeComponent();
@@ -40,6 +47,11 @@ namespace Astronauts_Activities
 
         }
 
+        /// <summary>
+        /// Evenement qui sera appelé à chaque fois qu'une modification sera faite graphiquement sur l'élément MapPic
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MapPic_Paint(object sender, PaintEventArgs e)
         {
             rectangles.Clear();
@@ -56,11 +68,20 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Evènement qui intervient après le clic qur le bouton Afficher, va appeler la méthode MapPic_Paint()
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             this.MapPic_Paint();
         }
 
+
+        /// <summary>
+        /// Cette méthode va trouver les différentes tâche qui s'éxécutent en dehors de la Map et va les indiquer sur la carte.
+        /// </summary>
         private void MapPic_Paint()
         {
             
@@ -84,6 +105,11 @@ namespace Astronauts_Activities
             MapPic.Invalidate();
         }
         
+        /// <summary>
+        /// Cette fonction va afficher les détails relatif à une tâche lorsque l'on clique sur un pointeur de la carte
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MapPic_MouseDown(object sender, MouseEventArgs e)
         {
             foreach (Rectangle r in rectangles)

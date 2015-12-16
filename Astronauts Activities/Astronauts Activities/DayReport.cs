@@ -78,7 +78,11 @@ namespace Astronauts_Activities
             }
         }
 
-
+        /// <summary>
+        /// Cette fonction va transformer un temps exprimer en minutes en une chaine de caractère au format 24H40
+        /// </summary>
+        /// <param name="Time">int : Heure martienne exprimé en minutes</param>
+        /// <returns>String : retourne l'heure au format 24H40</returns>
         public string FormatHour(int Time)
         {
             string HourFormat;

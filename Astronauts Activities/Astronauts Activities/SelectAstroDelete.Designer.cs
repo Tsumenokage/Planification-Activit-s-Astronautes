@@ -32,7 +32,6 @@
             this.AstroName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.DeleteAll = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AstronautView
@@ -65,7 +64,7 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(109, 151);
+            this.CancelButton.Location = new System.Drawing.Point(213, 151);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 23;
@@ -73,22 +72,11 @@
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // DeleteAll
-            // 
-            this.DeleteAll.Location = new System.Drawing.Point(203, 151);
-            this.DeleteAll.Name = "DeleteAll";
-            this.DeleteAll.Size = new System.Drawing.Size(85, 23);
-            this.DeleteAll.TabIndex = 24;
-            this.DeleteAll.Text = "Delete for All";
-            this.DeleteAll.UseVisualStyleBackColor = true;
-            this.DeleteAll.Click += new System.EventHandler(this.DeleteAll_Click);
-            // 
             // SelectAstroDelete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 201);
-            this.Controls.Add(this.DeleteAll);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.AstronautView);
@@ -104,6 +92,5 @@
         private System.Windows.Forms.ColumnHeader AstroName;
         private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.Button DeleteAll;
     }
 }

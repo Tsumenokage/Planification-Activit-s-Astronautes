@@ -9,10 +9,17 @@ using System.Windows.Forms;
 
 namespace Astronauts_Activities
 {
+    /// <summary>
+    /// Classe qui va afficher les détails lié à une tâche
+    /// </summary>
     public partial class TaskView : Form
     {
         Task task;
 
+        /// <summary>
+        /// Constructeur de taskView va renseigner l'ensemble des champs en fonction de la tâche entré en paramètre
+        /// </summary>
+        /// <param name="task">Task : Tâche dont on veut connaitre les informations</param>
         public TaskView(Task task)
         {
             

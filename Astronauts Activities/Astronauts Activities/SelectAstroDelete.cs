@@ -9,11 +9,18 @@ using System.Windows.Forms;
 
 namespace Astronauts_Activities
 {
+    /// <summary>
+    /// Cette classe va permettre de sélectionner les astronautes à supprimer d'une tâche
+    /// </summary>
     public partial class SelectAstroDelete : Form
     {
         private List<Astronaut> AstronautTask;
         public List<Astronaut> SelectedAstronaut;
 
+        /// <summary>
+        /// Constructeur de la classe Astronaut
+        /// </summary>
+        /// <param name="AstronautsTask"> Liste des Astronautes</param>
         public SelectAstroDelete(List<Astronaut> AstronautsTask)
         {
             InitializeComponent();
@@ -27,6 +34,12 @@ namespace Astronauts_Activities
             
         }
 
+        /// <summary>
+        /// Action effectuer lorsque l'on clique sur OK
+        /// Va fermer la fenêtre en renvoyant le résultat OK
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OkButton_Click(object sender, EventArgs e)
         {
             foreach (int indice in AstronautView.CheckedIndices)
@@ -39,21 +52,18 @@ namespace Astronauts_Activities
             this.Close();
         }
 
+        /// <summary>
+        /// Action effectuer lorsque l'on clique sur Cancel
+        /// Va fermer la fenêtre en renvoyant le résultat Cancel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
-        private void DeleteAll_Click(object sender, EventArgs e)
-        {
-            foreach (ListViewItem item in AstronautView.Items)
-            {
-                item.Checked = true;
-            }
-            DialogResult = DialogResult.OK;
-            this.Close();
-        }
 
         private void AstronautView_SelectedIndexChanged(object sender, EventArgs e)
         {

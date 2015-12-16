@@ -9,11 +9,13 @@ using System.Windows.Forms;
 
 namespace Astronauts_Activities
 {
-    // Ce Windows Form est utilisé pour l'ajout, l'édition (et éventuellement la suppression) d'une tâche. Il est affiché différement selon que cela soit un
-    // ajout ou une édition.
-    // On peut y gérer les astronautes concernés, le nom de l'activité, la date de début et la durée de la tâche, la localisation de la tâche grâce à une carte
-    // de la région.
 
+    /// <summary>
+    /// Ce Windows Form est utilisé pour l'ajout, l'édition (et éventuellement la suppression) d'une tâche. Il est affiché différement selon que cela soit un
+    /// ajout ou une édition.
+    /// On peut y gérer les astronautes concernés, le nom de l'activité, la date de début et la durée de la tâche, la localisation de la tâche grâce à une carte
+    /// de la région.
+    /// </summary>
     public partial class TaskForm : Form
     {
         //Variable
@@ -33,7 +35,16 @@ namespace Astronauts_Activities
         private Image imageCross;
         private Graphics graMap;
 
-        //Constructeur
+        /// <summary>
+        /// Constructeur de la classe TaskForm
+        /// </summary>
+        /// <param name="astro">Les Astronautes de la missions</param>
+        /// <param name="categ">Les catégories d'activités</param>
+        /// <param name="form">Le type d'action (ajout ou édition)</param>
+        /// <param name="day">Le jour ou est rajouté la tâche</param>
+        /// <param name="MapString">Le chemin vers l'image de la carte</param>
+        /// <param name="xOrigin">La position en X de la base</param>
+        /// <param name="yOrigin">La position en Y de la base</param>
         public TaskForm(List<Astronaut> astro, List<Category> categ, string form, Day day, string MapString, int xOrigin, int yOrigin)
         {
             InitializeComponent();
@@ -86,6 +97,12 @@ namespace Astronauts_Activities
 
          }
 
+        /// <summary>
+        /// Action qui se déclenche après le clique sur le bouton Add
+        /// Va ajouter la tâche à l'emploi du temps de la journée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAddActivity_Click(object sender, EventArgs e)
           {
               if (TypeForm == "adding") //Le if est ici pour l'instant si le traitement diffère entre chaque possibilité
@@ -162,6 +179,12 @@ namespace Astronauts_Activities
               }
           }
 
+        /// <summary>
+        /// Action qui se déroule après le clic sur le bouton Cancel
+        /// Va annuler l'ajout et gfermer la fenêtre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             DialogResult result2 = MessageBox.Show("Do you want to cancel your work ?", "Confirmation", MessageBoxButtons.YesNo);
@@ -171,6 +194,12 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Se produit lorsque l'on change la valeur de l'heure pour empécher de dépasser 40 minutes lorsque l'heure
+        /// du début de mission est a 24 heures
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             if (StartHour.Value == 24)
@@ -183,6 +212,11 @@ namespace Astronauts_Activities
                 MinutesStart.Maximum = 59;
         }
 
+        /// <summary>
+        /// Va vérifier qu'un Astonaute est disponible
+        /// </summary>
+        /// <param name="A">astronaute dont on veut connaître la disponibilité</param>
+        /// <returns></returns>
         private bool AstronautIsFree(Astronaut A)
         {
             List<Task> AstroTask;
@@ -203,6 +237,12 @@ namespace Astronauts_Activities
             return AstronautFree;
         }
 
+        /// <summary>
+        /// Action qui se produit lorsque l'on clic sur la Map
+        /// Va ouvrir une fenêtre Map afin de choisir le lieu de la tâche
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MapPic_DoubleClick(object sender, EventArgs e)
         {
             Map mapForm = new Map(this.MapString);
@@ -221,6 +261,11 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ActivityView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             this.graMap.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);
@@ -229,6 +274,11 @@ namespace Astronauts_Activities
             this.graMap.DrawImage(imageCross, miniX - (imageCross.Width / 2), miniY - (imageCross.Height));
         }
 
+        /// <summary>
+        /// Evenement qui sera appelé à chaque fois qu'une modification sera faite graphiquement sur l'élément TaskForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TaskForm_Paint(object sender, PaintEventArgs e)
         {
             this.graMap.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);

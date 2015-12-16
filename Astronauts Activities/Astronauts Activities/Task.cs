@@ -5,10 +5,12 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    // Classe principale de l'application. Les objets sont instanciés à des valeurs par défaut mais ils peuvent être supprimés, édités et / ou ajoutés.
-    // Ils sont liés à une activité (Activity). Astronauts définit les astronautes réalisant la tâche. Description le descriptif de 400 caractères.
-    // StartHour et DurationMinute définissent la plage horaire de la tâche. Cette solution a été choisie au lieu d'un StartHour et d'un EndHour pour faciliter les calculs.
-    // Les coordonnées Xposition et Yposition permettent le répérage sur la carte.
+    /// <summary>
+    /// Classe principale de l'application. Les objets sont instanciés à des valeurs par défaut mais ils peuvent être supprimés, édités et / ou ajoutés.
+    /// Ils sont liés à une activité (Activity). Astronauts définit les astronautes réalisant la tâche. Description le descriptif de 400 caractères.
+    /// StartHour et DurationMinute définissent la plage horaire de la tâche. Cette solution a été choisie au lieu d'un StartHour et d'un EndHour pour faciliter les calculs.
+    /// Les coordonnées Xposition et Yposition permettent le répérage sur la carte.
+    /// </summary>
 
     public class Task
     {
@@ -22,6 +24,15 @@ namespace Astronauts_Activities
         public int Xposition { get; private set; }
         public int Yposition { get; private set; }
 
+        /// <summary>
+        /// Constructeur de la classe Task
+        /// </summary>
+        /// <param name="Tactivity">Activité relative à la tâche</param>
+        /// <param name="Tastronauts">Liste des astronautes qui effectue la tâche</param>
+        /// <param name="DureeMinute">Durée de la tâche</param>
+        /// <param name="StartHour">Début de la tâche</param>
+        /// <param name="X">Position X</param>
+        /// <param name="Y">Position Y</param>
         public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, int X, int Y) //ajouter dates
         {
             Name = Tactivity.Name;
@@ -32,26 +43,17 @@ namespace Astronauts_Activities
             this.Xposition = X;
             this.Yposition = Y;
         }
-/*
-        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour)
-        {
-            Name = Tactivity.Name;
-            Activity = Tactivity;
-            this.DurationMinute = DureeMinute;
-            this.StartHour = StartHour;
-            Astronauts = Tastronauts;
-        }
 
-        public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, string Description)
-        {
-            Name = Tactivity.Name;
-            Activity = Tactivity;
-            this.DurationMinute = DureeMinute;
-            this.StartHour = StartHour;
-            Astronauts = Tastronauts;
-            this.Description = Description;
-        }*/
-
+        /// <summary>
+        /// Constructeur de la classe Task
+        /// </summary>
+        /// <param name="Tactivity">Activité relative à la tâche</param>
+        /// <param name="Tastronauts">Liste des astronautes qui effectue la tâche</param>
+        /// <param name="DureeMinute">Durée de la tâche</param>
+        /// <param name="StartHour">Début de la tâche</param>
+        /// <param name="Description">Description de la tâche</param>
+        /// <param name="X">Position X</param>
+        /// <param name="Y">Position Y</param>
         public Task(Activity Tactivity, List<Astronaut> Tastronauts, int DureeMinute, int StartHour, string Description, int X, int Y)
         {
             Name = Tactivity.Name;
@@ -64,7 +66,10 @@ namespace Astronauts_Activities
             this.Yposition = Y;
         }
 
-        //Fonctions de base de gestion des astronautes
+        /// <summary>
+        /// Fonction qui va ajouter un astronaute à la tâche
+        /// </summary>
+        /// <param name="astronaut">Astronaute à ajouter</param>
         public void AddAstronaut(Astronaut astronaut)
         {
             if (astronaut.Available == true)
@@ -78,6 +83,10 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Fonction qui va supprimer un Astronaute de la tâche
+        /// </summary>
+        /// <param name="astronaut">Astronaute à supprimmer</param>
         public void RemoveAstronaut(Astronaut astronaut)
         {
             try
@@ -89,6 +98,11 @@ namespace Astronauts_Activities
             { Console.WriteLine("{0} is not assigned to this task", astronaut.Name); }
         }
 
+
+        /// <summary>
+        /// Va retourner les informations de la tâches sous formes de tableau
+        /// </summary>
+        /// <returns>Détails de la tâche sous forme de tableau</returns>
         public string[] getInfo()
         {
             string[] arr = new string[4];
@@ -104,6 +118,13 @@ namespace Astronauts_Activities
 
         }
 
+
+        /// <summary>
+        /// Va retourner les infos d'une tâche sous forme de tableau,
+        /// cela est utilisé pour l'affichage dans différents écrans.
+        /// </summary>
+        /// <param name="task">Task : Tâche dont on souhaite obtenir les informations</param>
+        /// <returns>un tableau contenant le jour de la tâche, et les informations sur cette dernière</returns>
         public string FormatHour(int Time)
         {
             string HourFormat;
@@ -119,8 +140,4 @@ namespace Astronauts_Activities
 
         }
     }
-
-    /*Note pour la calcul des correspondance entre Heure Terrestre et Martienne  : 
-        1) Calculer le nombre de secondes depuis le lancement sur Terre à l'heure 00
-        2) Calculer le nombre de Jour, Heures, Minutes, secondes écoulés depuis ce moment*/
 }
