@@ -5,9 +5,11 @@ using System.Text;
 
 namespace Astronauts_Activities
 {
-    //Classe Activity, servant à sauvegarder les activity depuis le fichier XML de mission. Une activité peut contenir d'autres activités, 
-    //pour montrer les différents niveaux de hiérarchie entre les activités.
 
+    /// <summary>
+    /// Classe Activity, servant à sauvegarder les activity depuis le fichier XML de mission. Une activité peut contenir d'autres activités,
+    /// pour montrer les différents niveaux de hiérarchie entre les activités
+    /// </summary>
     public class Activity
     {
         public List<Activity> Activities { get; protected set; }
@@ -16,6 +18,10 @@ namespace Astronauts_Activities
         public int Yposition { get; private set; }
         private string Description;
 
+        /// <summary>
+        /// Constructeur pour la classe Activity
+        /// </summary>
+        /// <param name="Name">Le nom de l'activité sous forme de String</param>
         public Activity(string Name)
         {
             this.Name = Name;

@@ -9,7 +9,10 @@ using System.Windows.Forms;
 
 namespace Astronauts_Activities
 {
-    // Windows Form du compte-rendu quotidien, il est donc lié à un jour. Long de 1000 caractères au maximum.
+
+    /// <summary>
+    /// Windows Form du compte-rendu quotidien, il est donc lié à un jour. Long de 1000 caractères au maximum.
+    /// </summary>
     public partial class DayReport : Form
     {
         //Variables
@@ -17,6 +20,11 @@ namespace Astronauts_Activities
         public string Report { get; set; }
 
         //Méthodes
+
+            /// <summary>
+            /// Constructeur de la classe DayReport
+            /// </summary>
+            /// <param name="daySelected">Le jour sélectionné pour écrire le rapport</param>
         public DayReport(Day daySelected)
         {
             InitializeComponent();
@@ -36,6 +44,11 @@ namespace Astronauts_Activities
             richTextBoxReport.Text = Report;
         }
 
+        /// <summary>
+        /// Evenement associé au bouton Save, va sauvegarder le rapport dans le jour concerné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (richTextBoxReport.Text.Length <= 1000)
@@ -51,6 +64,11 @@ namespace Astronauts_Activities
             }
         }
 
+        /// <summary>
+        /// Action associés au bouton cancel, va annuler l'enrehistrement du rapport
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you want to cancel your work ?", "Confirmation", MessageBoxButtons.YesNo);
@@ -59,6 +77,7 @@ namespace Astronauts_Activities
                 this.Close();
             }
         }
+
 
         public string FormatHour(int Time)
         {
