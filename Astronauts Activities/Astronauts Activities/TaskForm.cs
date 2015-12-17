@@ -256,7 +256,6 @@ namespace Astronauts_Activities
                 graMap.DrawImage(Image.FromFile(MapString), 0, 0, MapPic.Width, MapPic.Height);                
                 int miniX = (MapPic.Width * this.xMap) / MapImage.Width;
                 int miniY = (MapPic.Height * this.yMap) / MapImage.Height;
-                MessageBox.Show(miniX + "   " + miniY);
                 graMap.DrawImage(imageCross, miniX-(imageCross.Width/2), miniY-(imageCross.Height));
             }
         }

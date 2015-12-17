@@ -398,7 +398,6 @@ namespace Astronauts_Activities
                         }
 
                         Task newTask = new Task(newActivity, newAstronaut, Duration, StartHour, Description, PositionX, PositionY);
-                        //MessageBox.Show(StartHour.ToString() + " " + Duration.ToString());
                         newDay.AddTask(newTask);
                     }
                     PlanningMission.Calendar.Add(newDay);
@@ -410,7 +409,6 @@ namespace Astronauts_Activities
                     AstronautList.SelectedIndex = 0;
                 }
                 CurrentDay = MajTime();
-                MessageBox.Show(CurrentDay.ToString());
                 foreach (Day day in PlanningMission.Calendar)
                 {
                     TreeNode MyNode;
@@ -544,7 +542,6 @@ namespace Astronauts_Activities
             {
                 //Comme on ne peut sélectionner qu'un seul index, sait qu'il s'agit du premier
                 int indexTask = DayActivities.SelectedItems[0].Index;
-                MessageBox.Show(indexTask.ToString());
                 Day day = PlanningMission.Calendar[listCalendar.SelectedNode.Index];
                 Task t = day.Tasks[indexTask];
 
