@@ -31,10 +31,8 @@
 			<Activity>Medical Act</Activity>
 		</Living>
 		<Science>
-			<Exploration>
-				<Activity>Space Suit</Activity>
-				<Activity>Vehicule</Activity>
-			</Exploration>
+			<Activity>Exploration : Space Suit</Activity>
+			<Activity>Exploration : Vehicule</Activity>
 			<Activity>Briefing</Activity>
 			<Activity>Debriefing</Activity>
 			<Activity>Inside Experiment</Activity>
