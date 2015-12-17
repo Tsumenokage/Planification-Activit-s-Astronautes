@@ -541,12 +541,8 @@ namespace Astronauts_Activities
             if (result == DialogResult.Yes)
             {
                 //Comme on ne peut sélectionner qu'un seul index, sait qu'il s'agit du premier
-<<<<<<< HEAD
                 try { int indexTask = DayActivities.SelectedItems[0].Index;
                 MessageBox.Show(indexTask.ToString());
-=======
-                int indexTask = DayActivities.SelectedItems[0].Index;
->>>>>>> origin/master
                 Day day = PlanningMission.Calendar[listCalendar.SelectedNode.Index];
                 Task t = day.Tasks[indexTask];
 

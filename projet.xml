@@ -1,10 +1,6 @@
 <Mission>
 	<Name>Mars 1</Name>
-<<<<<<< HEAD
-	<Map>C:\Users\fzeller\Documents\GitHub\Planification-Activities-Astronauts\nanedi valles.jpg</Map>
-=======
 	<Map>C:\Users\jalbouys\Desktop\Planification-Activities-Astronauts\nanedi valles.jpg</Map>
->>>>>>> origin/master
 	<X>700</X>
 	<Y>1000</Y>
 	<BeginMission>
