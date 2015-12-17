@@ -10,7 +10,7 @@ namespace Astronauts_Activities
     /// </summary>
     public class Planning
     {
-       public List<Day> Calendar { get; private set; }
+        public List<Day> Calendar { get; private set; }
         /// <summary>
         /// Constructeur de la classe Planning
         /// </summary>

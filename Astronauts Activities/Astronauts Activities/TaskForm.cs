@@ -120,11 +120,13 @@ namespace Astronauts_Activities
                 {
                     MessageBox.Show("Select at least one astronaut");
                 }
-                    
+                else if (richTextBoxDescription.Text.Length > 400)
+                {
+                    MessageBox.Show("Error : The description is too long");
+                }
+
                 else
                 {
-
-
                     if (result == DialogResult.Yes && ActivityView.SelectedNode != null)
                     {
                         MinuteStartSend = (int)StartHour.Value * 60 + (int)MinutesStart.Value;

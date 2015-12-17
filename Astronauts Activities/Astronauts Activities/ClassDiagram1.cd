@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Astronauts_Activities.Activity">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAQAAABAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Activity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Activities" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Astronauts_Activities.Astronaut">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAARAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Astronaut.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Astronauts_Activities.Category">
+    <Position X="4.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Astronauts_Activities.Day">
+    <Position X="7" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAEAAAAAAAAAgQAAAAAAAAIBAAABBA=</HashCode>
+      <FileName>Day.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tasks" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Astronauts_Activities.Mission">
+    <Position X="1" Y="3" Width="1.5" />
+    <Members>
+      <Field Name="AstronautList" Hidden="true" />
+      <Field Name="BeginHour" Hidden="true" />
+      <Field Name="buttonAddTask" Hidden="true" />
+      <Field Name="buttonNextDay" Hidden="true" />
+      <Field Name="buttonPreviousDay" Hidden="true" />
+      <Field Name="buttonRemoveTask" Hidden="true" />
+      <Field Name="buttonShowReport" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="DayActivities" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="EarthHour" Hidden="true" />
+      <Field Name="EndHour" Hidden="true" />
+      <Field Name="fileToolStripMenuItem" Hidden="true" />
+      <Field Name="imageList1" Hidden="true" />
+      <Field Name="infoToolStripMenuItem" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="listCalendar" Hidden="true" />
+      <Field Name="loadToolStripMenuItem" Hidden="true" />
+      <Field Name="MenuMissionMap" Hidden="true" />
+      <Field Name="menuStrip1" Hidden="true" />
+      <Field Name="MissionTime" Hidden="true" />
+      <Field Name="newPlanningToolStripMenuItem" Hidden="true" />
+      <Field Name="quitToolStripMenuItem" Hidden="true" />
+      <Field Name="saveToolStripMenuItem" Hidden="true" />
+      <Field Name="SearchButton" Hidden="true" />
+      <Field Name="splitContainer1" Hidden="true" />
+      <Field Name="Task" Hidden="true" />
+      <Field Name="Type" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>FwAAECEAADGgBB4NAmCUgEMiAAEJGwgAAcAIQEghBBA=</HashCode>
+      <FileName>Mission.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PlanningMission" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="Astronauts" />
+      <Field Name="Categories" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Astronauts_Activities.Planning">
+    <Position X="4" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Planning.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Calendar" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Astronauts_Activities.Task">
+    <Position X="10" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEgAAAAIAAAAAUAwABAAABIIAAAAEAAAAA=</HashCode>
+      <FileName>Task.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Activity" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Astronauts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

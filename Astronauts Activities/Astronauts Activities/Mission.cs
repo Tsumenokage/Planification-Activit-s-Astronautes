@@ -543,7 +543,7 @@ namespace Astronauts_Activities
             if (result == DialogResult.Yes)
             {
                 //Comme on ne peut sélectionner qu'un seul index, sait qu'il s'agit du premier
-                int indexTask = DayActivities.SelectedItems[0].Index;
+                try { int indexTask = DayActivities.SelectedItems[0].Index;
                 MessageBox.Show(indexTask.ToString());
                 Day day = PlanningMission.Calendar[listCalendar.SelectedNode.Index];
                 Task t = day.Tasks[indexTask];
@@ -572,6 +572,8 @@ namespace Astronauts_Activities
                     day.Tasks.Remove(t);
                 }
                 this.majDayPlanning();
+                 }
+                catch { MessageBox.Show("No activity selected"); }
             }
         }
 
@@ -783,7 +785,10 @@ namespace Astronauts_Activities
         private void buttonPreviousDay_Click(object sender, EventArgs e)
         {
             int numDay = listCalendar.SelectedNode.Index;
-            listCalendar.SelectedNode = listCalendar.Nodes[numDay - 1];
+            if (numDay > 1)
+            {
+                listCalendar.SelectedNode = listCalendar.Nodes[numDay - 1];
+            }
         }
 
         /// <summary>
@@ -794,7 +799,10 @@ namespace Astronauts_Activities
         private void buttonNextDay_Click(object sender, EventArgs e)
         {
             int numDay = listCalendar.SelectedNode.Index;
-            listCalendar.SelectedNode = listCalendar.Nodes[numDay + 1];
+            if (numDay < 499)
+            {
+                listCalendar.SelectedNode = listCalendar.Nodes[numDay + 1];
+            }
         }
 
         /// <summary>

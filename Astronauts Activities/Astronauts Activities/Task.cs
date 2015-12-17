@@ -120,11 +120,10 @@ namespace Astronauts_Activities
 
 
         /// <summary>
-        /// Va retourner les infos d'une tâche sous forme de tableau,
-        /// cela est utilisé pour l'affichage dans différents écrans.
+        /// Transforme une durée en minute en affichage de l'heure sous la forme suivante : Heure H Minute
         /// </summary>
-        /// <param name="task">Task : Tâche dont on souhaite obtenir les informations</param>
-        /// <returns>un tableau contenant le jour de la tâche, et les informations sur cette dernière</returns>
+        /// <param name="Time">Une durée (ou une heure) en minute</param>
+        /// <returns>Un string de la forme Heure H Minute</returns>
         public string FormatHour(int Time)
         {
             string HourFormat;

@@ -16,6 +16,7 @@ namespace Astronauts_Activities
         public string Name {get; private set;}
         public int Xposition { get; private set; }
         public int Yposition { get; private set; }
+    
         private string Description;
 
         /// <summary>

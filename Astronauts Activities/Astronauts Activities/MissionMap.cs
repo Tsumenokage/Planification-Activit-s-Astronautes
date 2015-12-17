@@ -26,7 +26,7 @@ namespace Astronauts_Activities
         /// <summary>
         /// Constructeur de la classe Map
         /// </summary>
-        /// <param name="mission">Mission : Objet représenter la mission compléte en cours</param>
+        /// <param name="mission">Mission : Objet représentant la mission complète en cours</param>
         public MissionMap(Mission mission)
         {
             InitializeComponent();
@@ -42,7 +42,10 @@ namespace Astronauts_Activities
             imageCross = Astronauts_Activities.Properties.Resources.crossImage;
 
             Marqueurs = new List<Task>();
-            MapImage = Image.FromFile(MapString);
+            try { MapImage = Image.FromFile(MapString); }
+            catch { 
+                MessageBox.Show("Error: No map has been loaded");
+            }
             rectangles = new List<Rectangle>();
 
         }

@@ -15,6 +15,7 @@ namespace Astronauts_Activities
         public int NumberDay { get; private set; }
         public string Report { get; set; }
         public List<Task> Tasks { get; private set; }
+    
         private const int MINUTES = 1480; //Nombre de minutes dans une journée martienne
 
         /// <summary>
