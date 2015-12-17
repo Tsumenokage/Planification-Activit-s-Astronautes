@@ -55,7 +55,10 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AstronautTest.cs" />
+    <Compile Include="CategoryTest.cs" />
     <Compile Include="DayReportTest.cs" />
+    <Compile Include="DayTest.cs" />
     <Compile Include="MissionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskFormTest.cs" />

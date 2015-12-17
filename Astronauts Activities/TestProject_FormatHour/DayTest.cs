@@ -1,18 +1,17 @@
 ﻿using Astronauts_Activities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 
 namespace TestProject_FormatHour
 {
     
     
     /// <summary>
-    ///Classe de test pour TaskTest, destinée à contenir tous
-    ///les tests unitaires TaskTest
+    ///Classe de test pour DayTest, destinée à contenir tous
+    ///les tests unitaires DayTest
     ///</summary>
     [TestClass()]
-    public class TaskTest
+    public class DayTest
     {
 
 
@@ -66,19 +65,34 @@ namespace TestProject_FormatHour
 
 
         /// <summary>
-        ///Test pour AddAstronaut
+        ///Test pour ToString
         ///</summary>
         [TestMethod()]
-        public void AddAstronautTest()
+        public void ToStringTest()
         {
-            Activity Tactivity = null; // TODO: initialisez à une valeur appropriée
-            List<Astronaut> Tastronauts = null; // TODO: initialisez à une valeur appropriée
-            int DureeMinute = 0; // TODO: initialisez à une valeur appropriée
-            int StartHour = 0; // TODO: initialisez à une valeur appropriée
-            //Task target = new Task(Tactivity, Tastronauts, DureeMinute, StartHour); // TODO: initialisez à une valeur appropriée
-            Astronaut astronaut = null; // TODO: initialisez à une valeur appropriée
-            //target.AddAstronaut(astronaut);
-            
+            int NumberDay = 0; // TODO: initialisez à une valeur appropriée
+            Day target = new Day(NumberDay); // TODO: initialisez à une valeur appropriée
+            string expected = "Day : 0"; // TODO: initialisez à une valeur appropriée
+            string actual;
+            actual = target.ToString();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Vérifiez l\'exactitude de cette méthode de test.");
+        }
+
+        /// <summary>
+        ///Test pour TaskInfo
+        ///</summary>
+        [TestMethod()]
+        public void TaskInfoTest()
+        {
+            int NumberDay = 0; // TODO: initialisez à une valeur appropriée
+            Day target = new Day(NumberDay); // TODO: initialisez à une valeur appropriée
+            Task task = null; // TODO: initialisez à une valeur appropriée
+            string[] expected = null; // TODO: initialisez à une valeur appropriée
+            string[] actual;
+            actual = target.TaskInfo(task);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Vérifiez l\'exactitude de cette méthode de test.");
         }
     }
 }

@@ -72,8 +72,8 @@ namespace TestProject_FormatHour
         public void AstronautIsFreeTest()
         {
             PrivateObject param0 = null; // TODO: initialisez à une valeur appropriée
-            TaskForm_Accessor target = new TaskForm_Accessor(param0); // TODO: initialisez à une valeur appropriée
-            Astronaut A = null; // TODO: initialisez à une valeur appropriée
+            TaskForm_Accessor target = new TaskForm(); // TODO: initialisez à une valeur appropriée
+            Astronaut A = new Astronaut("Test"); // TODO: initialisez à une valeur appropriée
             bool expected = false; // TODO: initialisez à une valeur appropriée
             bool actual;
             actual = target.AstronautIsFree(A);

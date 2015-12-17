@@ -1,18 +1,17 @@
 ﻿using Astronauts_Activities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 
 namespace TestProject_FormatHour
 {
     
     
     /// <summary>
-    ///Classe de test pour TaskTest, destinée à contenir tous
-    ///les tests unitaires TaskTest
+    ///Classe de test pour AstronautTest, destinée à contenir tous
+    ///les tests unitaires AstronautTest
     ///</summary>
     [TestClass()]
-    public class TaskTest
+    public class AstronautTest
     {
 
 
@@ -66,19 +65,20 @@ namespace TestProject_FormatHour
 
 
         /// <summary>
-        ///Test pour AddAstronaut
+        ///Test pour ToString
         ///</summary>
         [TestMethod()]
-        public void AddAstronautTest()
+        public void ToStringTest()
         {
-            Activity Tactivity = null; // TODO: initialisez à une valeur appropriée
-            List<Astronaut> Tastronauts = null; // TODO: initialisez à une valeur appropriée
-            int DureeMinute = 0; // TODO: initialisez à une valeur appropriée
-            int StartHour = 0; // TODO: initialisez à une valeur appropriée
-            //Task target = new Task(Tactivity, Tastronauts, DureeMinute, StartHour); // TODO: initialisez à une valeur appropriée
-            Astronaut astronaut = null; // TODO: initialisez à une valeur appropriée
-            //target.AddAstronaut(astronaut);
+            string n = "Sarah Connor"; // TODO: initialisez à une valeur appropriée
+            Astronaut target = new Astronaut(n); // TODO: initialisez à une valeur appropriée
+            string expected = "Sarah Connor is available"; // TODO: initialisez à une valeur appropriée
+            string actual;
+            actual = target.ToString();
+            Assert.AreEqual(expected, actual);
             
         }
+
+
     }
 }

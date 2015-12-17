@@ -1,18 +1,17 @@
 ﻿using Astronauts_Activities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 
 namespace TestProject_FormatHour
 {
     
     
     /// <summary>
-    ///Classe de test pour TaskTest, destinée à contenir tous
-    ///les tests unitaires TaskTest
+    ///Classe de test pour CategoryTest, destinée à contenir tous
+    ///les tests unitaires CategoryTest
     ///</summary>
     [TestClass()]
-    public class TaskTest
+    public class CategoryTest
     {
 
 
@@ -66,18 +65,16 @@ namespace TestProject_FormatHour
 
 
         /// <summary>
-        ///Test pour AddAstronaut
+        ///Test pour addActivity
         ///</summary>
         [TestMethod()]
-        public void AddAstronautTest()
+        public void addActivityTest()
         {
-            Activity Tactivity = null; // TODO: initialisez à une valeur appropriée
-            List<Astronaut> Tastronauts = null; // TODO: initialisez à une valeur appropriée
-            int DureeMinute = 0; // TODO: initialisez à une valeur appropriée
-            int StartHour = 0; // TODO: initialisez à une valeur appropriée
-            //Task target = new Task(Tactivity, Tastronauts, DureeMinute, StartHour); // TODO: initialisez à une valeur appropriée
-            Astronaut astronaut = null; // TODO: initialisez à une valeur appropriée
-            //target.AddAstronaut(astronaut);
+            
+            string CategoryName = string.Empty; // TODO: initialisez à une valeur appropriée
+            Category target = new Category(CategoryName); // TODO: initialisez à une valeur appropriée
+            Activity activity = null; // TODO: initialisez à une valeur appropriée
+            target.addActivity(activity);
             
         }
     }
