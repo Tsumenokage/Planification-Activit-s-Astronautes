@@ -65,19 +65,44 @@ namespace TestProject_FormatHour
         #endregion
 
 
+
         /// <summary>
-        ///Test pour AddAstronaut
+        ///Test pour FormatHour
         ///</summary>
         [TestMethod()]
-        public void AddAstronautTest()
+        public void FormatHourTest()
         {
-            Activity Tactivity = null; // TODO: initialisez à une valeur appropriée
-            List<Astronaut> Tastronauts = null; // TODO: initialisez à une valeur appropriée
-            int DureeMinute = 0; // TODO: initialisez à une valeur appropriée
-            int StartHour = 0; // TODO: initialisez à une valeur appropriée
-            //Task target = new Task(Tactivity, Tastronauts, DureeMinute, StartHour); // TODO: initialisez à une valeur appropriée
-            Astronaut astronaut = null; // TODO: initialisez à une valeur appropriée
-            //target.AddAstronaut(astronaut);
+            Activity Tactivity = new Activity("Test"); // TODO: initialisez à une valeur appropriée
+            List<Astronaut> Tastronauts = new List<Astronaut>(); // TODO: initialisez à une valeur appropriée
+            int DureeMinute = 130; // TODO: initialisez à une valeur appropriée
+            int StartHour = 150; // TODO: initialisez à une valeur appropriée
+            int X = 0; // TODO: initialisez à une valeur appropriée
+            int Y = 0; // TODO: initialisez à une valeur appropriée
+            Task target = new Task(Tactivity, Tastronauts, DureeMinute, StartHour, X, Y); // TODO: initialisez à une valeur appropriée
+            int Time = DureeMinute+StartHour ; // TODO: initialisez à une valeur appropriée
+            string expected = "4H40"; // TODO: initialisez à une valeur appropriée
+            string actual;
+            actual = target.FormatHour(Time);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///Test pour getInfo
+        ///</summary>
+        [TestMethod()]
+        public void getInfoTest()
+        {
+            Activity Tactivity = new Activity("Test");
+            List<Astronaut> Tastronauts = new List<Astronaut>();
+            int DureeMinute = 120; // TODO: initialisez à une valeur appropriée
+            int StartHour = 130; // TODO: initialisez à une valeur appropriée
+            int X = 0; // TODO: initialisez à une valeur appropriée
+            int Y = 0; // TODO: initialisez à une valeur appropriée
+            Task target = new Task(Tactivity, Tastronauts, DureeMinute, StartHour, X, Y);
+            string[] expected = { "", target.FormatHour(StartHour), target.FormatHour(DureeMinute + StartHour), target.Name };
+            string[] actual;
+            actual = target.getInfo();
+            CollectionAssert.AreEqual(expected, actual);
             
         }
     }

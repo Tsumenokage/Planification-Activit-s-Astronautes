@@ -78,5 +78,20 @@ namespace TestProject_FormatHour
             actual = target.FormatHour(Time);
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        ///Test pour FormatHour
+        ///</summary>
+        [TestMethod()]
+        public void FormatHourTest1()
+        {
+            Day daySelected = new Day(0); ; // TODO: initialisez à une valeur appropriée
+            DayReport target = new DayReport(daySelected); // TODO: initialisez à une valeur appropriée
+            int Time = 90; // TODO: initialisez à une valeur appropriée
+            string expected = "1H30"; // TODO: initialisez à une valeur appropriée
+            string actual;
+            actual = target.FormatHour(Time);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

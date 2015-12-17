@@ -1,6 +1,7 @@
 ﻿using Astronauts_Activities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace TestProject_FormatHour
 {
@@ -76,7 +77,6 @@ namespace TestProject_FormatHour
             string actual;
             actual = target.ToString();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Vérifiez l\'exactitude de cette méthode de test.");
         }
 
         /// <summary>
@@ -87,12 +87,15 @@ namespace TestProject_FormatHour
         {
             int NumberDay = 0; // TODO: initialisez à une valeur appropriée
             Day target = new Day(NumberDay); // TODO: initialisez à une valeur appropriée
-            Task task = null; // TODO: initialisez à une valeur appropriée
-            string[] expected = null; // TODO: initialisez à une valeur appropriée
+            List<Astronaut> a = new List<Astronaut>();
+            Activity act = new Activity("Test");
+            Task task = new Task(act,a,50,50,10,10); // TODO: initialisez à une valeur appropriée
+
+
+            string[] expected = { "", target.ToString(), "0H50", "1H40", task.Name }; // TODO: initialisez à une valeur appropriée
             string[] actual;
             actual = target.TaskInfo(task);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Vérifiez l\'exactitude de cette méthode de test.");
+            CollectionAssert.AreEqual(expected, actual);
         }
     }
 }
